@@ -20,6 +20,9 @@ namespace IntelligentMonitoringAPI.App_Start
 
             Mapper.CreateMap<DeviceNetwork, DeviceNetworkDto>();
             Mapper.CreateMap<DeviceNetworkDto, DeviceNetwork>();
+
+            Mapper.CreateMap<Location, LocationDto>();
+            Mapper.CreateMap<LocationDto, Location>();
         }
     }
 }
