@@ -18,10 +18,10 @@ namespace IntelligentMonitoringAPI
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             
-            /*
+            
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            settings.Formatting = Formatting.Indented;*/
+            settings.Formatting = Formatting.Indented;
             
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.

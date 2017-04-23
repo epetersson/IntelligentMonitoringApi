@@ -13,7 +13,7 @@ namespace IntelligentMonitoringAPI.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Device, DeviceDto>();
-            Mapper.CreateMap<DeviceDto, DeviceDto>();
+            Mapper.CreateMap<DeviceDto, Device>();
         }
     }
 }
