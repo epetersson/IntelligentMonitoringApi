@@ -14,6 +14,9 @@ namespace IntelligentMonitoringAPI.App_Start
         {
             Mapper.CreateMap<Device, DeviceDto>();
             Mapper.CreateMap<DeviceDto, Device>();
+
+            Mapper.CreateMap<Sensor, SensorDto>();
+            Mapper.CreateMap<SensorDto, Sensor>();
         }
     }
 }
