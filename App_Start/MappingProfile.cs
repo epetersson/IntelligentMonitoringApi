@@ -14,8 +14,8 @@ namespace IntelligentMonitoringAPI.App_Start
         {
             Mapper.CreateMap<Device, DeviceDto>();
             Mapper.CreateMap<DeviceDto, Device>();
-            Mapper.CreateMap<Device, LocationDeviceDto>();
-            Mapper.CreateMap<LocationDeviceDto, Device>();
+            Mapper.CreateMap<Device, SimpleDeviceDto>();
+            Mapper.CreateMap<SimpleDeviceDto, Device>();
 
             Mapper.CreateMap<Sensor, SensorDto>();
             Mapper.CreateMap<SensorDto, Sensor>();
@@ -27,13 +27,16 @@ namespace IntelligentMonitoringAPI.App_Start
 
             Mapper.CreateMap<DeviceNetwork, DeviceNetworkDto>();
             Mapper.CreateMap<DeviceNetworkDto, DeviceNetwork>();
-            Mapper.CreateMap<DeviceNetwork, LocationDeviceNetworkDto>();
-            Mapper.CreateMap<LocationDeviceNetworkDto, DeviceNetwork>();
+            Mapper.CreateMap<DeviceNetwork, SimpleDeviceNetworkDto>();
+            Mapper.CreateMap<SimpleDeviceNetworkDto, DeviceNetwork>();
 
             Mapper.CreateMap<Location, LocationDto>();
             Mapper.CreateMap<LocationDto, Location>();
-            Mapper.CreateMap<Location, DeviceLocationDto>();
-            Mapper.CreateMap<DeviceLocationDto, Location>();
+            Mapper.CreateMap<Location, SimpleLocationDto>();
+            Mapper.CreateMap<SimpleLocationDto, Location>();
+
+            Mapper.CreateMap<History, HistoryDto>();
+            Mapper.CreateMap<HistoryDto, History>();
         }
     }
 }
