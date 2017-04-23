@@ -261,6 +261,7 @@
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
+    <Compile Include="Models\DTOs\LocationDto.cs" />
     <Compile Include="Models\DTOs\SensorDto.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\IdentityModels.cs" />

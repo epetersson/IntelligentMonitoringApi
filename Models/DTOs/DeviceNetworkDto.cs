@@ -9,7 +9,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DeviceNetworkDto
     {
-        [Column("External-id")]
         [Required]
         [StringLength(50)]
         public string External_id { get; set; }
@@ -18,6 +17,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<Location> Locations { get; set; }
+        public ICollection<LocationDto> Locations { get; set; }
     }
 }

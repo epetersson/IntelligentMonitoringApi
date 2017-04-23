@@ -9,12 +9,10 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class SensorDto
     {
-        [Column("External-Id")]
         [Required]
         [StringLength(50)]
         public string External_Id { get; set; }
 
-        [Column("Device-Id")]
         public int Device_Id { get; set; }
 
         public int? LatestMeasurement { get; set; }
