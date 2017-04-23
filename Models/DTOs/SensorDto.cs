@@ -23,6 +23,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         //public Device Device { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<SensorMeasurement> SensorMeasurements { get; set; }
+        public ICollection<SensorMeasurementDto> SensorMeasurements { get; set; }
     }
 }
