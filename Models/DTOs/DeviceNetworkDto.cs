@@ -9,6 +9,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DeviceNetworkDto
     {
+        public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string External_id { get; set; }

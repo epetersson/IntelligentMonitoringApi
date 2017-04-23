@@ -6,8 +6,10 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models.DTOs
 {
-    public class DeviceLocationDto
+    public class SimpleLocationDto
     {
+        public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string External_Id { get; set; }

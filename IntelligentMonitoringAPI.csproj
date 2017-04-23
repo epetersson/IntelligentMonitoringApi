@@ -243,7 +243,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DeviceNetworksController.cs" />
     <Compile Include="Controllers\DevicesController.cs" />
+    <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\SensorsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,9 +262,15 @@
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
+    <Compile Include="Models\DTOs\SimpleLocationDto.cs" />
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
+    <Compile Include="Models\DTOs\DeviceSensorDto.cs" />
+    <Compile Include="Models\DTOs\HistoryDto.cs" />
+    <Compile Include="Models\DTOs\SimpleDeviceDto.cs" />
+    <Compile Include="Models\DTOs\SimpleDeviceNetworkDto.cs" />
     <Compile Include="Models\DTOs\LocationDto.cs" />
     <Compile Include="Models\DTOs\SensorDto.cs" />
+    <Compile Include="Models\DTOs\SensorMeasurementDto.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IntelliMonDbContext.cs" />
