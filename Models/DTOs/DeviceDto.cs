@@ -9,7 +9,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DeviceDto
     {
-        public int Id { get; set; }
 
         [Required]
         [StringLength(50)]
