@@ -241,6 +241,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DeviceNetworksController.cs" />
     <Compile Include="Controllers\DevicesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SensorsController.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
+    <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
     <Compile Include="Models\DTOs\SensorDto.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\IdentityModels.cs" />

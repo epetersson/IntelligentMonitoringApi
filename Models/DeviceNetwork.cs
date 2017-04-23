@@ -1,3 +1,5 @@
+using IntelligentMonitoringAPI.Models.DTOs;
+
 namespace IntelligentMonitoringAPI.Models
 {
     using System;

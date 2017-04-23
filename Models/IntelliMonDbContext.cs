@@ -12,15 +12,15 @@ namespace IntelligentMonitoringAPI.Models
         {
         }
 
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Device> Devices { get; set; }
-        public virtual DbSet<DeviceNetwork> DeviceNetworks { get; set; }
-        public virtual DbSet<History> Histories { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<LocationResource> LocationResources { get; set; }
-        public virtual DbSet<Position> Positions { get; set; }
-        public virtual DbSet<Sensor> Sensors { get; set; }
-        public virtual DbSet<SensorMeasurement> SensorMeasurements { get; set; }
+        public DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public DbSet<Device> Devices { get; set; }
+        public DbSet<DeviceNetwork> DeviceNetworks { get; set; }
+        public DbSet<History> Histories { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<LocationResource> LocationResources { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Sensor> Sensors { get; set; }
+        public DbSet<SensorMeasurement> SensorMeasurements { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
