@@ -9,7 +9,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DeviceDto
     {
-
         [Required]
         [StringLength(50)]
         public string ExternalId { get; set; }
@@ -41,6 +40,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         //public ICollection<History> Histories { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<Sensor> Sensors { get; set; }
+        public ICollection<SensorDto> Sensors { get; set; }
     }
 }

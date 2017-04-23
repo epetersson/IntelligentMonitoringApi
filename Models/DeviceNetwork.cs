@@ -26,6 +26,6 @@ namespace IntelligentMonitoringAPI.Models
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
+        public ICollection<Location> Locations { get; set; }
     }
 }
