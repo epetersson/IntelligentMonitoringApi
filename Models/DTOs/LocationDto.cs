@@ -26,14 +26,14 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<DeviceDto> Devices { get; set; }
+        public ICollection<LocationDeviceDto> Devices { get; set; }
 
-        public DeviceNetworkDto DeviceNetwork { get; set; }
+        public LocationDeviceNetworkDto DeviceNetwork { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<Location> Location1 { get; set; }
+        public ICollection<LocationDto> Location1 { get; set; }
 
-        public Location Location2 { get; set; }
+        public LocationDto Location2 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<LocationResource> LocationResources { get; set; }
