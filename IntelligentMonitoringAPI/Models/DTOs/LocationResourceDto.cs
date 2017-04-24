@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace IntelligentMonitoringAPI.Models
+namespace IntelligentMonitoringAPI.Models.DTOs
 {
-    public class LocationResource
+    public class LocationResourceDto
     {
         public int Id { get; set; }
-        public string SigmaId { get; set; } 
+        public string SigmaId { get; set; }
         public string Name { get; set; }
 
         public string Label { get; set; }
 
         //public LocationResourceType ResourceType { get; set; }
 
-        public string Path { get; set; }
+        public Uri Path { get; set; }
 
         public decimal StartPositionX { get; set; }
 

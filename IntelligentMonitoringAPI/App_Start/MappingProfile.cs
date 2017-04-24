@@ -10,7 +10,7 @@ namespace IntelligentMonitoringAPI.App_Start
 {
     public class MappingProfile : Profile
     {
-        /*public MappingProfile()
+        public MappingProfile()
         {
             Mapper.CreateMap<Device, DeviceDto>();
             Mapper.CreateMap<DeviceDto, Device>();
@@ -35,8 +35,8 @@ namespace IntelligentMonitoringAPI.App_Start
             Mapper.CreateMap<Location, SimpleLocationDto>();
             Mapper.CreateMap<SimpleLocationDto, Location>();
 
-            Mapper.CreateMap<History, HistoryDto>();
-            Mapper.CreateMap<HistoryDto, History>();
-        }*/
+            /*Mapper.CreateMap<History, HistoryDto>();
+            Mapper.CreateMap<HistoryDto, History>();*/
+        }
     }
 }

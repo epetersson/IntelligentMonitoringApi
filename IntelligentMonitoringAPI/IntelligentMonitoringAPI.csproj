@@ -315,6 +315,14 @@
     <Compile Include="Migrations\201704241131301_AddSensorMeasurements.Designer.cs">
       <DependentUpon>201704241131301_AddSensorMeasurements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704241145148_AddChanges.cs" />
+    <Compile Include="Migrations\201704241145148_AddChanges.Designer.cs">
+      <DependentUpon>201704241145148_AddChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704241148515_AddChanges1.cs" />
+    <Compile Include="Migrations\201704241148515_AddChanges1.Designer.cs">
+      <DependentUpon>201704241148515_AddChanges1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,10 +330,10 @@
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
+    <Compile Include="Models\DTOs\LocationResourceDto.cs" />
     <Compile Include="Models\DTOs\SimpleLocationDto.cs" />
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
     <Compile Include="Models\DTOs\DeviceSensorDto.cs" />
-    <Compile Include="Models\DTOs\HistoryDto.cs" />
     <Compile Include="Models\DTOs\SimpleDeviceDto.cs" />
     <Compile Include="Models\DTOs\SimpleDeviceNetworkDto.cs" />
     <Compile Include="Models\DTOs\LocationDto.cs" />
@@ -467,6 +475,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704241131301_AddSensorMeasurements.resx">
       <DependentUpon>201704241131301_AddSensorMeasurements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241145148_AddChanges.resx">
+      <DependentUpon>201704241145148_AddChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241148515_AddChanges1.resx">
+      <DependentUpon>201704241148515_AddChanges1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

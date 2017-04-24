@@ -10,38 +10,16 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     public class DeviceDto
     {
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string ExternalId { get; set; }
-
-        [StringLength(50)]
+        public string SigmaId { get; set; }
+        //public string DataCollectorName { get; set; }
+        //public string LocationName { get; set; }
+        public bool IsRegistered { get; set; }
+        //public string SensorCollectionTypeName { get; set; }
+        public long LastSeen { get; set; }
+        public bool ContactLost { get; set; }
+        public long ContactLostTime { get; set; }
         public string Name { get; set; }
-
-        [StringLength(50)]
-        public string LocationName { get; set; }
-
-        [Column("LocationId")]
-        public int LocationId { get; set; }
-
-        [Column("Position-Id")]
-        public int? Position_Id { get; set; }
-
-        public int SignalStrength { get; set; }
-
-        public int LatestBatteryMeasurement { get; set; }
-
-        public DateTime? LastSeen { get; set; }
-
-        [MaxLength(1)]
-        public byte[] ContactLost { get; set; }
-
-        //public SimpleLocationDto Location { get; set; }
-
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public ICollection<History> Histories { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<DeviceSensorDto> Sensors { get; set; }
+        //public string DataCollectorId { get; set; }
+        //public int LocationId { get; set; }
     }
 }

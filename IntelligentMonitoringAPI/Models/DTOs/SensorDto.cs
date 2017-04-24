@@ -10,21 +10,12 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     public class SensorDto
     {
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string External_Id { get; set; }
-
-        public int Device_Id { get; set; }
-
-        public int? LatestMeasurement { get; set; }
-
-        [StringLength(50)]
+        public string SigmaId { get; set; }
+        public string DeviceName { get; set; }
+        public string SensorType { get; set; }
         public string Name { get; set; }
-
-        //public Device Device { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<SensorMeasurementDto> SensorMeasurements { get; set; }
+        public int DeviceId { get; set; }
+        public string SensorTypeId { get; set; }
+        public bool IsVirtual { get; set; }
     }
 }

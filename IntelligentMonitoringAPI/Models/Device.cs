@@ -8,7 +8,6 @@ namespace IntelligentMonitoringAPI.Models
     public class Device
     {
         public int Id { get; set; }
-
         public string SigmaId { get; set; }
         //public string DataCollectorName { get; set; }
         //public string LocationName { get; set; }

@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    /*public class DevicesController : ApiController
+    public class DevicesController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -28,7 +28,7 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(customersDto);
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public IHttpActionResult GetDevice(string id)
         {
             var device = _context.Devices
@@ -39,7 +39,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok(Mapper.Map<Device, DeviceDto>(device));
         }
-
+        */
         [HttpPost]
         public IHttpActionResult CreateDevice(DeviceDto deviceDto)
         {
@@ -52,7 +52,8 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
         }
-
+        
+        /*
         [HttpPut]
         public IHttpActionResult UpdateDevice(string id, DeviceDto deviceDto)
         {
@@ -82,6 +83,6 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok();
         }
 
-
-    }*/
+    */
+    }
 }

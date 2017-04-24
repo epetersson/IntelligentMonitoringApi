@@ -10,33 +10,18 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     public class LocationDto
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string External_Id { get; set; }
+        public string SigmaId { get; set; }
 
-        public int DeviceNetwork_Id { get; set; }
-
-        public int? Position_Id { get; set; }
-
-        public int? ParentLocation_Id { get; set; }
-
-        [StringLength(50)]
-        public string ParentLocation_Name { get; set; }
-
-        [StringLength(50)]
         public string Name { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<SimpleDeviceDto> Devices { get; set; }
+        public string ParentLocationName { get; set; }
 
-        public SimpleDeviceNetworkDto DeviceNetwork { get; set; }
+        public int ParentLocationId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<LocationDto> Location1 { get; set; }
+        public int LocationType { get; set; }
 
-        public LocationDto Location2 { get; set; }
+        public int DeviceNetworkId { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public ICollection<LocationResource> LocationResources { get; set; }
+        //public string DeviceNetworkName { get; set; }
     }
 }

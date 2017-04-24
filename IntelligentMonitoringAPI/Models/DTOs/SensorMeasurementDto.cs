@@ -11,6 +11,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public int? Value { get; set; }
 
-        public int? Sensor_Id { get; set; }
+        public int? SensorId { get; set; }
     }
 }

@@ -10,15 +10,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     public class DeviceNetworkDto
     {
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string External_id { get; set; }
-
-        [StringLength(50)]
+        public string SigmaId { get; set; }
         public string Name { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<LocationDto> Locations { get; set; }
+        public string TenantName { get; set; }
     }
 }
