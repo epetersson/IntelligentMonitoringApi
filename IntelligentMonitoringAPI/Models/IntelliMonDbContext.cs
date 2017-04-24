@@ -20,6 +20,7 @@ namespace IntelligentMonitoringAPI.Models
         public DbSet<Event> Events { get; set; }
         public DbSet<LocationResource> LocationResources { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<SensorMeasurement> SensorMeasurements { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
