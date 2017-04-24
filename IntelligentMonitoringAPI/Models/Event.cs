@@ -7,7 +7,8 @@ namespace IntelligentMonitoringAPI.Models
 {
     public class Event
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public string SigmaId { get; set; }
         //public bool IsSensorDeleted { get; set; }
         //public bool IsDeviceDeleted { get; set; }
         //public bool IsEventCategoryDeleted { get; set; }

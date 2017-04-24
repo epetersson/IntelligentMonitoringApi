@@ -8,7 +8,7 @@ namespace IntelligentMonitoringAPI.Models
     public class LocationResource
     {
         public int Id { get; set; }
-
+        public string SigmaId { get; set; } 
         public string Name { get; set; }
 
         public string Label { get; set; }
