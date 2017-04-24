@@ -36,7 +36,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public LocationDto Location2 { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<LocationResource> LocationResources { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public ICollection<LocationResource> LocationResources { get; set; }
     }
 }

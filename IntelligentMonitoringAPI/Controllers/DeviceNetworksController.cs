@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    public class DeviceNetworksController : ApiController
+    /*public class DeviceNetworksController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -32,7 +32,7 @@ namespace IntelligentMonitoringAPI.Controllers
         public IHttpActionResult GetDeviceNetwork(string id)
         {
             var deviceNetwork = _context.DeviceNetworks
-                .SingleOrDefault(c => c.External_id == id);
+                .SingleOrDefault(c => c.ExternalId == id);
 
             if (deviceNetwork == null)
                 return NotFound();
@@ -51,13 +51,13 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.DeviceNetworks.Add(deviceNetwork);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.External_id), deviceNetworkDto);
+            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.ExternalId), deviceNetworkDto);
         }
 
         [HttpPut]
         public IHttpActionResult UpdateDeviceNetwork(string id, DeviceNetworkDto deviceNetworkDto)
         {
-            var deviceNetworkInDb = _context.DeviceNetworks.SingleOrDefault(c => c.External_id == id);
+            var deviceNetworkInDb = _context.DeviceNetworks.SingleOrDefault(c => c.ExternalId == id);
 
             if (deviceNetworkInDb == null)
                 return NotFound();
@@ -71,7 +71,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteDeviceNetwork(string id)
         {
-            var deviceNetwork = _context.DeviceNetworks.SingleOrDefault(c => c.External_id == id);
+            var deviceNetwork = _context.DeviceNetworks.SingleOrDefault(c => c.ExternalId == id);
             if (deviceNetwork == null)
                 return NotFound();
 
@@ -80,5 +80,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
-    }
+    }*/
 }

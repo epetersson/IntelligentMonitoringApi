@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    public class LocationsController : ApiController
+    /*public class LocationsController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -31,7 +31,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetLocation(string id)
         {
-            var location = _context.Locations.SingleOrDefault(c => c.External_Id == id);
+            var location = _context.Locations.SingleOrDefault(c => c.ExternalId == id);
             if (location == null)
                 return NotFound();
 
@@ -49,13 +49,13 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.Locations.Add(location);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + location.External_Id), locationDto);
+            return Created(new Uri(Request.RequestUri + "/" + location.ExternalId), locationDto);
         }
 
         [HttpPut]
         public IHttpActionResult UpdateLocation(string id, LocationDto locationDto)
         {
-            var locationInDb = _context.Locations.SingleOrDefault(c => c.External_Id == id);
+            var locationInDb = _context.Locations.SingleOrDefault(c => c.ExternalId == id);
 
             if (locationInDb == null)
                 return NotFound();
@@ -69,7 +69,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteLocation(string id)
         {
-            var location = _context.Locations.SingleOrDefault(c => c.External_Id == id);
+            var location = _context.Locations.SingleOrDefault(c => c.ExternalId == id);
 
             if (location == null)
                 return NotFound();
@@ -79,5 +79,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
-    }
+    }*/
 }

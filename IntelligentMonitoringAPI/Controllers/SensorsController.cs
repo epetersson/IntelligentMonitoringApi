@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    public class SensorsController : ApiController
+    /*public class SensorsController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -31,7 +31,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetSensor(string id)
         {
-            var sensor = _context.Sensors.SingleOrDefault(c => c.External_Id == id);
+            var sensor = _context.Sensors.SingleOrDefault(c => c.ExternalId == id);
 
             if (sensor == null)
                 return NotFound();
@@ -50,13 +50,13 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.Sensors.Add(sensor);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + sensor.External_Id), sensorDto);
+            return Created(new Uri(Request.RequestUri + "/" + sensor.ExternalId), sensorDto);
         }
 
         [HttpPut]
         public IHttpActionResult UpdateSensor(string id, SensorDto sensorDto)
         {
-            var sensorInDb = _context.Sensors.SingleOrDefault(c => c.External_Id == id);
+            var sensorInDb = _context.Sensors.SingleOrDefault(c => c.ExternalId == id);
             if (sensorInDb == null)
                 return NotFound();
 
@@ -69,7 +69,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteSensor(string id)
         {
-            var device = _context.Sensors.SingleOrDefault(c => c.External_Id == id);
+            var device = _context.Sensors.SingleOrDefault(c => c.ExternalId == id);
             if (device == null)
                 return NotFound();
 
@@ -79,5 +79,5 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok();
         }
         
-    }
+    }*/
 }

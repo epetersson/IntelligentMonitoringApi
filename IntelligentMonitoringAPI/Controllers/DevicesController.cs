@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    public class DevicesController : ApiController
+    /*public class DevicesController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -32,7 +32,7 @@ namespace IntelligentMonitoringAPI.Controllers
         public IHttpActionResult GetDevice(string id)
         {
             var device = _context.Devices
-                .SingleOrDefault(c => c.ExternalId == id);
+                .SingleOrDefault(c => c.Id == id);
 
             if (device == null)
                 return NotFound();
@@ -50,13 +50,13 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.Devices.Add(device);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + device.ExternalId), deviceDto);
+            return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
         }
 
         [HttpPut]
         public IHttpActionResult UpdateDevice(string id, DeviceDto deviceDto)
         {
-            var deviceInDb = _context.Devices.SingleOrDefault(c => c.ExternalId == id);
+            var deviceInDb = _context.Devices.SingleOrDefault(c => c.Id == id);
 
             if (deviceInDb == null)
                 return NotFound();
@@ -71,7 +71,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteDevice(string id)
         {
-            var device = _context.Devices.SingleOrDefault(c => c.ExternalId == id);
+            var device = _context.Devices.SingleOrDefault(c => c.Id == id);
 
             if (device == null)
                 return NotFound();
@@ -83,5 +83,5 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
 
-    }
+    }*/
 }

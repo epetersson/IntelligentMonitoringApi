@@ -11,7 +11,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    public class HistoriesController : ApiController
+    /*public class HistoriesController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -78,5 +78,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
-    }
+    }*/
 }

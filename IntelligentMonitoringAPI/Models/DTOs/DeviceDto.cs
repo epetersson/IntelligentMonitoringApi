@@ -21,8 +21,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         [StringLength(50)]
         public string LocationName { get; set; }
 
-        [Column("Location-Id")]
-        public int Location_Id { get; set; }
+        [Column("LocationId")]
+        public int LocationId { get; set; }
 
         [Column("Position-Id")]
         public int? Position_Id { get; set; }
