@@ -20,6 +20,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public long ContactLostTime { get; set; }
         public string Name { get; set; }
         //public string DataCollectorId { get; set; }
-        //public int LocationId { get; set; }
+        public int LocationId { get; set; }
     }
 }

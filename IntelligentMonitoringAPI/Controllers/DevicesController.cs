@@ -28,18 +28,18 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(customersDto);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public IHttpActionResult GetDevice(string id)
         {
             var device = _context.Devices
-                .SingleOrDefault(c => c.Id == id);
+                .SingleOrDefault(c => c.SigmaId == id);
 
             if (device == null)
                 return NotFound();
 
             return Ok(Mapper.Map<Device, DeviceDto>(device));
         }
-        */
+        
         [HttpPost]
         public IHttpActionResult CreateDevice(DeviceDto deviceDto)
         {
@@ -47,17 +47,18 @@ namespace IntelligentMonitoringAPI.Controllers
                 return BadRequest();
 
             var device = Mapper.Map<DeviceDto, Device>(deviceDto);
+
             _context.Devices.Add(device);
             _context.SaveChanges();
 
             return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
         }
         
-        /*
+        
         [HttpPut]
         public IHttpActionResult UpdateDevice(string id, DeviceDto deviceDto)
         {
-            var deviceInDb = _context.Devices.SingleOrDefault(c => c.Id == id);
+            var deviceInDb = _context.Devices.SingleOrDefault(c => c.SigmaId == id);
 
             if (deviceInDb == null)
                 return NotFound();
@@ -72,7 +73,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteDevice(string id)
         {
-            var device = _context.Devices.SingleOrDefault(c => c.Id == id);
+            var device = _context.Devices.SingleOrDefault(c => c.SigmaId == id);
 
             if (device == null)
                 return NotFound();
@@ -82,7 +83,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
-
-    */
     }
 }
