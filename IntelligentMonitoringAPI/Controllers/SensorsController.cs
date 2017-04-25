@@ -87,6 +87,21 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        [Route("api/sensors/{sensorId}/measurements")]
+        public IHttpActionResult GetSensorMeasurements(int sensorId)
+        {
+            var sensorMeasurementsDtos = _context.SensorMeasurements
+                .Where(c => c.SensorId == sensorId)
+                .ToList()
+                .Select(Mapper.Map<SensorMeasurement, SensorMeasurement>);
+
+            if (!sensorMeasurementsDtos.Any())
+                return NotFound();
+
+            return Ok(sensorMeasurementsDtos);
+    }
         
     }
 }
