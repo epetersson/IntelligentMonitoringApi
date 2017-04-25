@@ -9,8 +9,8 @@ namespace IntelligentMonitoringAPI.Models
     {
         public int Id { get; set; }
 
-        public int? Value { get; set; }
+        public int Value { get; set; }
 
-        public int? SensorId { get; set; }
+        public int SensorId { get; set; }
     }
 }

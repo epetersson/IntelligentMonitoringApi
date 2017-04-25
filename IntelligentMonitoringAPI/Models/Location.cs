@@ -14,7 +14,7 @@ namespace IntelligentMonitoringAPI.Models
 
         public string ParentLocationName { get; set; }
 
-        public int ParentLocationId { get; set; }
+        public int? ParentLocationId { get; set; }
 
         public int LocationType { get; set; }
 
