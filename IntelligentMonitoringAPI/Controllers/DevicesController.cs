@@ -29,10 +29,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetDevice(string id)
+        public IHttpActionResult GetDevice(int id)
         {
             var device = _context.Devices
-                .SingleOrDefault(c => c.SigmaId == id);
+                .SingleOrDefault(c => c.Id == id);
 
             if (device == null)
                 return NotFound();
@@ -56,9 +56,9 @@ namespace IntelligentMonitoringAPI.Controllers
         
         
         [HttpPut]
-        public IHttpActionResult UpdateDevice(string id, DeviceDto deviceDto)
+        public IHttpActionResult UpdateDevice(int id, DeviceDto deviceDto)
         {
-            var deviceInDb = _context.Devices.SingleOrDefault(c => c.SigmaId == id);
+            var deviceInDb = _context.Devices.SingleOrDefault(c => c.Id == id);
 
             if (deviceInDb == null)
                 return NotFound();
@@ -71,9 +71,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteDevice(string id)
+        public IHttpActionResult DeleteDevice(int id)
         {
-            var device = _context.Devices.SingleOrDefault(c => c.SigmaId == id);
+            var device = _context.Devices.SingleOrDefault(c => c.Id == id);
 
             if (device == null)
                 return NotFound();
@@ -82,6 +82,21 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/devices/{deviceId}/sensors")]
+        public IHttpActionResult GetDeviceSensors(int deviceId)
+        {
+            var deviceSensorDtos = _context.Sensors
+                .Where(c => c.DeviceId == deviceId)
+                .ToList()
+                .Select(Mapper.Map<Sensor, SensorDto>);
+
+            if (!deviceSensorDtos.Any())
+                return NotFound();
+
+            return Ok(deviceSensorDtos);
         }
     }
 }
