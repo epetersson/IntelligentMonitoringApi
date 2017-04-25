@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    /*public class DeviceNetworksController : ApiController
+    public class DeviceNetworksController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -29,10 +29,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetDeviceNetwork(string id)
+        public IHttpActionResult GetDeviceNetwork(int id)
         {
             var deviceNetwork = _context.DeviceNetworks
-                .SingleOrDefault(c => c.ExternalId == id);
+                .SingleOrDefault(c => c.Id == id);
 
             if (deviceNetwork == null)
                 return NotFound();
@@ -51,13 +51,15 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.DeviceNetworks.Add(deviceNetwork);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.ExternalId), deviceNetworkDto);
+            deviceNetworkDto.Id = deviceNetwork.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.Id), deviceNetworkDto);
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateDeviceNetwork(string id, DeviceNetworkDto deviceNetworkDto)
+        public IHttpActionResult UpdateDeviceNetwork(int id, DeviceNetworkDto deviceNetworkDto)
         {
-            var deviceNetworkInDb = _context.DeviceNetworks.SingleOrDefault(c => c.ExternalId == id);
+            var deviceNetworkInDb = _context.DeviceNetworks.SingleOrDefault(c => c.Id == id);
 
             if (deviceNetworkInDb == null)
                 return NotFound();
@@ -69,9 +71,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteDeviceNetwork(string id)
+        public IHttpActionResult DeleteDeviceNetwork(int id)
         {
-            var deviceNetwork = _context.DeviceNetworks.SingleOrDefault(c => c.ExternalId == id);
+            var deviceNetwork = _context.DeviceNetworks.SingleOrDefault(c => c.Id == id);
             if (deviceNetwork == null)
                 return NotFound();
 
@@ -80,5 +82,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
-    }*/
+    }
 }
