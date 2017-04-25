@@ -13,27 +13,24 @@ namespace IntelligentMonitoringAPI.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Device, DeviceDto>();
-            Mapper.CreateMap<DeviceDto, Device>();
-            Mapper.CreateMap<Device, SimpleDeviceDto>();
-            Mapper.CreateMap<SimpleDeviceDto, Device>();
+            Mapper.CreateMap<DeviceDto, Device>()
+                .ForMember(c => c.Id, opt => opt.Ignore()); ;
 
             Mapper.CreateMap<Sensor, SensorDto>();
-            Mapper.CreateMap<SensorDto, Sensor>();
-            Mapper.CreateMap<Sensor, DeviceSensorDto>();
-            Mapper.CreateMap<DeviceSensorDto, Sensor>();
+            Mapper.CreateMap<SensorDto, Sensor>()
+                .ForMember(c => c.Id, opt => opt.Ignore()); ;
 
             Mapper.CreateMap<SensorMeasurement, SensorMeasurementDto>();
-            Mapper.CreateMap<SensorMeasurementDto, SensorMeasurement>();
+            Mapper.CreateMap<SensorMeasurementDto, SensorMeasurement>()
+                .ForMember(c => c.Id, opt => opt.Ignore()); ;
 
             Mapper.CreateMap<DeviceNetwork, DeviceNetworkDto>();
-            Mapper.CreateMap<DeviceNetworkDto, DeviceNetwork>();
-            Mapper.CreateMap<DeviceNetwork, SimpleDeviceNetworkDto>();
-            Mapper.CreateMap<SimpleDeviceNetworkDto, DeviceNetwork>();
+            Mapper.CreateMap<DeviceNetworkDto, DeviceNetwork>()
+                .ForMember(c => c.Id, opt => opt.Ignore()); ;
 
             Mapper.CreateMap<Location, LocationDto>();
-            Mapper.CreateMap<LocationDto, Location>();
-            Mapper.CreateMap<Location, SimpleLocationDto>();
-            Mapper.CreateMap<SimpleLocationDto, Location>();
+            Mapper.CreateMap<LocationDto, Location>()
+                .ForMember(c => c.Id, opt => opt.Ignore()); ;
 
             /*Mapper.CreateMap<History, HistoryDto>();
             Mapper.CreateMap<HistoryDto, History>();*/
