@@ -10,7 +10,7 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
-    /*public class LocationsController : ApiController
+    public class LocationsController : ApiController
     {
         private IntelliMonDbContext _context;
 
@@ -29,9 +29,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetLocation(string id)
+        public IHttpActionResult GetLocation(int id)
         {
-            var location = _context.Locations.SingleOrDefault(c => c.ExternalId == id);
+            var location = _context.Locations.SingleOrDefault(c => c.Id == id);
             if (location == null)
                 return NotFound();
 
@@ -41,7 +41,7 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpPost]
         public IHttpActionResult CreateLocation(LocationDto locationDto)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var location = Mapper.Map<LocationDto, Location>(locationDto);
@@ -49,13 +49,15 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.Locations.Add(location);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + location.ExternalId), locationDto);
+            locationDto.Id = location.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + location.Id), locationDto);
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateLocation(string id, LocationDto locationDto)
+        public IHttpActionResult UpdateLocation(int id, LocationDto locationDto)
         {
-            var locationInDb = _context.Locations.SingleOrDefault(c => c.ExternalId == id);
+            var locationInDb = _context.Locations.SingleOrDefault(c => c.Id == id);
 
             if (locationInDb == null)
                 return NotFound();
@@ -67,9 +69,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteLocation(string id)
+        public IHttpActionResult DeleteLocation(int id)
         {
-            var location = _context.Locations.SingleOrDefault(c => c.ExternalId == id);
+            var location = _context.Locations.SingleOrDefault(c => c.Id == id);
 
             if (location == null)
                 return NotFound();
@@ -79,5 +81,20 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
-    }*/
+
+        [HttpGet]
+        [Route("api/locations/{locationId}/devices")]
+        public IHttpActionResult GetDevicesInLocation(int locationId)
+        {
+            var locationDeviceDtos = _context.Devices
+                .Where(c => c.LocationId == locationId)
+                .ToList()
+                .Select(Mapper.Map<Device, DeviceDto>);
+
+            if (!locationDeviceDtos.Any())
+                return NotFound();
+
+            return Ok(locationDeviceDtos);
+        }
+    }
 }
