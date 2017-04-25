@@ -51,6 +51,8 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.Devices.Add(device);
             _context.SaveChanges();
 
+            deviceDto.Id = device.Id;
+
             return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
         }
         
@@ -58,6 +60,9 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpPut]
         public IHttpActionResult UpdateDevice(int id, DeviceDto deviceDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             var deviceInDb = _context.Devices.SingleOrDefault(c => c.Id == id);
 
             if (deviceInDb == null)
