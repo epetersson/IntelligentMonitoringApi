@@ -101,7 +101,24 @@ namespace IntelligentMonitoringAPI.Controllers
                 return NotFound();
 
             return Ok(sensorMeasurementsDtos);
-    }
-        
+        }
+
+        [HttpPost]
+        [Route("api/sensors/{sensorId}/measurements/")]
+        public IHttpActionResult CreateSensorMeasurement(int sensorId, SensorMeasurementDto sensorMeasurementDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var sensorMeasurement = Mapper.Map<SensorMeasurementDto, SensorMeasurement>(sensorMeasurementDto);
+
+            _context.SensorMeasurements.Add(sensorMeasurement);
+            _context.SaveChanges();
+
+            sensorMeasurementDto.Id = sensorMeasurement.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + sensorMeasurement.Id), sensorMeasurementDto);
+        }
+
     }
 }
