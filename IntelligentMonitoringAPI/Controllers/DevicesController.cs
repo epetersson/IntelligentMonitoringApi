@@ -7,12 +7,13 @@ using System.Web.Http;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
+using Newtonsoft.Json;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
     public class DevicesController : ApiController
     {
-        /*
+        
         private IntelliMonDbContext _context;
 
         public DevicesController()
@@ -23,14 +24,14 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDevices()
         {
-            var customersDto = _context.Devices.ToList()
+            var deviceDtos = _context.Devices.ToList()
                 .Select(Mapper.Map<Device, DeviceDto>);
 
-            return Ok(customersDto);
+            return Ok(deviceDtos);
         }
 
         [HttpGet]
-        public IHttpActionResult GetDevice(int id)
+        public IHttpActionResult GetDevice(string id)
         {
             var device = _context.Devices
                 .SingleOrDefault(c => c.Id == id);
@@ -59,7 +60,7 @@ namespace IntelligentMonitoringAPI.Controllers
         
         
         [HttpPut]
-        public IHttpActionResult UpdateDevice(int id, DeviceDto deviceDto)
+        public IHttpActionResult UpdateDevice(string id, DeviceDto deviceDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -77,7 +78,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteDevice(int id)
+        public IHttpActionResult DeleteDevice(string id)
         {
             var device = _context.Devices.SingleOrDefault(c => c.Id == id);
 
@@ -92,7 +93,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
         [HttpGet]
         [Route("api/devices/{deviceId}/sensors")]
-        public IHttpActionResult GetDeviceSensors(int deviceId)
+        public IHttpActionResult GetDeviceSensors(string deviceId)
         {
             var deviceSensorDtos = _context.Sensors
                 .Where(c => c.DeviceId == deviceId)
@@ -103,6 +104,6 @@ namespace IntelligentMonitoringAPI.Controllers
                 return NotFound();
 
             return Ok(deviceSensorDtos);
-        }*/
+        }
     }
 }
