@@ -13,7 +13,7 @@ namespace IntelligentMonitoringAPI.Controllers
     public class LocationsController : ApiController
     {
         private IntelliMonDbContext _context;
-        /*
+        
         public LocationsController()
         {
             _context = new IntelliMonDbContext();
@@ -29,7 +29,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetLocation(int id)
+        public IHttpActionResult GetLocation(string id)
         {
             var location = _context.Locations.SingleOrDefault(c => c.Id == id);
             if (location == null)
@@ -55,7 +55,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateLocation(int id, LocationDto locationDto)
+        public IHttpActionResult UpdateLocation(string id, LocationDto locationDto)
         {
             var locationInDb = _context.Locations.SingleOrDefault(c => c.Id == id);
 
@@ -69,7 +69,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteLocation(int id)
+        public IHttpActionResult DeleteLocation(string id)
         {
             var location = _context.Locations.SingleOrDefault(c => c.Id == id);
 
@@ -84,7 +84,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
         [HttpGet]
         [Route("api/locations/{locationId}/devices")]
-        public IHttpActionResult GetDevicesInLocation(int locationId)
+        public IHttpActionResult GetDevicesInLocation(string locationId)
         {
             var locationDeviceDtos = _context.Devices
                 .Where(c => c.LocationId == locationId)
@@ -95,6 +95,6 @@ namespace IntelligentMonitoringAPI.Controllers
                 return NotFound();
 
             return Ok(locationDeviceDtos);
-        }*/
+        }
     }
 }
