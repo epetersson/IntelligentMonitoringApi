@@ -369,6 +369,10 @@
     <Compile Include="Migrations\201704261536401_AddSensorMeasurementsInNewDb.Designer.cs">
       <DependentUpon>201704261536401_AddSensorMeasurementsInNewDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704261853189_ChangeValuesOfMeasurementsToDecimal.cs" />
+    <Compile Include="Migrations\201704261853189_ChangeValuesOfMeasurementsToDecimal.Designer.cs">
+      <DependentUpon>201704261853189_ChangeValuesOfMeasurementsToDecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -561,6 +565,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704261536401_AddSensorMeasurementsInNewDb.resx">
       <DependentUpon>201704261536401_AddSensorMeasurementsInNewDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261853189_ChangeValuesOfMeasurementsToDecimal.resx">
+      <DependentUpon>201704261853189_ChangeValuesOfMeasurementsToDecimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
