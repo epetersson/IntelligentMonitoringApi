@@ -12,7 +12,7 @@ namespace IntelligentMonitoringAPI.Controllers
 {
     public class SensorsController : ApiController
     {
-        /*
+        
         private IntelliMonDbContext _context;
 
         public SensorsController()
@@ -30,7 +30,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
         
         [HttpGet]
-        public IHttpActionResult GetSensor(int id)
+        public IHttpActionResult GetSensor(string id)
         {
             var sensor = _context.Sensors.SingleOrDefault(c => c.Id == id);
 
@@ -59,7 +59,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
         
         [HttpPut]
-        public IHttpActionResult UpdateSensor(int id, SensorDto sensorDto)
+        public IHttpActionResult UpdateSensor(string id, SensorDto sensorDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -77,7 +77,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
         
         [HttpDelete]
-        public IHttpActionResult DeleteSensor(int id)
+        public IHttpActionResult DeleteSensor(string id)
         {
             var device = _context.Sensors.SingleOrDefault(c => c.Id == id);
             if (device == null)
@@ -91,7 +91,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
         [HttpGet]
         [Route("api/sensors/{sensorId}/measurements")]
-        public IHttpActionResult GetSensorMeasurements(int sensorId)
+        public IHttpActionResult GetSensorMeasurements(string sensorId)
         {
             var sensorMeasurementsDtos = _context.SensorMeasurements
                 .Where(c => c.SensorId == sensorId)
@@ -106,7 +106,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
         [HttpPost]
         [Route("api/sensors/{sensorId}/measurements/")]
-        public IHttpActionResult CreateSensorMeasurement(int sensorId, SensorMeasurementDto sensorMeasurementDto)
+        public IHttpActionResult CreateSensorMeasurement(string sensorId, SensorMeasurementDto sensorMeasurementDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -119,7 +119,7 @@ namespace IntelligentMonitoringAPI.Controllers
             sensorMeasurementDto.Id = sensorMeasurement.Id;
 
             return Created(new Uri(Request.RequestUri + "/" + sensorMeasurement.Id), sensorMeasurementDto);
-        }*/
+        }
 
     }
 }
