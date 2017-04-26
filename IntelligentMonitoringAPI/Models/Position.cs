@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,8 +8,8 @@ namespace IntelligentMonitoringAPI.Models
 {
     public class Position
     {
-        public int Id { get; set; }
-        public string SigmaId { get; set; }
+        [StringLength(50)]
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
@@ -18,10 +19,11 @@ namespace IntelligentMonitoringAPI.Models
 
         public decimal Z { get; set; }
 
-        public int LocationResourceId { get; set; }
+        [StringLength(50)]
+        public string LocationResourceId { get; set; }
 
         public string EntityId { get; set; }
 
-        //public PositionEntityType EntityType { get; set; }
+        public string EntityType { get; set; }
     }
 }

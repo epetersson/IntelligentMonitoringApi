@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,19 +8,18 @@ namespace IntelligentMonitoringAPI.Models
 {
     public class Location
     {
-        public int Id { get; set; }
-        public string SigmaId { get; set; }
+        [StringLength(50)]
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
         public string ParentLocationName { get; set; }
 
-        public int? ParentLocationId { get; set; }
+        public string ParentLocationId { get; set; }
 
         public int LocationType { get; set; }
 
-        public int DeviceNetworkId { get; set; }
-
-        //public string DeviceNetworkName { get; set; }
+        [StringLength(50)]
+        public string DeviceNetworkId { get; set; }
     }
 }

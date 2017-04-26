@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,15 +8,19 @@ namespace IntelligentMonitoringAPI.Models
 {
     public class LocationResource
     {
-        public int Id { get; set; }
-        public string SigmaId { get; set; } 
+        [StringLength(50)]
+        public string Id { get; set; } 
         public string Name { get; set; }
 
         public string Label { get; set; }
 
-        //public LocationResourceType ResourceType { get; set; }
+        public string ResourceType { get; set; }
 
-        public string Path { get; set; }
+        public string Uri { get; set; }
+
+        public string MimeType { get; set; }
+
+        public string FileExtension { get; set; }   
 
         public decimal StartPositionX { get; set; }
 

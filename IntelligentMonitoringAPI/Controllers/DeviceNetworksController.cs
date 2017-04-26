@@ -12,6 +12,7 @@ namespace IntelligentMonitoringAPI.Controllers
 {
     public class DeviceNetworksController : ApiController
     {
+        /*
         private IntelliMonDbContext _context;
 
         public DeviceNetworksController()
@@ -81,6 +82,6 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.SaveChanges();
 
             return Ok();
-        }
+        }*/
     }
 }

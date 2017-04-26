@@ -12,6 +12,7 @@ namespace IntelligentMonitoringAPI.Controllers
 {
     public class SensorsController : ApiController
     {
+        /*
         private IntelliMonDbContext _context;
 
         public SensorsController()
@@ -118,7 +119,7 @@ namespace IntelligentMonitoringAPI.Controllers
             sensorMeasurementDto.Id = sensorMeasurement.Id;
 
             return Created(new Uri(Request.RequestUri + "/" + sensorMeasurement.Id), sensorMeasurementDto);
-        }
+        }*/
 
     }
 }

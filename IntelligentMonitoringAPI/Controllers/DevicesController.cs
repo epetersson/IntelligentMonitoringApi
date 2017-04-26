@@ -12,6 +12,7 @@ namespace IntelligentMonitoringAPI.Controllers
 {
     public class DevicesController : ApiController
     {
+        /*
         private IntelliMonDbContext _context;
 
         public DevicesController()
@@ -102,6 +103,6 @@ namespace IntelligentMonitoringAPI.Controllers
                 return NotFound();
 
             return Ok(deviceSensorDtos);
-        }
+        }*/
     }
 }

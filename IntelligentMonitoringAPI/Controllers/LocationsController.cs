@@ -13,7 +13,7 @@ namespace IntelligentMonitoringAPI.Controllers
     public class LocationsController : ApiController
     {
         private IntelliMonDbContext _context;
-
+        /*
         public LocationsController()
         {
             _context = new IntelliMonDbContext();
@@ -95,6 +95,6 @@ namespace IntelligentMonitoringAPI.Controllers
                 return NotFound();
 
             return Ok(locationDeviceDtos);
-        }
+        }*/
     }
 }

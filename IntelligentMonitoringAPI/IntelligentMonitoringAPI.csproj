@@ -329,6 +329,46 @@
     <Compile Include="Migrations\201704252035213_RefactoredModels.Designer.cs">
       <DependentUpon>201704252035213_RefactoredModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704261241345_RecreatingDb.cs" />
+    <Compile Include="Migrations\201704261241345_RecreatingDb.Designer.cs">
+      <DependentUpon>201704261241345_RecreatingDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261255276_AddLocationsAndDeviceNetworks.cs" />
+    <Compile Include="Migrations\201704261255276_AddLocationsAndDeviceNetworks.Designer.cs">
+      <DependentUpon>201704261255276_AddLocationsAndDeviceNetworks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261322476_AddLocationResource1.cs" />
+    <Compile Include="Migrations\201704261322476_AddLocationResource1.Designer.cs">
+      <DependentUpon>201704261322476_AddLocationResource1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261348177_RefactorPropertiesInLocationResource.cs" />
+    <Compile Include="Migrations\201704261348177_RefactorPropertiesInLocationResource.Designer.cs">
+      <DependentUpon>201704261348177_RefactorPropertiesInLocationResource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261357037_AddNewPosition.cs" />
+    <Compile Include="Migrations\201704261357037_AddNewPosition.Designer.cs">
+      <DependentUpon>201704261357037_AddNewPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261406381_AddConstraintsToPrimaryKeys.cs" />
+    <Compile Include="Migrations\201704261406381_AddConstraintsToPrimaryKeys.Designer.cs">
+      <DependentUpon>201704261406381_AddConstraintsToPrimaryKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261437219_AddDeviceToNewDb.cs" />
+    <Compile Include="Migrations\201704261437219_AddDeviceToNewDb.Designer.cs">
+      <DependentUpon>201704261437219_AddDeviceToNewDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261508423_AddNewSensors.cs" />
+    <Compile Include="Migrations\201704261508423_AddNewSensors.Designer.cs">
+      <DependentUpon>201704261508423_AddNewSensors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261512256_AddNewSensors1.cs" />
+    <Compile Include="Migrations\201704261512256_AddNewSensors1.Designer.cs">
+      <DependentUpon>201704261512256_AddNewSensors1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261536401_AddSensorMeasurementsInNewDb.cs" />
+    <Compile Include="Migrations\201704261536401_AddSensorMeasurementsInNewDb.Designer.cs">
+      <DependentUpon>201704261536401_AddSensorMeasurementsInNewDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -388,6 +428,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ConnectionStrings.config" />
+    <None Include="Properties\PublishProfiles\IntelligentMonitoringAPI - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -418,7 +459,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Static\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -491,6 +531,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704252035213_RefactoredModels.resx">
       <DependentUpon>201704252035213_RefactoredModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261241345_RecreatingDb.resx">
+      <DependentUpon>201704261241345_RecreatingDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261255276_AddLocationsAndDeviceNetworks.resx">
+      <DependentUpon>201704261255276_AddLocationsAndDeviceNetworks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261322476_AddLocationResource1.resx">
+      <DependentUpon>201704261322476_AddLocationResource1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261348177_RefactorPropertiesInLocationResource.resx">
+      <DependentUpon>201704261348177_RefactorPropertiesInLocationResource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261357037_AddNewPosition.resx">
+      <DependentUpon>201704261357037_AddNewPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261406381_AddConstraintsToPrimaryKeys.resx">
+      <DependentUpon>201704261406381_AddConstraintsToPrimaryKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261437219_AddDeviceToNewDb.resx">
+      <DependentUpon>201704261437219_AddDeviceToNewDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261508423_AddNewSensors.resx">
+      <DependentUpon>201704261508423_AddNewSensors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261512256_AddNewSensors1.resx">
+      <DependentUpon>201704261512256_AddNewSensors1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261536401_AddSensorMeasurementsInNewDb.resx">
+      <DependentUpon>201704261536401_AddSensorMeasurementsInNewDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
