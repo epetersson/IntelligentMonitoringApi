@@ -15,7 +15,7 @@ namespace IntelligentMonitoringAPI
         public static void Register(HttpConfiguration config)
         {
             var json = config.Formatters.JsonFormatter;
-            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             
             
@@ -27,7 +27,7 @@ namespace IntelligentMonitoringAPI
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
 
