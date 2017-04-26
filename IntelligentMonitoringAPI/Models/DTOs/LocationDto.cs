@@ -9,6 +9,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class LocationDto
     {
+        [StringLength(50)]
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -19,6 +20,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public int LocationType { get; set; }
 
+        [StringLength(50)]
         public string DeviceNetworkId { get; set; }
     }
 }

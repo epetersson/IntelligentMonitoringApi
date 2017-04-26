@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Web;
 
 namespace IntelligentMonitoringAPI.Models.DTOs
 {
+    [JsonObject(Title = "Devices")]
     public class DeviceDto
     {
-        public int Id { get; set; }
-        public string SigmaId { get; set; }
-        //public string DataCollectorName { get; set; }
-        public bool IsRegistered { get; set; }
-        //public string SensorCollectionTypeName { get; set; }
+        [StringLength(50)]
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string DeviceTypeName { get; set; }
         public long LastSeen { get; set; }
         public bool ContactLost { get; set; }
         public long ContactLostTime { get; set; }
-        public string Name { get; set; }
-        //public string DataCollectorId { get; set; }
-        public int LocationId { get; set; }
+        public bool IsRegistered { get; set; }        
+        [StringLength(50)]
+        public string DataCollectorId { get; set; }
+        public string DataCollectorName { get; set; }
+        [StringLength(50)]
+        public string LocationId { get; set; }
         public string LocationName { get; set; }
     }
 }
