@@ -45,7 +45,7 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-
+            
             var device = Mapper.Map<DeviceDto, Device>(deviceDto);
 
             _context.Devices.Add(device);
