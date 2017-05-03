@@ -7,12 +7,12 @@ using System.Web.Http;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
+using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
     public class DeviceNetworksController : ApiController
     {
-        /*
         private IntelliMonDbContext _context;
 
         public DeviceNetworksController()
@@ -26,11 +26,13 @@ namespace IntelligentMonitoringAPI.Controllers
             var deviceNetworkDtos = _context.DeviceNetworks.ToList()
                 .Select(Mapper.Map<DeviceNetwork, DeviceNetworkDto>);
 
-            return Ok(deviceNetworkDtos);
+            var response = new DeviceNetworksWrapper { DeviceNetworks = deviceNetworkDtos };
+
+            return Ok(response);
         }
 
         [HttpGet]
-        public IHttpActionResult GetDeviceNetwork(int id)
+        public IHttpActionResult GetDeviceNetwork(string id)
         {
             var deviceNetwork = _context.DeviceNetworks
                 .SingleOrDefault(c => c.Id == id);
@@ -38,7 +40,11 @@ namespace IntelligentMonitoringAPI.Controllers
             if (deviceNetwork == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<DeviceNetwork, DeviceNetworkDto>(deviceNetwork));
+            var deviceNetworkDto = Mapper.Map<DeviceNetwork, DeviceNetworkDto>(deviceNetwork);
+
+            var response = new DeviceNetworkWrapper { DeviceNetwork = deviceNetworkDto };
+
+            return Ok(response);
         }
 
         [HttpPost]
@@ -54,11 +60,13 @@ namespace IntelligentMonitoringAPI.Controllers
 
             deviceNetworkDto.Id = deviceNetwork.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.Id), deviceNetworkDto);
+            var response = new DeviceNetworkWrapper { DeviceNetwork = deviceNetworkDto };
+
+            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.Id), response);
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateDeviceNetwork(int id, DeviceNetworkDto deviceNetworkDto)
+        public IHttpActionResult UpdateDeviceNetwork(string id, DeviceNetworkDto deviceNetworkDto)
         {
             var deviceNetworkInDb = _context.DeviceNetworks.SingleOrDefault(c => c.Id == id);
 
@@ -72,7 +80,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteDeviceNetwork(int id)
+        public IHttpActionResult DeleteDeviceNetwork(string id)
         {
             var deviceNetwork = _context.DeviceNetworks.SingleOrDefault(c => c.Id == id);
             if (deviceNetwork == null)
@@ -82,6 +90,6 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.SaveChanges();
 
             return Ok();
-        }*/
+        }
     }
 }
