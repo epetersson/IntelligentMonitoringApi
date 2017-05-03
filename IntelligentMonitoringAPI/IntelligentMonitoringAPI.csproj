@@ -394,6 +394,15 @@
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorMeasurement.cs" />
+    <Compile Include="Models\Wrappers\DeviceNetworksWrapper.cs" />
+    <Compile Include="Models\Wrappers\DeviceNetworkWrapper.cs" />
+    <Compile Include="Models\Wrappers\DevicesWrapper.cs" />
+    <Compile Include="Models\Wrappers\DeviceWrapper.cs" />
+    <Compile Include="Models\Wrappers\LocationsWrapper.cs" />
+    <Compile Include="Models\Wrappers\LocationWrapper.cs" />
+    <Compile Include="Models\Wrappers\SensorMeasurementsWrapper.cs" />
+    <Compile Include="Models\Wrappers\SensorsWrapper.cs" />
+    <Compile Include="Models\Wrappers\SensorWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />

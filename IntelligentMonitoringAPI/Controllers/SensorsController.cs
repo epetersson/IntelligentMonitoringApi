@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
+using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
@@ -23,10 +24,12 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetSensors()
         {
-            var sensorsDto = _context.Sensors.ToList()
+            var sensorDtos = _context.Sensors.ToList()
                 .Select(Mapper.Map<Sensor, SensorDto>);
 
-            return Ok(sensorsDto);
+            var response = new SensorsWrapper { Sensors = sensorDtos };
+
+            return Ok(response);
         }
         
         [HttpGet]
@@ -37,7 +40,11 @@ namespace IntelligentMonitoringAPI.Controllers
             if (sensor == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<Sensor, SensorDto>(sensor));
+            var sensorDto = Mapper.Map<Sensor, SensorDto>(sensor);
+
+            var response = new SensorWrapper { Sensor = sensorDto };
+
+            return Ok(response);
         }
         
         
@@ -54,7 +61,9 @@ namespace IntelligentMonitoringAPI.Controllers
 
             sensorDto.Id = sensor.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + sensor.Id), sensorDto);
+            var response = new SensorWrapper { Sensor = sensorDto };
+
+            return Created(new Uri(Request.RequestUri + "/" + sensor.Id), response);
         }
 
         
@@ -96,12 +105,14 @@ namespace IntelligentMonitoringAPI.Controllers
             var sensorMeasurementsDtos = _context.SensorMeasurements
                 .Where(c => c.SensorId == sensorId)
                 .ToList()
-                .Select(Mapper.Map<SensorMeasurement, SensorMeasurement>);
+                .Select(Mapper.Map<SensorMeasurement, SensorMeasurementDto>);
 
             if (!sensorMeasurementsDtos.Any())
                 return NotFound();
 
-            return Ok(sensorMeasurementsDtos);
+            var response = new SensorMeasurementsWrapper { Measurements = sensorMeasurementsDtos };
+
+            return Ok(response);
         }
 
         [HttpPost]

@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
+using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
@@ -25,7 +26,9 @@ namespace IntelligentMonitoringAPI.Controllers
             var locationDtos = _context.Locations.ToList()
                 .Select(Mapper.Map<Location, LocationDto>);
 
-            return Ok(locationDtos);
+            var response = new LocationsWrapper {Locations = locationDtos};
+
+            return Ok(response);
         }
 
         [HttpGet]
@@ -35,7 +38,11 @@ namespace IntelligentMonitoringAPI.Controllers
             if (location == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<Location, LocationDto>(location));
+            var locationDto = Mapper.Map<Location, LocationDto>(location);
+
+            var response = new LocationWrapper {Location = locationDto };
+
+            return Ok(response);
         }
 
         [HttpPost]
@@ -51,7 +58,9 @@ namespace IntelligentMonitoringAPI.Controllers
 
             locationDto.Id = location.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + location.Id), locationDto);
+            var response = new LocationWrapper { Location = locationDto };
+
+            return Created(new Uri(Request.RequestUri + "/" + location.Id), response);
         }
 
         [HttpPut]
@@ -94,7 +103,9 @@ namespace IntelligentMonitoringAPI.Controllers
             if (!locationDeviceDtos.Any())
                 return NotFound();
 
-            return Ok(locationDeviceDtos);
+            var response = new DevicesWrapper { Devices = locationDeviceDtos };
+
+            return Ok(response);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
+using IntelligentMonitoringAPI.Models.Wrappers;
 using Newtonsoft.Json;
 
 namespace IntelligentMonitoringAPI.Controllers
@@ -27,7 +28,9 @@ namespace IntelligentMonitoringAPI.Controllers
             var deviceDtos = _context.Devices.ToList()
                 .Select(Mapper.Map<Device, DeviceDto>);
 
-            return Ok(deviceDtos);
+            var response = new DevicesWrapper {Devices = deviceDtos};
+
+            return Ok(response);
         }
 
         [HttpGet]
@@ -39,7 +42,11 @@ namespace IntelligentMonitoringAPI.Controllers
             if (device == null)
                 return NotFound();
 
-            return Ok(Mapper.Map<Device, DeviceDto>(device));
+            var deviceDto = Mapper.Map<Device, DeviceDto>(device);
+
+            var response = new DeviceWrapper {Device = deviceDto};
+            
+            return Ok(response);
         }
         
         [HttpPost]
@@ -55,7 +62,9 @@ namespace IntelligentMonitoringAPI.Controllers
 
             deviceDto.Id = device.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
+            var response = new DeviceWrapper { Device = deviceDto };
+
+            return Created(new Uri(Request.RequestUri + "/" + device.Id), response);
         }
         
         
@@ -103,7 +112,9 @@ namespace IntelligentMonitoringAPI.Controllers
             if (!deviceSensorDtos.Any())
                 return NotFound();
 
-            return Ok(deviceSensorDtos);
+            var response = new SensorsWrapper { Sensors = deviceSensorDtos };
+
+            return Ok(response);
         }
     }
 }
