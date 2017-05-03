@@ -14,6 +14,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public string Name { get; set; }
         public string SensorTypeId { get; set; }
         public string SensorTypeName { get; set; }
+        public string MeasurementUnit { get; set; }
         [StringLength(50)]
         public string DeviceId { get; set; }
         public string DeviceName { get; set; }
