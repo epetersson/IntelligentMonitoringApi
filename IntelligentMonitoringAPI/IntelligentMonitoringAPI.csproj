@@ -385,6 +385,7 @@
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
+    <Compile Include="Models\DTOs\EventDto.cs" />
     <Compile Include="Models\DTOs\LocationResourceDto.cs" />
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
     <Compile Include="Models\DTOs\DeviceSensorDto.cs" />
@@ -399,10 +400,12 @@
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorMeasurement.cs" />
+    <Compile Include="Models\UserConversation.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworksWrapper.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworkWrapper.cs" />
     <Compile Include="Models\Wrappers\DevicesWrapper.cs" />
     <Compile Include="Models\Wrappers\DeviceWrapper.cs" />
+    <Compile Include="Models\Wrappers\EventsWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationsWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationWrapper.cs" />
     <Compile Include="Models\Wrappers\SensorMeasurementsWrapper.cs" />
