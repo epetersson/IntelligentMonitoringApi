@@ -23,8 +23,17 @@ namespace IntelligentMonitoringAPI.Controllers
 
         //Update the database with new conversations. If it fails, just ignore the error.
         [HttpPost]
-        public IHttpActionResult PostConversations()
+        public IHttpActionResult PostConversations(string conversationId, string channelId, string fromId)
         {
+            UserConversation conversation = new UserConversation()
+            {
+                ConversationId = conversationId,
+                ChannelId = channelId,
+                FromId = fromId
+            };
+
+            _context.UserConversation.Add(conversation);
+
             return Ok("OK");
         }
 
@@ -41,8 +50,6 @@ namespace IntelligentMonitoringAPI.Controllers
             var userConversationsResponse = conversationsDtos.ToString();
 
             return Ok("OK");
-
         }
-
     }
 }
