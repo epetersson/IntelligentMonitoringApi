@@ -21,6 +21,8 @@
 
         public bool Active { get; set; }
 
+        public bool Seen { get; set; }
+
         public string Status { get; set; }
 
         public string Information { get; set; }

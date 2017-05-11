@@ -404,6 +404,10 @@
     <Compile Include="Migrations\201705091648439_RenameStatistics.Designer.cs">
       <DependentUpon>201705091648439_RenameStatistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705110953493_GetUpdatedDOMs.cs" />
+    <Compile Include="Migrations\201705110953493_GetUpdatedDOMs.Designer.cs">
+      <DependentUpon>201705110953493_GetUpdatedDOMs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -632,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705091648439_RenameStatistics.resx">
       <DependentUpon>201705091648439_RenameStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705110953493_GetUpdatedDOMs.resx">
+      <DependentUpon>201705110953493_GetUpdatedDOMs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

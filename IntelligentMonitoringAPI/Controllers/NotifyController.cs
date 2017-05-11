@@ -29,10 +29,10 @@ namespace IntelligentMonitoringAPI.Controllers
             {
                 ConversationId = conversationId,
                 ChannelId = channelId,
-                FromId = fromId
+                Id = fromId
             };
 
-            _context.UserConversation.Add(conversation);
+            _context.UserConversations.Add(conversation);
             _context.SaveChanges();
 
             return Ok("OK");
@@ -47,7 +47,7 @@ namespace IntelligentMonitoringAPI.Controllers
                 .Select(Mapper.Map<Event, EventDTO>);
             var eventsResponse = new EventsWrapper { Events = eventsDtos };
 
-            var conversationsDtos = _context.UserConversation.ToList();
+            var conversationsDtos = _context.UserConversations.ToList();
             var userConversationsResponse = conversationsDtos.ToString();
 
             return Ok("OK");

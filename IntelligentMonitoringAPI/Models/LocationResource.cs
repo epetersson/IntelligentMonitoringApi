@@ -9,18 +9,18 @@ namespace IntelligentMonitoringAPI.Models
     public class LocationResource
     {
         [StringLength(50)]
-        public string Id { get; set; } 
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string Label { get; set; }
 
         public string ResourceType { get; set; }
 
+        [StringLength(50)]
+        public string ParentLocationId { get; set; }
+
         public string Uri { get; set; }
-
-        public string MimeType { get; set; }
-
-        public string FileExtension { get; set; }   
 
         public decimal StartPositionX { get; set; }
 
@@ -33,5 +33,9 @@ namespace IntelligentMonitoringAPI.Models
         public int Width { get; set; }
 
         public int Height { get; set; }
+
+        public string MimeType { get; set; }
+
+        public string FileExtension { get; set; }
     }
 }
