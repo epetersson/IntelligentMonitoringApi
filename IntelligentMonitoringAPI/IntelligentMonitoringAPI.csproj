@@ -377,11 +377,29 @@
     <Compile Include="Migrations\201705031121377_AddMeasurementUnitToSensor.Designer.cs">
       <DependentUpon>201705031121377_AddMeasurementUnitToSensor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705091601072_NewTables.cs" />
+    <Compile Include="Migrations\201705091601072_NewTables.Designer.cs">
+      <DependentUpon>201705091601072_NewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091609234_UpdateEventModel.cs" />
+    <Compile Include="Migrations\201705091609234_UpdateEventModel.Designer.cs">
+      <DependentUpon>201705091609234_UpdateEventModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091640249_RenameStatsDaily.cs" />
+    <Compile Include="Migrations\201705091640249_RenameStatsDaily.Designer.cs">
+      <DependentUpon>201705091640249_RenameStatsDaily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705091648439_RenameStatistics.cs" />
+    <Compile Include="Migrations\201705091648439_RenameStatistics.Designer.cs">
+      <DependentUpon>201705091648439_RenameStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
+    <Compile Include="Models\DataCollector.cs" />
     <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\DeviceHistory.cs" />
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
     <Compile Include="Models\DTOs\LocationResourceDto.cs" />
@@ -398,6 +416,11 @@
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorMeasurement.cs" />
+    <Compile Include="Models\DailyStatistic.cs" />
+    <Compile Include="Models\MonthlyStatistic.cs" />
+    <Compile Include="Models\WeeklyStatistic.cs" />
+    <Compile Include="Models\YearlyStatistic.cs" />
+    <Compile Include="Models\UserConversation.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworksWrapper.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworkWrapper.cs" />
     <Compile Include="Models\Wrappers\DevicesWrapper.cs" />
@@ -584,6 +607,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705031121377_AddMeasurementUnitToSensor.resx">
       <DependentUpon>201705031121377_AddMeasurementUnitToSensor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091601072_NewTables.resx">
+      <DependentUpon>201705091601072_NewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091609234_UpdateEventModel.resx">
+      <DependentUpon>201705091609234_UpdateEventModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091640249_RenameStatsDaily.resx">
+      <DependentUpon>201705091640249_RenameStatsDaily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091648439_RenameStatistics.resx">
+      <DependentUpon>201705091648439_RenameStatistics.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

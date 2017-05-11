@@ -27,6 +27,7 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             var deviceDtos = _context.Devices.ToList()
                 .Select(Mapper.Map<Device, DeviceDto>);
+            
 
             var response = new DevicesWrapper {Devices = deviceDtos};
 

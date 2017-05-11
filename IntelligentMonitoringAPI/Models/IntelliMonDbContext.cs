@@ -16,10 +16,17 @@ namespace IntelligentMonitoringAPI.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<DeviceNetwork> DeviceNetworks { get; set; }
         public DbSet<Sensor> Sensors { get; set; }
-        //public DbSet<Event> Events { get; set; }
+        public DbSet<Event> Events { get; set; }
         public DbSet<LocationResource> LocationResources { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<SensorMeasurement> SensorMeasurements { get; set; }
+        public DbSet<DataCollector> DataCollectors { get; set; }
+        public DbSet<DeviceHistory> DeviceHistories { get; set; }
+        public DbSet<DailyStatistic> StatsDailies { get; set; }
+        public DbSet<MonthlyStatistic> StatsMonthlies { get; set; }
+        public DbSet<WeeklyStatistic> StatsWeeklies { get; set; }
+        public DbSet<YearlyStatistic> StatsYearlies { get; set; }
+        public DbSet<UserConversation> UserConversations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
