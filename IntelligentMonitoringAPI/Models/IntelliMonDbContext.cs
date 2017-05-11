@@ -13,10 +13,11 @@ namespace IntelligentMonitoringAPI.Models
         }
         
         public DbSet<Device> Devices { get; set; }
+        public DbSet<UserConversation> UserConversation { get; set; }
+        public DbSet<Event> Events { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<DeviceNetwork> DeviceNetworks { get; set; }
         public DbSet<Sensor> Sensors { get; set; }
-        public DbSet<Event> Events { get; set; }
         public DbSet<LocationResource> LocationResources { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<SensorMeasurement> SensorMeasurements { get; set; }
