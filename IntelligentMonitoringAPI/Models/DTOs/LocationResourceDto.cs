@@ -7,15 +7,17 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class LocationResourceDto
     {
-        public int Id { get; set; }
-        public string SigmaId { get; set; }
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string Label { get; set; }
 
-        //public LocationResourceType ResourceType { get; set; }
+        public string ResourceType { get; set; }
 
-        public Uri Path { get; set; }
+        public string ParentLocationId { get; set; }
+
+        public string Uri { get; set; }
 
         public decimal StartPositionX { get; set; }
 
@@ -28,5 +30,9 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public int Width { get; set; }
 
         public int Height { get; set; }
+
+        public string MimeType { get; set; }
+
+        public string FileExtension { get; set; }
     }
 }

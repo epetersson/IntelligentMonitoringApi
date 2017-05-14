@@ -5,6 +5,7 @@ using System.Web;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
+using IntelligentMonitoringBackend.ModelsDTO;
 
 namespace IntelligentMonitoringAPI.App_Start
 {
@@ -26,6 +27,12 @@ namespace IntelligentMonitoringAPI.App_Start
 
             Mapper.CreateMap<Location, LocationDto>();
             Mapper.CreateMap<LocationDto, Location>();
+
+            Mapper.CreateMap<Event, EventDTO>();
+            Mapper.CreateMap<EventDTO, Event>();
+
+            Mapper.CreateMap<LocationResource, LocationResourceDto>();
+            Mapper.CreateMap<LocationResourceDto, LocationResource>();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace IntelligentMonitoringBackend.ModelsDTO
    public class EventDTO
     {
         /*
+         *
         public EventDTO(Event eventO){
             Id = eventO.Id;
             IsSensorDeleted = eventO.IsSensorDeleted.ToString();
