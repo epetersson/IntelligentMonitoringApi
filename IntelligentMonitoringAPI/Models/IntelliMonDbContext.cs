@@ -22,10 +22,10 @@ namespace IntelligentMonitoringAPI.Models
         public DbSet<SensorMeasurement> SensorMeasurements { get; set; }
         public DbSet<DataCollector> DataCollectors { get; set; }
         public DbSet<DeviceHistory> DeviceHistories { get; set; }
-        public DbSet<DailyStatistic> StatsDailies { get; set; }
-        public DbSet<MonthlyStatistic> StatsMonthlies { get; set; }
-        public DbSet<WeeklyStatistic> StatsWeeklies { get; set; }
-        public DbSet<YearlyStatistic> StatsYearlies { get; set; }
+        public DbSet<DailyStatistic> DailyStatistics { get; set; }
+        public DbSet<MonthlyStatistic> MonthlyStatistics { get; set; }
+        public DbSet<WeeklyStatistic> WeeklyStatistics { get; set; }
+        public DbSet<YearlyStatistic> YearlyStatistics { get; set; }
         public DbSet<UserConversation> UserConversations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

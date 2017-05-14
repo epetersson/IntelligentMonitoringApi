@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
@@ -99,6 +100,18 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/devices/name/{deviceName}")]
+        public IHttpActionResult GetDeviceByName(string deviceName)
+        {
+            var device = _context.Devices.SingleOrDefault(c => c.Name == deviceName);
+            
+            if (device == null)
+                return NotFound();
+
+            return Ok(Mapper.Map<Device,DeviceDto>(device));
         }
 
         [HttpGet]
