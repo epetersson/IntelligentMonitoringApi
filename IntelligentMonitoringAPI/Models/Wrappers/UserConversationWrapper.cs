@@ -1,8 +1,14 @@
-﻿namespace IntelligentMonitoringAPI.Controllers
+﻿using IntelligentMonitoringAPI.Models;
+using IntelligentMonitoringBackend.ModelsDTO;
+using System;
+using System.Collections.Generic;
+
+namespace IntelligentMonitoringAPI.Controllers
 {
     internal class UserConversationWrapper
     {
-        public object Conversations { get; set; }
-        public object Event { get; set; }
+        public IEnumerable<UserConversation> Conversations { get; set; }
+        public EventDTO Event { get; set; }
+
     }
 }
