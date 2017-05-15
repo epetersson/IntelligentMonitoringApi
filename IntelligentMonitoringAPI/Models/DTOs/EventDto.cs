@@ -76,6 +76,7 @@ namespace IntelligentMonitoringBackend.ModelsDTO
         public string ResetDateTime { get; set; }
         public string Active { get; set; }
         public string Status { get; set; }
+        public bool Seen { get; set; }
         public string Information { get; set; }
         public string EventCategoryName { get; set; }
         public string RuleName { get; set; }

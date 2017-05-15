@@ -2,11 +2,17 @@
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.Wrappers;
 using IntelligentMonitoringBackend.ModelsDTO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace IntelligentMonitoringAPI.Controllers
@@ -21,7 +27,7 @@ namespace IntelligentMonitoringAPI.Controllers
             _context = new IntelliMonDbContext();
         }
 
-        //Update the database with new conversations. If it fails, just ignore the error.
+        //Update the database with new conversations. If it fails, return error statuscode
         [HttpPost]
         public IHttpActionResult PostConversations(string conversationId, string channelId)
         {
@@ -31,28 +37,35 @@ namespace IntelligentMonitoringAPI.Controllers
                 ChannelId = channelId,
             };
 
+            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationId);
+            if (existingAuthorCount == 0)
+            {
             _context.UserConversations.Add(conversation);
-           if( _context.SaveChanges() > 0)
+            }
+
+            
+           if ( _context.SaveChanges() > 0)
             {
                 return StatusCode(HttpStatusCode.Created);
             }
             return StatusCode(HttpStatusCode.Conflict);
-
         }
 
 
         //If an event has happend, post the event and all the conversations.
         [HttpPost]
-        public IHttpActionResult PostConversationsEvents()
+        public IHttpActionResult PostConversationsEvents(EventDTO content)
         {
-            var eventsDtos = _context.Events.ToList()
-                .Select(Mapper.Map<Event, EventDTO>);
-            var eventsResponse = new EventsWrapper { Events = eventsDtos };
+            var conversations = _context.UserConversations.ToList();   
+            var convResponse = new UserConversationWrapper { Conversations = conversations, Event = content };
+           
+            RestClient client = new RestClient("http://intelligentmonitoringbotservice.azurewebsites.net/api/1/notify/");
 
-            var conversationsDtos = _context.UserConversations.ToList();
-            var userConversationsResponse = conversationsDtos.ToString();
-
-            return Ok("OK");
+            var request = new RestRequest($"conversationsEvents", Method.POST);
+            request.AddBody(convResponse);
+            
+            string result = client.Execute(request).Content;
+            return Ok(result);
         }
     }
 }
