@@ -265,6 +265,10 @@
     <Compile Include="Controllers\NotifyController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\SensorsController.cs" />
+    <Compile Include="Migrations\201705151804510_changedUserConversation.cs" />
+    <Compile Include="Migrations\201705151804510_changedUserConversation.Designer.cs">
+      <DependentUpon>201705151804510_changedUserConversation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Wrappers\UserConversationWrapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -695,6 +699,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705151132521_ChangePrimaryKeyOfUserConversations1.resx">
       <DependentUpon>201705151132521_ChangePrimaryKeyOfUserConversations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151804510_changedUserConversation.resx">
+      <DependentUpon>201705151804510_changedUserConversation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
