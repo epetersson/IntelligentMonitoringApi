@@ -42,7 +42,7 @@ namespace IntelligentMonitoringAPI.Controllers
                 ToName = toName
             };
 
-            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationId);
+            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationID);
             if (existingAuthorCount == 0)
             {
             _context.UserConversations.Add(conversation);
