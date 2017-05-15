@@ -10,6 +10,9 @@ namespace IntelligentMonitoringAPI.Models
     {
         public int Id { get; set; }
 
+        [StringLength(50)]
+        public string DeviceId { get; set; }
+
         public DateTime? TimeStamp { get; set; }
 
         public decimal Average { get; set; }
@@ -22,7 +25,6 @@ namespace IntelligentMonitoringAPI.Models
 
         public int CollectiveContactLostCount { get; set; }
 
-        [StringLength(50)]
-        public string FailureProneDeviceId { get; set; }
+  
     }
 }

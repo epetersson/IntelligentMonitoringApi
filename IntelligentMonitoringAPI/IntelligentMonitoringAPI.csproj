@@ -251,6 +251,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DeviceHistoriesController.cs" />
     <Compile Include="Controllers\DeviceNetworksController.cs" />
     <Compile Include="Controllers\DevicesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -410,6 +411,18 @@
     <Compile Include="Migrations\201705110953493_GetUpdatedDOMs.Designer.cs">
       <DependentUpon>201705110953493_GetUpdatedDOMs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705150952132_ChangeDeviceHistory.cs" />
+    <Compile Include="Migrations\201705150952132_ChangeDeviceHistory.Designer.cs">
+      <DependentUpon>201705150952132_ChangeDeviceHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705151018448_ChangeDeviceHistoryProperty.cs" />
+    <Compile Include="Migrations\201705151018448_ChangeDeviceHistoryProperty.Designer.cs">
+      <DependentUpon>201705151018448_ChangeDeviceHistoryProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705151030417_TestIfChanges.cs" />
+    <Compile Include="Migrations\201705151030417_TestIfChanges.Designer.cs">
+      <DependentUpon>201705151030417_TestIfChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -420,6 +433,7 @@
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DailyStatisticDto.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
+    <Compile Include="Models\DTOs\DeviceHistoryDto.cs" />
     <Compile Include="Models\DTOs\EventDto.cs" />
     <Compile Include="Models\DTOs\LocationResourceDto.cs" />
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
@@ -439,6 +453,7 @@
     <Compile Include="Models\MonthlyStatistic.cs" />
     <Compile Include="Models\WeeklyStatistic.cs" />
     <Compile Include="Models\Wrappers\DailyStatisticsWrapper.cs" />
+    <Compile Include="Models\Wrappers\DeviceHistoriesWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationResourcesWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationResourceWrapper.cs" />
     <Compile Include="Models\YearlyStatistic.cs" />
@@ -645,6 +660,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705110953493_GetUpdatedDOMs.resx">
       <DependentUpon>201705110953493_GetUpdatedDOMs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705150952132_ChangeDeviceHistory.resx">
+      <DependentUpon>201705150952132_ChangeDeviceHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151018448_ChangeDeviceHistoryProperty.resx">
+      <DependentUpon>201705151018448_ChangeDeviceHistoryProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151030417_TestIfChanges.resx">
+      <DependentUpon>201705151030417_TestIfChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,11 +14,9 @@ namespace IntelligentMonitoringAPI.Models
         [StringLength(50)]
         public string DeviceId { get; set; }
 
-        public string ContactLostCount { get; set; }
+        public bool ContactLost { get; set; }
 
-        public string ContactLostTotalTime { get; set; }
-
-        public string ContactLostTimeStamp { get; set; }
+        public long ContactLostTotalTime { get; set; }
 
         public DateTime? CreatedTimeStamp { get; set; }
 
@@ -26,6 +24,5 @@ namespace IntelligentMonitoringAPI.Models
 
         public decimal BatteryLevel { get; set; }
 
-        public bool LastDeviceState { get; set; }
     }
 }
