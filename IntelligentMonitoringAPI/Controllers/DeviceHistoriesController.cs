@@ -20,10 +20,19 @@ namespace IntelligentMonitoringAPI.Controllers
             _context = new IntelliMonDbContext();
         }
 
+        public IHttpActionResult GetDeviceHistory()
+        {
+            var deviceHistoryDtos = _context.DeviceHistories.ToList()
+                .Select(Mapper.Map<DeviceHistory, DeviceHistoryDto>);
+
+            return Ok(deviceHistoryDtos);
+        }
         public IHttpActionResult GetDeviceHistoryFromDateToDate(string deviceId, DateTime startDate, DateTime endDate)
         {
             var deviceHistoryDtos = _context.DeviceHistories.ToList()
-                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endDate).Select(Mapper.Map<DeviceHistory, DeviceHistoryDto>);
+                .Where(c => c.DeviceId == deviceId)
+                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endDate)
+                .Select(Mapper.Map<DeviceHistory, DeviceHistoryDto>);
 
             var response = new DeviceHistoriesWrapper {DeviceHistories = deviceHistoryDtos};
 
