@@ -40,11 +40,7 @@ namespace IntelligentMonitoringAPI.Controllers
             if (sensor == null)
                 return NotFound();
 
-            var sensorDto = Mapper.Map<Sensor, SensorDto>(sensor);
-
-            var response = new SensorWrapper { Sensor = sensorDto };
-
-            return Ok(response);
+            return Ok(Mapper.Map<Sensor, SensorDto>(sensor));
         }
         
         
@@ -61,9 +57,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
             sensorDto.Id = sensor.Id;
 
-            var response = new SensorWrapper { Sensor = sensorDto };
-
-            return Created(new Uri(Request.RequestUri + "/" + sensor.Id), response);
+            return Created(new Uri(Request.RequestUri + "/" + sensor.Id), sensorDto);
         }
 
         

@@ -43,12 +43,8 @@ namespace IntelligentMonitoringAPI.Controllers
 
             if (device == null)
                 return NotFound();
-
-            var deviceDto = Mapper.Map<Device, DeviceDto>(device);
-
-            var response = new DeviceWrapper {Device = deviceDto};
             
-            return Ok(response);
+            return Ok(Mapper.Map<Device, DeviceDto>(device));
         }
         
         [HttpPost]
@@ -64,9 +60,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
             deviceDto.Id = device.Id;
 
-            var response = new DeviceWrapper { Device = deviceDto };
-
-            return Created(new Uri(Request.RequestUri + "/" + device.Id), response);
+            return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
         }
         
         

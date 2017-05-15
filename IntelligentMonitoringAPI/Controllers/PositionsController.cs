@@ -28,11 +28,7 @@ namespace IntelligentMonitoringAPI.Controllers
             if (position == null)
                 return NotFound();
 
-            var positionDto = Mapper.Map<Position, PositionDto>(position);
-
-            var response = new PositionWrapper { Position = positionDto };
-
-            return Ok(response);
+            return Ok(Mapper.Map<Position, PositionDto>(position));
         }
 
     }

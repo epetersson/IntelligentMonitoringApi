@@ -40,11 +40,7 @@ namespace IntelligentMonitoringAPI.Controllers
             if (deviceNetwork == null)
                 return NotFound();
 
-            var deviceNetworkDto = Mapper.Map<DeviceNetwork, DeviceNetworkDto>(deviceNetwork);
-
-            var response = new DeviceNetworkWrapper { DeviceNetwork = deviceNetworkDto };
-
-            return Ok(response);
+            return Ok(Mapper.Map<DeviceNetwork, DeviceNetworkDto>(deviceNetwork));
         }
 
         [HttpPost]
@@ -60,9 +56,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
             deviceNetworkDto.Id = deviceNetwork.Id;
 
-            var response = new DeviceNetworkWrapper { DeviceNetwork = deviceNetworkDto };
-
-            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.Id), response);
+            return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.Id), deviceNetworkDto);
         }
 
         [HttpPut]

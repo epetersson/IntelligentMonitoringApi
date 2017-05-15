@@ -40,11 +40,7 @@ namespace IntelligentMonitoringAPI.Controllers
             if (locationResource == null)
                 return NotFound();
 
-            var locationResourceDto = Mapper.Map<LocationResource, LocationResourceDto>(locationResource);
-
-            var response = new LocationResourceWrapper {LocationResource = locationResourceDto};
-
-            return Ok(response);
+            return Ok(Mapper.Map<LocationResource, LocationResourceDto>(locationResource));
         }
 
 
