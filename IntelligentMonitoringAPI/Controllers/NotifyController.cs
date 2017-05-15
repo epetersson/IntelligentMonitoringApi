@@ -23,19 +23,21 @@ namespace IntelligentMonitoringAPI.Controllers
 
         //Update the database with new conversations. If it fails, just ignore the error.
         [HttpPost]
-        public IHttpActionResult PostConversations(string conversationId, string channelId, string fromId)
+        public IHttpActionResult PostConversations(string conversationId, string channelId)
         {
             UserConversation conversation = new UserConversation()
             {
                 ConversationId = conversationId,
                 ChannelId = channelId,
-                Id = fromId
             };
 
             _context.UserConversations.Add(conversation);
-            _context.SaveChanges();
+           if( _context.SaveChanges() > 0)
+            {
+                return StatusCode(HttpStatusCode.Created);
+            }
+            return StatusCode(HttpStatusCode.Conflict);
 
-            return Ok("OK");
         }
 
 
