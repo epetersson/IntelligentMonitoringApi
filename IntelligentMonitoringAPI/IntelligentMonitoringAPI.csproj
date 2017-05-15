@@ -259,6 +259,7 @@
     <Compile Include="Controllers\LocationResourcesController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
+    <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\SensorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -423,6 +424,14 @@
     <Compile Include="Migrations\201705151030417_TestIfChanges.Designer.cs">
       <DependentUpon>201705151030417_TestIfChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705151129498_ChangePrimaryKeyOfUserConversations.cs" />
+    <Compile Include="Migrations\201705151129498_ChangePrimaryKeyOfUserConversations.Designer.cs">
+      <DependentUpon>201705151129498_ChangePrimaryKeyOfUserConversations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705151132521_ChangePrimaryKeyOfUserConversations1.cs" />
+    <Compile Include="Migrations\201705151132521_ChangePrimaryKeyOfUserConversations1.Designer.cs">
+      <DependentUpon>201705151132521_ChangePrimaryKeyOfUserConversations1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -439,6 +448,7 @@
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
     <Compile Include="Models\DTOs\DeviceSensorDto.cs" />
     <Compile Include="Models\DTOs\LocationDto.cs" />
+    <Compile Include="Models\DTOs\PositionDto.cs" />
     <Compile Include="Models\DTOs\SensorDto.cs" />
     <Compile Include="Models\DTOs\SensorMeasurementDto.cs" />
     <Compile Include="Models\Event.cs" />
@@ -456,6 +466,7 @@
     <Compile Include="Models\Wrappers\DeviceHistoriesWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationResourcesWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationResourceWrapper.cs" />
+    <Compile Include="Models\Wrappers\PositionWrapper.cs" />
     <Compile Include="Models\YearlyStatistic.cs" />
     <Compile Include="Models\UserConversation.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworksWrapper.cs" />
@@ -669,6 +680,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705151030417_TestIfChanges.resx">
       <DependentUpon>201705151030417_TestIfChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151129498_ChangePrimaryKeyOfUserConversations.resx">
+      <DependentUpon>201705151129498_ChangePrimaryKeyOfUserConversations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151132521_ChangePrimaryKeyOfUserConversations1.resx">
+      <DependentUpon>201705151132521_ChangePrimaryKeyOfUserConversations1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

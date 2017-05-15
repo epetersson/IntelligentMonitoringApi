@@ -7,8 +7,9 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models
 {
-    public class  UserConversation {
-        public string Id { get; set; }
+    public class  UserConversation
+    {
+        public int Id { get; set; }
         public string ChannelId { get; set; }
         public string ConversationId { get; set; }
     }

@@ -36,6 +36,9 @@ namespace IntelligentMonitoringAPI.App_Start
 
             Mapper.CreateMap<DeviceHistory, DeviceHistoryDto>();
             Mapper.CreateMap<DeviceHistoryDto, DeviceHistory>();
+
+            Mapper.CreateMap<Position, PositionDto>();
+            Mapper.CreateMap<PositionDto, Position>();
         }
     }
 }
