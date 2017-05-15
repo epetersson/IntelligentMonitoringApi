@@ -29,12 +29,17 @@ namespace IntelligentMonitoringAPI.Controllers
 
         //Update the database with new conversations. If it fails, return error statuscode
         [HttpPost]
-        public IHttpActionResult PostConversations(string conversationId, string channelId)
+        public IHttpActionResult PostConversations(string conversationID, string channelID, string serviceUrl, string fromId, string fromName, string toId, string toName)
         {
             UserConversation conversation = new UserConversation()
             {
-                ConversationId = conversationId,
-                ChannelId = channelId,
+                ConversationId = conversationID,
+                ChannelId = channelID,
+                ServiceUrl = serviceUrl,
+                FromId = fromId,
+                FromName = fromName,
+                ToId = toId,
+                ToName = toName
             };
 
             var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationId);
