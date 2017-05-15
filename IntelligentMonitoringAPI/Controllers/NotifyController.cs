@@ -65,7 +65,7 @@ namespace IntelligentMonitoringAPI.Controllers
             request.AddBody(convResponse);
             
             string result = client.Execute(request).Content;
-            return Ok(result);
+            return Ok(convResponse);
         }
     }
 }
