@@ -1,18 +1,11 @@
-﻿using AutoMapper;
-using IntelligentMonitoringAPI.Models;
-using IntelligentMonitoringAPI.Models.Wrappers;
+﻿using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringBackend.ModelsDTO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 
 namespace IntelligentMonitoringAPI.Controllers
@@ -26,7 +19,6 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             _context = new IntelliMonDbContext();
         }
-
 
         /// <summary>
         /// This endpoint get called by the microservice to update the conversations in the db.
