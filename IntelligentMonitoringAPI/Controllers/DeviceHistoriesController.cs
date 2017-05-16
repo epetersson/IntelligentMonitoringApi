@@ -44,7 +44,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetDeviceHistoryById(string id)
+        public IHttpActionResult GetHourlyStatisticsId(string id)
         {
             var deviceHistoryDtos =
                 _context.DeviceHistories.ToList()
@@ -54,6 +54,20 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok(response);
 
+        }
+
+        [HttpGet]
+        [Route("api/devicehistories/{id}/daily")]
+        public IHttpActionResult GetDailyStatistics(string id)
+        {
+            var dailyStatisticsDto = _context.DailyStatistics
+                .ToList()
+                .Where(c => c.DeviceId == id)
+                .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
+
+            var response = new DailyStatisticsWrapper {DailyStatistics = dailyStatisticsDto};
+
+            return Ok(response);
         }
     }
 }
