@@ -8,7 +8,7 @@ namespace IntelligentMonitoringAPI.Controllers
     internal class UserConversationWrapper
     {
         public IEnumerable<UserConversation> Conversations { get; set; }
-        public EventDTO Event { get; set; }
+        public EventDTO Events { get; set; }
 
     }
 }

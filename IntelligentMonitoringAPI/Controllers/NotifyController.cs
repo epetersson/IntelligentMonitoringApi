@@ -3,6 +3,7 @@ using IntelligentMonitoringBackend.ModelsDTO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
