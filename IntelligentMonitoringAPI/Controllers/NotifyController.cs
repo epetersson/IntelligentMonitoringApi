@@ -27,24 +27,38 @@ namespace IntelligentMonitoringAPI.Controllers
             _context = new IntelliMonDbContext();
         }
 
-        //Update the database with new conversations. If it fails, return error statuscode
+        /// <summary>
+        /// Updates the database with a new conversation.
+        /// </summary>
+        /// <param name="conversationID"></param>
+        /// <param name="channelID"></param>
+        /// <param name="serviceUrl"></param>
+        /// <param name="fromId"></param>
+        /// <param name="fromName"></param>
+        /// <param name="toId"></param>
+        /// <param name="toName"></param>
+        /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult PostConversations(string conversationId, string channelId)
+        public IHttpActionResult PostConversations(string conversationID, string channelID, string serviceUrl, string fromId, string fromName, string toId, string toName)
         {
             UserConversation conversation = new UserConversation()
             {
-                ConversationId = conversationId,
-                ChannelId = channelId,
+                ConversationId = conversationID,
+                ChannelId = channelID,
+                ServiceUrl = serviceUrl,
+                FromId = fromId,
+                FromName = fromName,
+                ToId = toId,
+                ToName = toName
             };
 
-            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationId);
+            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationID);
             if (existingAuthorCount == 0)
             {
-            _context.UserConversations.Add(conversation);
+                _context.UserConversations.Add(conversation);
             }
 
-            
-           if ( _context.SaveChanges() > 0)
+            if (_context.SaveChanges() > 0)
             {
                 return StatusCode(HttpStatusCode.Created);
             }
@@ -52,19 +66,37 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
 
-        //If an event has happend, post the event and all the conversations.
+        /// <summary>
+        /// This endpoint get called by the backend when a new event occurs. It will send the event 
+        /// and userConversations to the Microservice.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult PostConversationsEvents(EventDTO content)
+        public IHttpActionResult PostConversationsEvents()
         {
-            var conversations = _context.UserConversations.ToList();   
-            var convResponse = new UserConversationWrapper { Conversations = conversations, Event = content };
-           
-            RestClient client = new RestClient("http://intelligentmonitoringbotservice.azurewebsites.net/api/1/notify/");
+            Task<string> payload = ActionContext.Request.Content.ReadAsStringAsync();
+            string body = payload.Result;
+            JObject jObj = JObject.Parse(body);
+            var dbEvent = JsonConvert.DeserializeObject<EventDTO>(jObj["events"].ToString());
 
-            var request = new RestRequest($"conversationsEvents", Method.POST);
-            request.AddBody(convResponse);
-            
-            string result = client.Execute(request).Content;
+            var conversations = _context.UserConversations.ToList();
+
+            if (conversations.Count < 1)
+            {
+                return StatusCode(HttpStatusCode.NotFound);
+            }
+
+            dynamic jsonObject1 = new JObject();
+            jsonObject1.conversations = JToken.FromObject(conversations);
+
+            jsonObject1.events = JToken.FromObject(dbEvent);
+
+            RestClient client = new RestClient("http://intelligentmonitoringbotservice.azurewebsites.net/api/1/");
+            var request = new RestRequest($"notify/conversationsEvents", Method.POST);
+
+            request.AddParameter("text/json", jsonObject1.ToString(), ParameterType.RequestBody);
+
+            string result = client.Execute(request).StatusCode.ToString();
             return Ok(result);
         }
     }
