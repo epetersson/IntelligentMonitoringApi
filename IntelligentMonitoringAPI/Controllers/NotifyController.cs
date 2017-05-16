@@ -27,32 +27,32 @@ namespace IntelligentMonitoringAPI.Controllers
             _context = new IntelliMonDbContext();
         }
 
+
         /// <summary>
-        /// Updates the database with a new conversation.
+        /// This endpoint get called by the microservice to update the conversations in the db.
         /// </summary>
-        /// <param name="conversationID"></param>
-        /// <param name="channelID"></param>
-        /// <param name="serviceUrl"></param>
-        /// <param name="fromId"></param>
-        /// <param name="fromName"></param>
-        /// <param name="toId"></param>
-        /// <param name="toName"></param>
         /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult PostConversations(string conversationID, string channelID, string serviceUrl, string fromId, string fromName, string toId, string toName)
+        [Route("api/notify/conversations")]
+        public IHttpActionResult PostConversations()
         {
+            Task<string> payload = ActionContext.Request.Content.ReadAsStringAsync();
+            string body = payload.Result;
+            JObject jObj = JObject.Parse(body);
+            var convers = JsonConvert.DeserializeObject<UserConversation>(jObj["conversations"].ToString());
+
             UserConversation conversation = new UserConversation()
             {
-                ConversationId = conversationID,
-                ChannelId = channelID,
-                ServiceUrl = serviceUrl,
-                FromId = fromId,
-                FromName = fromName,
-                ToId = toId,
-                ToName = toName
+                ConversationId = convers.ConversationId,
+                ChannelId = convers.ChannelId,
+                ServiceUrl = convers.ServiceUrl,
+                FromId = convers.FromId,
+                FromName = convers.FromName,
+                ToId = convers.ToId,
+                ToName = convers.ToName
             };
 
-            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == conversationID);
+            var existingAuthorCount = _context.UserConversations.Count(a => a.ConversationId == convers.ConversationId);
             if (existingAuthorCount == 0)
             {
                 _context.UserConversations.Add(conversation);
@@ -72,6 +72,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [Route("api/notify/conversationsEvents")]
         public IHttpActionResult PostConversationsEvents()
         {
             Task<string> payload = ActionContext.Request.Content.ReadAsStringAsync();
