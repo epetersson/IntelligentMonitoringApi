@@ -20,6 +20,5 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public long CollectiveContactLostTime { get; set; }
 
         public int CollectiveContactLostCount { get; set; }
-        public string FailureProneDeviceId { get; set; }
     }
 }
