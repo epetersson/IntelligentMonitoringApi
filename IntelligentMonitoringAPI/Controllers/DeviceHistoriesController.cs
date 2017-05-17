@@ -33,9 +33,11 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDeviceHistoryFromDateToDate(string id, DateTime startDate, DateTime endDate)
         {
+            var endingDate = endDate.AddDays(1);
+
             var deviceHistoryDtos = _context.DeviceHistories.ToList()
                 .Where(c => c.DeviceId == id)
-                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endDate)
+                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
                 .Select(Mapper.Map<DeviceHistory, DeviceHistoryDto>);
 
             var response = new DeviceHistoriesWrapper {DeviceHistories = deviceHistoryDtos};
