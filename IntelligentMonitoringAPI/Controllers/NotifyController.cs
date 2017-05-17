@@ -70,6 +70,9 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             Task<string> payload = ActionContext.Request.Content.ReadAsStringAsync();
             string body = payload.Result;
+
+            Debug.WriteLine(body);
+
             JObject jObj = JObject.Parse(body);
             var dbEvent = JsonConvert.DeserializeObject<EventDTO>(jObj["events"].ToString());
 
@@ -82,8 +85,9 @@ namespace IntelligentMonitoringAPI.Controllers
 
             dynamic jsonObject1 = new JObject();
             jsonObject1.conversations = JToken.FromObject(conversations);
-
             jsonObject1.events = JToken.FromObject(dbEvent);
+
+            
 
             RestClient client = new RestClient("http://intelligentmonitoringbotservice.azurewebsites.net/api/1/");
             var request = new RestRequest($"notify/conversationsEvents", Method.POST);
