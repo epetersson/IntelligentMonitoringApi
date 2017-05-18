@@ -28,6 +28,10 @@ namespace IntelligentMonitoringAPI.Models
         public DbSet<YearlyStatistic> YearlyStatistics { get; set; }
         public DbSet<UserConversation> UserConversations { get; set; }
 
+        public DbSet<AccumulatedStatistic> AccumulatedStatistics { get; set; }
+        public DbSet<CustomEvent> CustomEvents { get; set; }
+        public DbSet<FailurePronedDevice> FailurePronedDevices { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }

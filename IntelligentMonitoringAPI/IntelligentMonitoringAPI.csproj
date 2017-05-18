@@ -273,6 +273,13 @@
     <Compile Include="Migrations\201705171923266_AddedEventCountToDevice.Designer.cs">
       <DependentUpon>201705171923266_AddedEventCountToDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705181734195_GeneratedNewModelsFromDB.cs" />
+    <Compile Include="Migrations\201705181734195_GeneratedNewModelsFromDB.Designer.cs">
+      <DependentUpon>201705181734195_GeneratedNewModelsFromDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccumulatedStatistic.cs" />
+    <Compile Include="Models\CustomEvent.cs" />
+    <Compile Include="Models\FailurePronedDevice.cs" />
     <Compile Include="Models\Wrappers\UserConversationWrapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -709,6 +716,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705171923266_AddedEventCountToDevice.resx">
       <DependentUpon>201705171923266_AddedEventCountToDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705181734195_GeneratedNewModelsFromDB.resx">
+      <DependentUpon>201705181734195_GeneratedNewModelsFromDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
