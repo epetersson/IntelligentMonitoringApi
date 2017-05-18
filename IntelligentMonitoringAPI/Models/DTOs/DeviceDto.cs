@@ -27,6 +27,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public bool ContactLost { get; set; }
 
         public int ContactLostCount { get; set; }
+        public int EventCount { get; set; }
 
         public long ContactLostTime { get; set; }
 
