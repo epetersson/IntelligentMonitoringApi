@@ -37,6 +37,7 @@ namespace IntelligentMonitoringAPI.Models
         public decimal BatteryLevel { get; set; }
 
         public bool LastDeviceState { get; set; }
+        public int EventCount { get; set; }
 
         public string Name { get; set; }
 
