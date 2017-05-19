@@ -10,7 +10,7 @@ namespace IntelligentMonitoringAPI.Models.Wrappers
     public class EventsWrapper
     {
         public IEnumerable<EventDto> Events { get; set; }
-        /*
-        public IEnumerable<CustomEventDto> CustomEvents { get; set; }*/
+        
+        public IEnumerable<CustomEventDto> CustomEvents { get; set; }
     }
 }

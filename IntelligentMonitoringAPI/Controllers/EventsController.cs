@@ -28,15 +28,12 @@ namespace IntelligentMonitoringAPI.Controllers
                 .ToList()
                 .Select(Mapper.Map<Event, EventDto>);
             
-            /*
+            
             var customEventsDtos = _context.CustomEvents
                 .ToList()
                 .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 
             var response = new EventsWrapper { Events = eventDtos, CustomEvents = customEventsDtos };
-            */
-
-            var response = new EventsWrapper {Events = eventDtos};
 
             return Ok(response);
         }
@@ -49,14 +46,12 @@ namespace IntelligentMonitoringAPI.Controllers
                 _context.Events.ToList()
                 .Where(c => c.DeviceId == deviceId)
                 .Select(Mapper.Map<Event, EventDto>);
-            /*
+
             var customEventsDtos = _context.CustomEvents
                 .ToList().Where(c => c.DeviceId == deviceId)
                 .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 
-            var response = new EventsWrapper {Events = deviceEventDtos, CustomEvents = customEventsDtos};*/
-
-            var response = new EventsWrapper {Events = deviceEventDtos};
+            var response = new EventsWrapper {Events = deviceEventDtos, CustomEvents = customEventsDtos};
 
             return Ok(response);
         }
@@ -71,10 +66,12 @@ namespace IntelligentMonitoringAPI.Controllers
                 .Where(c => c.CreatedDateTime >= startDate && c.CreatedDateTime <= endingDate)
                 .Select(Mapper.Map<Event, EventDto>);
 
-            if (!eventDtos.Any())
-                return NotFound();
+            var customEventsDtos = _context.CustomEvents.ToList()
+                .Where(c => c.DeviceId == id)
+                .Where(c => c.CreatedDateTime >= startDate && c.CreatedDateTime <= endingDate)
+                .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 
-            var response = new EventsWrapper { Events = eventDtos };
+            var response = new EventsWrapper {Events = eventDtos, CustomEvents = customEventsDtos};
 
             return Ok(response);
         }
