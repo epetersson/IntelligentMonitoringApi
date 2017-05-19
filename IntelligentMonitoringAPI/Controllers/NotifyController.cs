@@ -74,7 +74,7 @@ namespace IntelligentMonitoringAPI.Controllers
             Debug.WriteLine(body);
 
             JObject jObj = JObject.Parse(body);
-            var dbEvent = JsonConvert.DeserializeObject<EventDTO>(jObj["events"].ToString());
+            var dbEvent = JsonConvert.DeserializeObject<EventDto>(jObj["events"].ToString());
 
             var conversations = _context.UserConversations.ToList();
 

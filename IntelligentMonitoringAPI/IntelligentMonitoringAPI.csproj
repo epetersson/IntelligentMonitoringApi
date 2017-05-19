@@ -279,6 +279,7 @@
     </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
     <Compile Include="Models\CustomEvent.cs" />
+    <Compile Include="Models\DTOs\CustomEventDto.cs" />
     <Compile Include="Models\FailurePronedDevice.cs" />
     <Compile Include="Models\Wrappers\UserConversationWrapper.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using IntelligentMonitoringAPI.Models;
+using System.Web;
 
-namespace IntelligentMonitoringBackend.ModelsDTO
+namespace IntelligentMonitoringAPI.Models.DTOs
 {
-   public class EventDto
+    public class CustomEventDto
     {
-        public string Id { get; set; }
-
-        public bool IsSensorDeleted { get; set; }
-
-        public bool IsDeviceDeleted { get; set; }
-
         public DateTime? CreatedDateTime { get; set; }
-
-        public DateTime? ResetDateTime { get; set; }
 
         public bool Active { get; set; }
 
         public bool Seen { get; set; }
-
-        public string Status { get; set; }
 
         public string Information { get; set; }
 
@@ -36,16 +25,7 @@ namespace IntelligentMonitoringBackend.ModelsDTO
 
         public string TriggerName { get; set; }
 
-        public decimal TriggerLimit { get; set; }
-
         public string TriggerOperator { get; set; }
-
-        public decimal TriggerValue { get; set; }
-
-        public decimal ResetValue { get; set; }
-        public string SensorId { get; set; }
-
-        public string SensorName { get; set; }
 
         public string DeviceId { get; set; }
 

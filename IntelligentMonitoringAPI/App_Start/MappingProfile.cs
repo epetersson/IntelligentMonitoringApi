@@ -28,8 +28,11 @@ namespace IntelligentMonitoringAPI.App_Start
             Mapper.CreateMap<Location, LocationDto>();
             Mapper.CreateMap<LocationDto, Location>();
 
-            Mapper.CreateMap<Event, EventDTO>();
-            Mapper.CreateMap<EventDTO, Event>();
+            Mapper.CreateMap<Event, EventDto>();
+            Mapper.CreateMap<EventDto, Event>();
+
+            Mapper.CreateMap<CustomEvent, CustomEventDto>();
+            Mapper.CreateMap<CustomEventDto, CustomEvent>();
 
             Mapper.CreateMap<LocationResource, LocationResourceDto>();
             Mapper.CreateMap<LocationResourceDto, LocationResource>();
