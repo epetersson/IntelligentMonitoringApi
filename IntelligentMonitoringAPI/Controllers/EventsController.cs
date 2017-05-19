@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using IntelligentMonitoringAPI.Models;
+using IntelligentMonitoringAPI.Models.DTOs;
 using IntelligentMonitoringAPI.Models.Wrappers;
 using IntelligentMonitoringBackend.ModelsDTO;
 
@@ -25,9 +26,17 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             var eventDtos = _context.Events
                 .ToList()
-                .Select(Mapper.Map<Event, EventDTO>);
+                .Select(Mapper.Map<Event, EventDto>);
+            
+            /*
+            var customEventsDtos = _context.CustomEvents
+                .ToList()
+                .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 
-            var response = new EventsWrapper { Events = eventDtos };
+            var response = new EventsWrapper { Events = eventDtos, CustomEvents = customEventsDtos };
+            */
+
+            var response = new EventsWrapper {Events = eventDtos};
 
             return Ok(response);
         }
@@ -39,9 +48,33 @@ namespace IntelligentMonitoringAPI.Controllers
             var deviceEventDtos =
                 _context.Events.ToList()
                 .Where(c => c.DeviceId == deviceId)
-                .Select(Mapper.Map<Event, EventDTO>);
+                .Select(Mapper.Map<Event, EventDto>);
+            /*
+            var customEventsDtos = _context.CustomEvents
+                .ToList().Where(c => c.DeviceId == deviceId)
+                .Select(Mapper.Map<CustomEvent, CustomEventDto>);
+
+            var response = new EventsWrapper {Events = deviceEventDtos, CustomEvents = customEventsDtos};*/
 
             var response = new EventsWrapper {Events = deviceEventDtos};
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetEventsFromDateToDate(string id, DateTime startDate, DateTime endDate)
+        {
+            var endingDate = endDate.AddDays(1);
+
+            var eventDtos = _context.Events.ToList()
+                .Where(c => c.DeviceId == id)
+                .Where(c => c.CreatedDateTime >= startDate && c.CreatedDateTime <= endingDate)
+                .Select(Mapper.Map<Event, EventDto>);
+
+            if (!eventDtos.Any())
+                return NotFound();
+
+            var response = new EventsWrapper { Events = eventDtos };
 
             return Ok(response);
         }
