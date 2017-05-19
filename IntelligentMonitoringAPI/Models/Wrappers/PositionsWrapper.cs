@@ -6,8 +6,8 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Models.Wrappers
 {
-    public class PositionWrapper
+    public class PositionsWrapper
     {
-        public PositionDto Position { get; set; }
+        public IEnumerable<PositionDto> Positions { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetDeviceHistory()
+        public IHttpActionResult GetDeviceHistories()
         {
             var deviceHistoryDtos = _context.DeviceHistories.ToList()
                 .Select(Mapper.Map<DeviceHistory, DeviceHistoryDto>);
