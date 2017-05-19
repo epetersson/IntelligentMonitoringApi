@@ -22,6 +22,18 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult GetPositions()
+        {
+            var positionDtos = _context.Positions
+                .ToList()
+                .Select(Mapper.Map<Position, PositionDto>);
+
+            var response = new PositionsWrapper {Positions = positionDtos};
+
+            return Ok(response);
+        }
+
+        [HttpGet]
         public IHttpActionResult GetPosition(string id)
         {
             var position = _context.Positions.SingleOrDefault(c => c.Id == id);
