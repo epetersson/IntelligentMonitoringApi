@@ -45,10 +45,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/positions/device/{id}")]
-        public IHttpActionResult GetDevicePosition(string id)
+        public IHttpActionResult GetPositionForDevice(string deviceId)
         {
-            var device = _context.Devices.SingleOrDefault(c => c.Id == id);
+            var device = _context.Devices.SingleOrDefault(c => c.Id == deviceId);
 
             var position = _context.Positions.SingleOrDefault(c => c.Id == device.PositionId);
 

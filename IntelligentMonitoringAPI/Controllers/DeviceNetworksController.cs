@@ -11,6 +11,9 @@ using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
+    /// <summary>
+    /// Class defines the endpoints related to DeviceNetwork.
+    /// </summary>
     public class DeviceNetworksController : ApiController
     {
         private IntelliMonDbContext _context;
@@ -20,6 +23,10 @@ namespace IntelligentMonitoringAPI.Controllers
             _context = new IntelliMonDbContext();
         }
 
+        /// <summary>
+        /// Method defines the endpoint for getting all DeviceNetworks.
+        /// </summary>
+        /// <returns>Array of DeviceNetworkDtos wrapped in JSON-object</returns>
         [HttpGet]
         public IHttpActionResult GetDeviceNetworks()
         {
@@ -31,6 +38,11 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Method defines endpoint for getting a DeviceNetwork by defined id.
+        /// </summary>
+        /// <param name="id">string</param>
+        /// <returns>DeviceNetworkDto</returns>
         [HttpGet]
         public IHttpActionResult GetDeviceNetwork(string id)
         {

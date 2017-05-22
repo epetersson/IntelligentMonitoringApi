@@ -42,8 +42,24 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok(Mapper.Map<Sensor, SensorDto>(sensor));
         }
-        
-        
+
+        [HttpGet]
+        [Route("api/Sensors/{id}/measurements")]
+        public IHttpActionResult GetSensorMeasurements(string id)
+        {
+            var sensorMeasurementsDtos = _context.SensorMeasurements
+                .Where(c => c.SensorId == id)
+                .ToList()
+                .Select(Mapper.Map<SensorMeasurement, SensorMeasurementDto>);
+
+            if (!sensorMeasurementsDtos.Any())
+                return NotFound();
+
+            var response = new SensorMeasurementsWrapper { Measurements = sensorMeasurementsDtos };
+
+            return Ok(response);
+        }
+
         [HttpPost]
         public IHttpActionResult CreateSensor(SensorDto sensorDto)
         {
@@ -92,26 +108,9 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        [Route("api/sensors/{sensorId}/measurements")]
-        public IHttpActionResult GetSensorMeasurements(string sensorId)
-        {
-            var sensorMeasurementsDtos = _context.SensorMeasurements
-                .Where(c => c.SensorId == sensorId)
-                .ToList()
-                .Select(Mapper.Map<SensorMeasurement, SensorMeasurementDto>);
-
-            if (!sensorMeasurementsDtos.Any())
-                return NotFound();
-
-            var response = new SensorMeasurementsWrapper { Measurements = sensorMeasurementsDtos };
-
-            return Ok(response);
-        }
-
         [HttpPost]
-        [Route("api/sensors/{sensorId}/measurements/")]
-        public IHttpActionResult CreateSensorMeasurement(string sensorId, SensorMeasurementDto sensorMeasurementDto)
+        [Route("api/Sensors/{id}/measurements/")]
+        public IHttpActionResult CreateSensorMeasurement(string id, SensorMeasurementDto sensorMeasurementDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();

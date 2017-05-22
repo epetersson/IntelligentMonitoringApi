@@ -92,11 +92,11 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/locations/{locationId}/devices")]
-        public IHttpActionResult GetDevicesInLocation(string locationId)
+        [Route("api/Locations/{id}/devices")]
+        public IHttpActionResult GetDevicesInLocation(string id)
         {
             var locationDeviceDtos = _context.Devices
-                .Where(c => c.LocationId == locationId)
+                .Where(c => c.LocationId == id)
                 .ToList()
                 .Select(Mapper.Map<Device, DeviceDto>);
 
