@@ -9,6 +9,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     {
         public int Id { get; set; }
 
+        public string DeviceId { get; set; }
+
         public DateTime? TimeStamp { get; set; }
 
         public decimal Average { get; set; }
