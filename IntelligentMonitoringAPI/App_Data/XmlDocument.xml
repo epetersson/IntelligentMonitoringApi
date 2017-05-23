@@ -520,6 +520,11 @@
             Class defines the endpoints related to DeviceNetwork.
             </summary>
         </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.DeviceNetworksController.#ctor">
+            <summary>
+            Constructor initiates the database context.
+            </summary>
+        </member>
         <member name="M:IntelligentMonitoringAPI.Controllers.DeviceNetworksController.GetDeviceNetworks">
             <summary>
             Method defines the endpoint for getting all DeviceNetworks.
@@ -536,6 +541,11 @@
         <member name="T:IntelligentMonitoringAPI.Controllers.DevicesController">
             <summary>
             Class defines endpoints related to Device.
+            </summary>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.DevicesController.#ctor">
+            <summary>
+            Constructor initiates the database context.
             </summary>
         </member>
         <member name="M:IntelligentMonitoringAPI.Controllers.DevicesController.GetDevices">
@@ -584,6 +594,11 @@
             Class defines endpoints related to Events.
             </summary>
         </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.EventsController.#ctor">
+            <summary>
+            Constructor initiates the database context.
+            </summary>
+        </member>
         <member name="M:IntelligentMonitoringAPI.Controllers.EventsController.GetEvents">
             <summary>
             Method defines endpoint for getting all events.
@@ -605,6 +620,49 @@
             <param name="startDate">DateTime</param>
             <param name="endDate">DateTime</param>
             <returns>One array of eventDtos and one with customEventDtos wrapped in two JSON-objects</returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationResourcesController.#ctor">
+            <summary>
+            Constructor initiates the database context.
+            </summary>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationResourcesController.GetLocationResources">
+            <summary>
+            Get all LocationResources
+            </summary>
+            <returns>JSON-wrapped array of LocationDtos</returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationResourcesController.GetLocationResource(System.String)">
+            <summary>
+            Get a LocationResource by its Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationsController.#ctor">
+            <summary>
+            Constructor initiates the database context.
+            </summary>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationsController.GetLocations">
+            <summary>
+            Get all Locations
+            </summary>
+            <returns>JSON-Wrapped array of LocationDtos</returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationsController.GetLocation(System.String)">
+            <summary>
+            Get a Location by its Id
+            </summary>
+            <param name="id">string</param>
+            <returns>LocationDto</returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.LocationsController.GetDevicesInLocation(System.String)">
+            <summary>
+            Get all Devices with in a Location by its Id
+            </summary>
+            <param name="id">string</param>
+            <returns>JSON-wrapped array with DeviceDtos</returns>
         </member>
         <member name="M:IntelligentMonitoringAPI.Controllers.NotifyController.PostConversations">
             <summary>

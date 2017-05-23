@@ -23,6 +23,9 @@ namespace IntelligentMonitoringAPI.Controllers
         
         private IntelliMonDbContext _context;
 
+        /// <summary>
+        /// Constructor initiates the database context.
+        /// </summary>
         public DevicesController()
         {
             _context = new IntelliMonDbContext();
@@ -68,7 +71,8 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDeviceByName(string deviceName)
         {
-            var device = _context.Devices.SingleOrDefault(c => c.Name == deviceName);
+            var device = _context.Devices
+                .SingleOrDefault(c => c.Name == deviceName);
 
             if (device == null)
                 return NotFound();
@@ -107,9 +111,11 @@ namespace IntelligentMonitoringAPI.Controllers
         [Route("api/Devices/{id}/position")]
         public IHttpActionResult GetDevicePosition(string id)
         {
-            var device = _context.Devices.SingleOrDefault(c => c.Id == id);
+            var device = _context.Devices
+                .SingleOrDefault(c => c.Id == id);
 
-            var position = _context.Positions.SingleOrDefault(c => c.Id == device.PositionId);
+            var position = _context.Positions
+                .SingleOrDefault(c => c.Id == device.PositionId);
 
             if (position == null)
                 return NotFound();

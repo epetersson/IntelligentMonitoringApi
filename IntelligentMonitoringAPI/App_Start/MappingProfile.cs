@@ -11,6 +11,9 @@ namespace IntelligentMonitoringAPI.App_Start
 {
     public class MappingProfile : Profile
     {
+        /// <summary>
+        /// Mapping Profiles for AutoMapper
+        /// </summary>
         public MappingProfile()
         {
             Mapper.CreateMap<Device, DeviceDto>();

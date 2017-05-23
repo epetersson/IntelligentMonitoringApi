@@ -19,6 +19,9 @@ namespace IntelligentMonitoringAPI.Controllers
     {
         private IntelliMonDbContext _context;
 
+        /// <summary>
+        /// Constructor initiates the database context.
+        /// </summary>
         public EventsController()
         {
             _context = new IntelliMonDbContext();

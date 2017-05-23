@@ -17,7 +17,10 @@ namespace IntelligentMonitoringAPI.Controllers
     public class DeviceNetworksController : ApiController
     {
         private IntelliMonDbContext _context;
-
+        
+        /// <summary>
+        /// Constructor initiates the database context.
+        /// </summary>
         public DeviceNetworksController()
         {
             _context = new IntelliMonDbContext();
@@ -30,7 +33,8 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDeviceNetworks()
         {
-            var deviceNetworkDtos = _context.DeviceNetworks.ToList()
+            var deviceNetworkDtos = _context.DeviceNetworks
+                .ToList()
                 .Select(Mapper.Map<DeviceNetwork, DeviceNetworkDto>);
 
             var response = new DeviceNetworksWrapper { DeviceNetworks = deviceNetworkDtos };
@@ -74,7 +78,8 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpPut]
         public IHttpActionResult UpdateDeviceNetwork(string id, DeviceNetworkDto deviceNetworkDto)
         {
-            var deviceNetworkInDb = _context.DeviceNetworks.SingleOrDefault(c => c.Id == id);
+            var deviceNetworkInDb = _context.DeviceNetworks
+                .SingleOrDefault(c => c.Id == id);
 
             if (deviceNetworkInDb == null)
                 return NotFound();
@@ -88,7 +93,9 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteDeviceNetwork(string id)
         {
-            var deviceNetwork = _context.DeviceNetworks.SingleOrDefault(c => c.Id == id);
+            var deviceNetwork = _context.DeviceNetworks
+                .SingleOrDefault(c => c.Id == id);
+
             if (deviceNetwork == null)
                 return NotFound();
 

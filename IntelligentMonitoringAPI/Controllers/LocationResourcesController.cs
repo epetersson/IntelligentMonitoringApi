@@ -15,11 +15,18 @@ namespace IntelligentMonitoringAPI.Controllers
     {
         private IntelliMonDbContext _context;
 
+        /// <summary>
+        /// Constructor initiates the database context.
+        /// </summary>
         public LocationResourcesController()
         {
             _context = new IntelliMonDbContext();
         }
 
+        /// <summary>
+        /// Get all LocationResources
+        /// </summary>
+        /// <returns>JSON-wrapped array of LocationDtos</returns>
         [HttpGet]
         public IHttpActionResult GetLocationResources()
         {
@@ -32,10 +39,16 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Get a LocationResource by its Id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult GetLocationResource(string id)
         {
-            var locationResource = _context.LocationResources.SingleOrDefault(c => c.Id == id);
+            var locationResource = _context.LocationResources
+                .SingleOrDefault(c => c.Id == id);
 
             if (locationResource == null)
                 return NotFound();
