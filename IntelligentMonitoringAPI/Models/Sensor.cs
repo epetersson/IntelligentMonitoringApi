@@ -7,6 +7,7 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models
 {
+    //TODO: UPDATEDDATETIME
     public class Sensor
     {
         [StringLength(50)]

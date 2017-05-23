@@ -6,6 +6,7 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models
 {
+    //TODO: UPDATEDDATETIME, BATTERY- AND SIGNAL UNIT
     public class Device
     {
         [StringLength(50)]

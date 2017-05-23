@@ -8,6 +8,7 @@ namespace IntelligentMonitoringAPI.Models
 {
     public class LocationResource
     {
+        //TODO: ADD POSITIONCOUNT
         [StringLength(50)]
         public string Id { get; set; }
 

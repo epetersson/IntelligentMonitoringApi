@@ -8,6 +8,7 @@ namespace IntelligentMonitoringAPI.Models
 
     public class DeviceHistory
     {
+        //TODO: SIGNAL UNIT, BATTERY UNIT, RENAME
         public int Id { get; set; }
 
         [Required]
@@ -23,6 +24,5 @@ namespace IntelligentMonitoringAPI.Models
         public decimal SignalStrength { get; set; }
 
         public decimal BatteryLevel { get; set; }
-
     }
 }

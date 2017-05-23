@@ -8,6 +8,7 @@ namespace IntelligentMonitoringAPI.Models
 
     public class DailyStatistic
     {
+        //TODO: RENAME PEAK: MAX, RENAME LOW: MIN, TIMESTAMP TO CREATEDTIMESTAMP
         public int Id { get; set; }
 
         [StringLength(50)]

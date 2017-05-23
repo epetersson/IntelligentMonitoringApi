@@ -6,6 +6,7 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models
 {
+    //TODO: CHANGE UNIXTIMESTAMP TO CREATEDDATETIME
     public class SensorMeasurement
     {
         public int Id { get; set; }

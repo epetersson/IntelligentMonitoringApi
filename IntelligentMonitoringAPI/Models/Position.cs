@@ -6,6 +6,7 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models
 {
+    //TODO: ADD PARENTLOCATIONAME, PARENTLOCATIONID
     public class Position
     {
         [StringLength(50)]

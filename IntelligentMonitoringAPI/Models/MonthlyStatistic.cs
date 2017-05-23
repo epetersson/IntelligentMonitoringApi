@@ -8,6 +8,7 @@ namespace IntelligentMonitoringAPI.Models
 
     public class MonthlyStatistic
     {
+        //TODO: DELETE MODEL, NOT USED
         public int Id { get; set; }
 
         public DateTime? TimeStamp { get; set; }
