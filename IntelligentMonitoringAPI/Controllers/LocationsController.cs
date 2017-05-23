@@ -15,11 +15,18 @@ namespace IntelligentMonitoringAPI.Controllers
     {
         private IntelliMonDbContext _context;
         
+        /// <summary>
+        /// Constructor initiates the database context.
+        /// </summary>
         public LocationsController()
         {
             _context = new IntelliMonDbContext();
         }
 
+        /// <summary>
+        /// Get all Locations
+        /// </summary>
+        /// <returns>JSON-Wrapped array of LocationDtos</returns>
         [HttpGet]
         public IHttpActionResult GetLocations()
         {
@@ -31,16 +38,40 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Get a Location by its Id
+        /// </summary>
+        /// <param name="id">string</param>
+        /// <returns>LocationDto</returns>
         [HttpGet]
         public IHttpActionResult GetLocation(string id)
         {
             var location = _context.Locations.SingleOrDefault(c => c.Id == id);
+
             if (location == null)
                 return NotFound();
 
-            var locationDto = Mapper.Map<Location, LocationDto>(location);
+            return Ok(Mapper.Map<Location, LocationDto>(location));
+        }
 
-            var response = new LocationWrapper {Location = locationDto };
+        /// <summary>
+        /// Get all Devices with in a Location by its Id
+        /// </summary>
+        /// <param name="id">string</param>
+        /// <returns>JSON-wrapped array with DeviceDtos</returns>
+        [HttpGet]
+        [Route("api/Locations/{id}/devices")]
+        public IHttpActionResult GetDevicesInLocation(string id)
+        {
+            var locationDeviceDtos = _context.Devices
+                .Where(c => c.LocationId == id)
+                .ToList()
+                .Select(Mapper.Map<Device, DeviceDto>);
+
+            if (!locationDeviceDtos.Any())
+                return NotFound();
+
+            var response = new DevicesWrapper { Devices = locationDeviceDtos };
 
             return Ok(response);
         }
@@ -89,23 +120,6 @@ namespace IntelligentMonitoringAPI.Controllers
             _context.SaveChanges();
 
             return Ok();
-        }
-
-        [HttpGet]
-        [Route("api/Locations/{id}/devices")]
-        public IHttpActionResult GetDevicesInLocation(string id)
-        {
-            var locationDeviceDtos = _context.Devices
-                .Where(c => c.LocationId == id)
-                .ToList()
-                .Select(Mapper.Map<Device, DeviceDto>);
-
-            if (!locationDeviceDtos.Any())
-                return NotFound();
-
-            var response = new DevicesWrapper { Devices = locationDeviceDtos };
-
-            return Ok(response);
         }
     }
 }
