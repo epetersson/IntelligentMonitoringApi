@@ -25,6 +25,7 @@ namespace IntelligentMonitoringAPI.Models
         public decimal MaxSignalStrength { get; set; }
 
         public decimal MinSignalStrength { get; set; }
+        public string SignalMeasurementUnit { get; set; }
 
         public int EventCount { get; set; }
 
@@ -32,7 +33,9 @@ namespace IntelligentMonitoringAPI.Models
 
         public bool PublicBoolHandled { get; set; }
 
-        public DateTime? CreatedDateTime { get; set; }
+        public DateTime? CreatedTimeStamp { get; set; }
+
+        public DateTime? UpdatedTimeStamp { get; set; }
 
         [StringLength(50)]
         public string PositionId { get; set; }

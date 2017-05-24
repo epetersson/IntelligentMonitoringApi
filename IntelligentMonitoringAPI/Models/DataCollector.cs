@@ -19,9 +19,11 @@ namespace IntelligentMonitoringAPI.Models
 
         public bool ContactLost { get; set; }
 
-        public long ContactLostTime { get; set; }
+        public DateTime? ContactLostTimeStamp { get; set; }
 
         public string DataCollectorTemplateName { get; set; }
+
+        public DateTime? UpdatedTimeStamp { get; set; }
 
         [StringLength(50)]
         public string PositionId { get; set; }
