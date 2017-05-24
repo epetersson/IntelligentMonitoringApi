@@ -1,14 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
 namespace IntelligentMonitoringAPI.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public class DeviceHistory
+    public class HourlyStatistic
     {
-        //TODO: SIGNAL UNIT, BATTERY UNIT, RENAME
         public int Id { get; set; }
 
         [Required]
@@ -22,6 +21,8 @@ namespace IntelligentMonitoringAPI.Models
         public DateTime? CreatedTimeStamp { get; set; }
 
         public decimal SignalStrength { get; set; }
+
+        public string SignalMeasurementUnit { get; set; }
 
         public decimal BatteryLevel { get; set; }
     }

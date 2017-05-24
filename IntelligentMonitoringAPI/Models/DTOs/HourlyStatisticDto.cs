@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IntelligentMonitoringAPI.Models.DTOs
 {
-    public class DeviceHistoryDto
+    public class HourlyStatisticDto
     {
         public int Id { get; set; }
 
@@ -13,11 +13,13 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public bool ContactLost { get; set; }
 
-        public string ContactLostTotalTime { get; set; }
+        public long ContactLostTotalTime { get; set; }
 
         public DateTime? CreatedTimeStamp { get; set; }
 
         public decimal SignalStrength { get; set; }
+
+        public string SignalMeasurementUnit { get; set; }
 
         public decimal BatteryLevel { get; set; }
     }
