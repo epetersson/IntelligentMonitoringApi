@@ -15,9 +15,9 @@ namespace IntelligentMonitoringBackend.ModelsDTO
 
         public bool IsDeviceDeleted { get; set; }
 
-        public DateTime? CreatedDateTime { get; set; }
+        public DateTime? CreatedTimeStamp { get; set; }
 
-        public DateTime? ResetDateTime { get; set; }
+        public DateTime? ResetTimeStamp { get; set; }
 
         public bool Active { get; set; }
 

@@ -84,12 +84,12 @@ namespace IntelligentMonitoringAPI.Controllers
 
             var eventDtos = _context.Events.ToList()
                 .Where(c => c.DeviceId == deviceId)
-                .Where(c => c.CreatedDateTime >= startDate && c.CreatedDateTime <= endingDate)
+                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
                 .Select(Mapper.Map<Event, EventDto>);
 
             var customEventsDtos = _context.CustomEvents.ToList()
                 .Where(c => c.DeviceId == deviceId)
-                .Where(c => c.CreatedDateTime >= startDate && c.CreatedDateTime <= endingDate)
+                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
                 .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 
             var response = new EventsWrapper {Events = eventDtos, CustomEvents = customEventsDtos};
