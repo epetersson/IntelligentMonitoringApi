@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,20 +8,24 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DailyStatisticDto
     {
-        public int Id { get; set; }
-
+        [Required]
+        [StringLength(50)]
         public string DeviceId { get; set; }
 
-        public DateTime? TimeStamp { get; set; }
+        public DateTime CreatedTimeStamp { get; set; }
 
-        public decimal Average { get; set; }
+        public decimal AverageSignalStrength { get; set; }
 
-        public decimal Peak { get; set; }
+        public decimal MaxSignalStrength { get; set; }
 
-        public decimal Low { get; set; }
+        public decimal MinSignalStrength { get; set; }
+
+        public string SignalMeasurementUnit { get; set; }
 
         public long CollectiveContactLostTime { get; set; }
 
         public int CollectiveContactLostCount { get; set; }
+
+        public Device Device { get; set; }
     }
 }

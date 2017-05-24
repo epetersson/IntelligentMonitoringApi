@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,9 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class CustomEventDto
     {
-        public DateTime? CreatedDateTime { get; set; }
+        public int Id { get; set; }
+
+        public DateTime CreatedTimeStamp { get; set; }
 
         public bool Active { get; set; }
 
@@ -25,8 +28,10 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string TriggerName { get; set; }
 
+        [StringLength(50)]
         public string TriggerOperator { get; set; }
 
+        [StringLength(50)]
         public string DeviceId { get; set; }
 
         public string DeviceName { get; set; }

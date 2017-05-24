@@ -278,6 +278,10 @@
     <Compile Include="Migrations\201705181734195_GeneratedNewModelsFromDB.Designer.cs">
       <DependentUpon>201705181734195_GeneratedNewModelsFromDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705241721391_newModels2.cs" />
+    <Compile Include="Migrations\201705241721391_newModels2.Designer.cs">
+      <DependentUpon>201705241721391_newModels2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
     <Compile Include="Models\CustomEvent.cs" />
     <Compile Include="Models\DTOs\CustomEventDto.cs" />
@@ -721,6 +725,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705181734195_GeneratedNewModelsFromDB.resx">
       <DependentUpon>201705181734195_GeneratedNewModelsFromDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241721391_newModels2.resx">
+      <DependentUpon>201705241721391_newModels2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
