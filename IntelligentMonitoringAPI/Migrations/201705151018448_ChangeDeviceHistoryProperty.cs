@@ -7,13 +7,13 @@ namespace IntelligentMonitoringAPI.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.DeviceHistories", "ContactLostTotalTime", c => c.Long(nullable: false));
+            AlterColumn("dbo.HourlyStatistics", "ContactLostTotalTime", c => c.Long(nullable: false));
             RenameColumn("dbo.DailyStatistics", "FailureProneDeviceId", "DeviceId");
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.DeviceHistories", "ContactLostTotalTime", c => c.String());
+            AlterColumn("dbo.HourlyStatistics", "ContactLostTotalTime", c => c.String());
             RenameColumn("dbo.DailyStatistics", "DeviceId", "FailureProneDeviceId");
         }
     }

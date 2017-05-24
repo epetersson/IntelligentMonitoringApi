@@ -36,6 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>App_Data/XmlDocument.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -282,10 +283,51 @@
     <Compile Include="Migrations\201705241721391_newModels2.Designer.cs">
       <DependentUpon>201705241721391_newModels2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705241825024_RenamedDeviceHistoriesAndDeletedStatistics.cs" />
+    <Compile Include="Migrations\201705241825024_RenamedDeviceHistoriesAndDeletedStatistics.Designer.cs">
+      <DependentUpon>201705241825024_RenamedDeviceHistoriesAndDeletedStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241830439_RenamedPropertyInAccumulatedStatistic.cs" />
+    <Compile Include="Migrations\201705241830439_RenamedPropertyInAccumulatedStatistic.Designer.cs">
+      <DependentUpon>201705241830439_RenamedPropertyInAccumulatedStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241925002_RefactoredModels1.cs" />
+    <Compile Include="Migrations\201705241925002_RefactoredModels1.Designer.cs">
+      <DependentUpon>201705241925002_RefactoredModels1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241928088_AddForeignKeyToPosition.cs" />
+    <Compile Include="Migrations\201705241928088_AddForeignKeyToPosition.Designer.cs">
+      <DependentUpon>201705241928088_AddForeignKeyToPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241932230_AddRealTimeToken.cs" />
+    <Compile Include="Migrations\201705241932230_AddRealTimeToken.Designer.cs">
+      <DependentUpon>201705241932230_AddRealTimeToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705241954296_MadeDateTimesNullable.cs" />
+    <Compile Include="Migrations\201705241954296_MadeDateTimesNullable.Designer.cs">
+      <DependentUpon>201705241954296_MadeDateTimesNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242007324_ChangedContactLostTime.cs" />
+    <Compile Include="Migrations\201705242007324_ChangedContactLostTime.Designer.cs">
+      <DependentUpon>201705242007324_ChangedContactLostTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242024084_AddUpdatedTimeStampToLocation.cs" />
+    <Compile Include="Migrations\201705242024084_AddUpdatedTimeStampToLocation.Designer.cs">
+      <DependentUpon>201705242024084_AddUpdatedTimeStampToLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242030081_RenamedDateTimeInEvent.cs" />
+    <Compile Include="Migrations\201705242030081_RenamedDateTimeInEvent.Designer.cs">
+      <DependentUpon>201705242030081_RenamedDateTimeInEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.cs" />
+    <Compile Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.Designer.cs">
+      <DependentUpon>201705242040368_RenamedDateTimeInSensorMeasurement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
     <Compile Include="Models\CustomEvent.cs" />
     <Compile Include="Models\DTOs\CustomEventDto.cs" />
     <Compile Include="Models\FailurePronedDevice.cs" />
+    <Compile Include="Models\RealTimeToken.cs" />
     <Compile Include="Models\Wrappers\UserConversationWrapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -464,15 +506,14 @@
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DataCollector.cs" />
     <Compile Include="Models\Device.cs" />
-    <Compile Include="Models\DeviceHistory.cs" />
+    <Compile Include="Models\HourlyStatistic.cs" />
     <Compile Include="Models\DeviceNetwork.cs" />
     <Compile Include="Models\DTOs\DailyStatisticDto.cs" />
     <Compile Include="Models\DTOs\DeviceDto.cs" />
-    <Compile Include="Models\DTOs\DeviceHistoryDto.cs" />
+    <Compile Include="Models\DTOs\HourlyStatisticDto.cs" />
     <Compile Include="Models\DTOs\EventDto.cs" />
     <Compile Include="Models\DTOs\LocationResourceDto.cs" />
     <Compile Include="Models\DTOs\DeviceNetworkDto.cs" />
-    <Compile Include="Models\DTOs\DeviceSensorDto.cs" />
     <Compile Include="Models\DTOs\LocationDto.cs" />
     <Compile Include="Models\DTOs\PositionDto.cs" />
     <Compile Include="Models\DTOs\SensorDto.cs" />
@@ -486,14 +527,11 @@
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorMeasurement.cs" />
     <Compile Include="Models\DailyStatistic.cs" />
-    <Compile Include="Models\MonthlyStatistic.cs" />
-    <Compile Include="Models\WeeklyStatistic.cs" />
     <Compile Include="Models\Wrappers\DailyStatisticsWrapper.cs" />
-    <Compile Include="Models\Wrappers\DeviceHistoriesWrapper.cs" />
+    <Compile Include="Models\Wrappers\HourlyStatisticsWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationResourcesWrapper.cs" />
     <Compile Include="Models\Wrappers\LocationResourceWrapper.cs" />
     <Compile Include="Models\Wrappers\PositionsWrapper.cs" />
-    <Compile Include="Models\YearlyStatistic.cs" />
     <Compile Include="Models\UserConversation.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworksWrapper.cs" />
     <Compile Include="Models\Wrappers\DeviceNetworkWrapper.cs" />
@@ -728,6 +766,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705241721391_newModels2.resx">
       <DependentUpon>201705241721391_newModels2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241825024_RenamedDeviceHistoriesAndDeletedStatistics.resx">
+      <DependentUpon>201705241825024_RenamedDeviceHistoriesAndDeletedStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241830439_RenamedPropertyInAccumulatedStatistic.resx">
+      <DependentUpon>201705241830439_RenamedPropertyInAccumulatedStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241925002_RefactoredModels1.resx">
+      <DependentUpon>201705241925002_RefactoredModels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241928088_AddForeignKeyToPosition.resx">
+      <DependentUpon>201705241928088_AddForeignKeyToPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241932230_AddRealTimeToken.resx">
+      <DependentUpon>201705241932230_AddRealTimeToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241954296_MadeDateTimesNullable.resx">
+      <DependentUpon>201705241954296_MadeDateTimesNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242007324_ChangedContactLostTime.resx">
+      <DependentUpon>201705242007324_ChangedContactLostTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242024084_AddUpdatedTimeStampToLocation.resx">
+      <DependentUpon>201705242024084_AddUpdatedTimeStampToLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242030081_RenamedDateTimeInEvent.resx">
+      <DependentUpon>201705242030081_RenamedDateTimeInEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.resx">
+      <DependentUpon>201705242040368_RenamedDateTimeInSensorMeasurement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
