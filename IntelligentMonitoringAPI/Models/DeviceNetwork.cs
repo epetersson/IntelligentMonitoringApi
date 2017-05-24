@@ -10,7 +10,13 @@ namespace IntelligentMonitoringAPI.Models
     {
         [StringLength(50)]
         public string Id { get; set; } 
+
         public string Name { get; set; }
+
         public string TenantName { get; set; }
+
+        public string AuthToken { get; set; }
+
+        public DateTime? UpdatedTimeStamp { get; set; }
     }
 }

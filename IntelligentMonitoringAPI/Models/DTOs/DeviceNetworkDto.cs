@@ -9,7 +9,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DeviceNetworkDto
     {
-        [StringLength(50)]
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -18,6 +17,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string AuthToken { get; set; }
 
-        public DateTime UpdatedTimeStamp { get; set; }
+        public DateTime? UpdatedTimeStamp { get; set; }
     }
 }
