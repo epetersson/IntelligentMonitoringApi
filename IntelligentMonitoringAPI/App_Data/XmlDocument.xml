@@ -499,7 +499,7 @@
         </member>
         <member name="M:IntelligentMonitoringAPI.Controllers.StatisticsController.GetDeviceHistoryByDeviceId(System.String)">
             <summary>
-            Method defines endpoint for getting all DeviceHistories for specified device.
+            Method defines endpoint for getting all HourlyStatistics for specified device.
             </summary>
             <param name="deviceId">string</param>
             <returns>Array of DeviceHistoryDtos wrapped in JSON-object</returns>
