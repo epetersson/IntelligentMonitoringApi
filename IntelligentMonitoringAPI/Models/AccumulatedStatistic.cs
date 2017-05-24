@@ -13,7 +13,7 @@ namespace IntelligentMonitoringAPI.Models
         [StringLength(50)]
         public string DeviceId { get; set; }
 
-        public DateTime? LastUpdate { get; set; }
+        public DateTime? UpdatedTimeStamp { get; set; }
 
         public decimal AverageSignalStrength { get; set; }
 
