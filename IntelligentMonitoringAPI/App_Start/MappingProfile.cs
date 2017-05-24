@@ -40,8 +40,8 @@ namespace IntelligentMonitoringAPI.App_Start
             Mapper.CreateMap<LocationResource, LocationResourceDto>();
             Mapper.CreateMap<LocationResourceDto, LocationResource>();
 
-            Mapper.CreateMap<DeviceHistory, DeviceHistoryDto>();
-            Mapper.CreateMap<DeviceHistoryDto, DeviceHistory>();
+            Mapper.CreateMap<HourlyStatistic, HourlyStatisticDto>();
+            Mapper.CreateMap<HourlyStatisticDto, HourlyStatistic>();
 
             Mapper.CreateMap<DailyStatistic, DailyStatisticDto>();
             Mapper.CreateMap<DailyStatisticDto, DailyStatistic>();
