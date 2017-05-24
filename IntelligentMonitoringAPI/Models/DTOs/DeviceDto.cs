@@ -12,35 +12,25 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
     public class DeviceDto
     {
-        [StringLength(50)]
         public string Id { get; set; }
 
-        [StringLength(50)]
-        public string DataCollectorId { get; set; }
-
-        public string DataCollectorName { get; set; }
-
-        public bool IsRegistered { get; set; }
+        public string Name { get; set; }
 
         public string DeviceTypeName { get; set; }
 
         public DateTime UpdatedTimeStamp { get; set; }
 
+        public bool IsRegistered { get; set; }
+
         public long LastSeen { get; set; }
 
         public bool ContactLost { get; set; }
 
-        public int ContactLostCount { get; set; }
-
-        public long ContactLostTime { get; set; }
+        public DateTime ContactLostTimeStamp { get; set; }
 
         public long ContactLostTotalTime { get; set; }
 
         public decimal ContactLostThreshold { get; set; }
-
-        public int EventCount { get; set; }
-
-        public int SensorCount { get; set; }
 
         public decimal SignalStrength { get; set; }
 
@@ -50,19 +40,14 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public bool LastDeviceState { get; set; }
 
-        public string Name { get; set; }
+        public string DataCollectorId { get; set; }
 
-        [StringLength(50)]
+        public string DataCollectorName { get; set; }
+
         public string PositionId { get; set; }
 
-        [StringLength(50)]
         public string LocationId { get; set; }
 
         public string LocationName { get; set; }
-
-        public Location Location { get; set; }
-
-        public Position Position { get; set; }
-
     }
 }
