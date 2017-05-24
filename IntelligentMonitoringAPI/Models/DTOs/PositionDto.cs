@@ -8,7 +8,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class PositionDto
     {
-        [StringLength(50)]
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -19,17 +18,16 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public decimal Z { get; set; }
 
-        public DateTime UpdatedDateTime { get; set; }
+        public string EntityId { get; set; }
 
-        [StringLength(50)]
+        public string EntityType { get; set; }
+
+        public DateTime UpdatedTimeStamp { get; set; }
+
         public string LocationResourceId { get; set; }
 
         public string ParentLocationId { get; set; }
 
         public string ParentLocationName { get; set; }
-
-        public string EntityId { get; set; }
-
-        public string EntityType { get; set; }
     }
 }
