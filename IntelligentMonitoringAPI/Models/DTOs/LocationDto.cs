@@ -9,24 +9,20 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class LocationDto
     {
-        [StringLength(50)]
         public string Id { get; set; }
 
         public string Name { get; set; }
 
-        public string ParentLocationName { get; set; }
-
-        public string ParentLocationId { get; set; }
+        public int LocationType { get; set; }
 
         public int ChildLocationCount { get; set; }
 
-        public int LocationType { get; set; }
+        public string ParentLocationId { get; set; }
+
+        public string ParentLocationName { get; set; }
 
         public DateTime UpdatedTimeStamp { get; set; }
 
-        [StringLength(50)]
         public string DeviceNetworkId { get; set; }
-
-        public DeviceNetwork DeviceNetwork { get; set; }
     }
 }
