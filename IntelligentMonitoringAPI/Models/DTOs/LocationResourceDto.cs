@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class LocationResourceDto
     {
+        [StringLength(50)]
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -15,6 +17,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string ResourceType { get; set; }
 
+        [StringLength(50)]
         public string ParentLocationId { get; set; }
 
         public string Uri { get; set; }
@@ -31,8 +34,14 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public int Height { get; set; }
 
+        public int ChildPositionCount { get; set; }
+
         public string MimeType { get; set; }
 
         public string FileExtension { get; set; }
+
+        public DateTime UpdatedTimeStamp { get; set; }
+
+        public Location Location { get; set; }
     }
 }

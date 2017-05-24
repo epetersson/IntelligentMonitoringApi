@@ -18,9 +18,15 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string ParentLocationId { get; set; }
 
+        public int ChildLocationCount { get; set; }
+
         public int LocationType { get; set; }
+
+        public DateTime UpdatedTimeStamp { get; set; }
 
         [StringLength(50)]
         public string DeviceNetworkId { get; set; }
+
+        public DeviceNetwork DeviceNetwork { get; set; }
     }
 }
