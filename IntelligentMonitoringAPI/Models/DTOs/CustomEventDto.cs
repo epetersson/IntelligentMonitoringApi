@@ -10,7 +10,7 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     {
         public int Id { get; set; }
 
-        public DateTime CreatedTimeStamp { get; set; }
+        public DateTime? CreatedTimeStamp { get; set; }
 
         public bool Active { get; set; }
 
@@ -28,10 +28,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string TriggerName { get; set; }
 
-        [StringLength(50)]
         public string TriggerOperator { get; set; }
 
-        [StringLength(50)]
         public string DeviceId { get; set; }
 
         public string DeviceName { get; set; }
