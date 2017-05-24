@@ -10,17 +10,12 @@ namespace IntelligentMonitoringAPI.Models.DTOs
     {
         public int Id { get; set; }
 
-        [StringLength(50)]
         public string SensorId { get; set; }
 
-
-        public DateTime CreatedDateTime { get; set; }
+        public DateTime? CreatedTimeStamp { get; set; }
 
         public decimal Value { get; set; }
 
-        [StringLength(200)]
         public string MeasurementUnit { get; set; }
-
-        public Sensor Sensor { get; set; }
     }
 }
