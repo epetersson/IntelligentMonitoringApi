@@ -8,7 +8,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class DailyStatisticDto
     {
-        [Required]
+        public int Id { get; set; }
+
         [StringLength(50)]
         public string DeviceId { get; set; }
 
@@ -25,7 +26,5 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public long CollectiveContactLostTime { get; set; }
 
         public int CollectiveContactLostCount { get; set; }
-
-        public Device Device { get; set; }
     }
 }
