@@ -9,7 +9,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 {
     public class SensorDto
     {
-        [StringLength(50)]
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -18,7 +17,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string SensorTypeName { get; set; }
 
-        [StringLength(50)]
+        public string MeasurementUnit { get; set; }
+
         public string DeviceId { get; set; }
 
         public string DeviceName { get; set; }
@@ -26,9 +26,5 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public bool IsVirtual { get; set; }
 
         public DateTime UpdatedTimeStamp { get; set; }
-
-        public string MeasurementUnit { get; set; }
-
-        public Device Device { get; set; }
     }
 }
