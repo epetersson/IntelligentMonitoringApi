@@ -39,7 +39,7 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all DeviceHistories for specified device.
+        /// Method defines endpoint for getting all HourlyStatistics for specified device.
         /// </summary>
         /// <param name="deviceId">string</param>
         /// <returns>Array of DeviceHistoryDtos wrapped in JSON-object</returns>
@@ -48,11 +48,11 @@ namespace IntelligentMonitoringAPI.Controllers
         public IHttpActionResult GetDeviceHistoryByDeviceId(string deviceId)
         {
             var deviceHistoryDtos =
-                _context.DeviceHistories.ToList()
+                _context.HourlyStatistics.ToList()
                     .Where(c => c.DeviceId == deviceId)
-                    .Select(Mapper.Map<DeviceHistory, DeviceHistoryDto>);
+                    .Select(Mapper.Map<HourlyStatistic, HourlyStatisticDto>);
 
-            var response = new DeviceHistoriesWrapper {DeviceHistories = deviceHistoryDtos};
+            var response = new HourlyStatisticsWrapper {HourlyStatistics = deviceHistoryDtos};
 
             return Ok(response);
         }
@@ -90,7 +90,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
             var dailyStatisticDtos = _context.DailyStatistics.ToList()
                 .Where(c => c.DeviceId == deviceId)
-                .Where(c => c.TimeStamp >= startDate && c.TimeStamp <= endingDate)
+                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
                 .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
 
             var response = new DailyStatisticsWrapper { DailyStatistics = dailyStatisticDtos };
