@@ -6,8 +6,8 @@ using IntelligentMonitoringAPI.Models.DTOs;
 
 namespace IntelligentMonitoringAPI.Models.Wrappers
 {
-    public class DeviceHistoriesWrapper
+    public class HourlyStatisticsWrapper
     {
-        public IEnumerable<DeviceHistoryDto> DeviceHistories { get; set; }
+        public IEnumerable<HourlyStatisticDto> HourlyStatistics { get; set; }
     }
 }
