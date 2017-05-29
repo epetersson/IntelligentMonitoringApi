@@ -15,6 +15,8 @@ namespace IntelligentMonitoringAPI.Models
 
         public DateTime? CreatedTimeStamp { get; set; }
 
+        public decimal AverageBatteryLevel { get; set; }
+
         public decimal AverageSignalStrength { get; set; }
 
         public decimal MaxSignalStrength { get; set; }

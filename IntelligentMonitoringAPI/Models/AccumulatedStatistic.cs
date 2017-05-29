@@ -21,8 +21,6 @@ namespace IntelligentMonitoringAPI.Models
 
         public decimal MinSignalStrength { get; set; }
 
-        public long CollectiveContactLostTime { get; set; }
-
-        public int CollectiveContactLostCount { get; set; }
+        public decimal AverageBatteryLevel { get; set; }
     }
 }
