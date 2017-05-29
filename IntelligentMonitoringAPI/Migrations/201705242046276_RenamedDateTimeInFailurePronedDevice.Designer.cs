@@ -7,13 +7,13 @@ namespace IntelligentMonitoringAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedAverageBattery : IMigrationMetadata
+    public sealed partial class RenamedDateTimeInFailurePronedDevice : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedAverageBattery));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RenamedDateTimeInFailurePronedDevice));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705290824285_addedAverageBattery"; }
+            get { return "201705242046276_RenamedDateTimeInFailurePronedDevice"; }
         }
         
         string IMigrationMetadata.Source

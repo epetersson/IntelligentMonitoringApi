@@ -323,9 +323,9 @@
     <Compile Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.Designer.cs">
       <DependentUpon>201705242040368_RenamedDateTimeInSensorMeasurement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705290826148_addedAverageBattery.cs" />
-    <Compile Include="Migrations\201705290826148_addedAverageBattery.Designer.cs">
-      <DependentUpon>201705290826148_addedAverageBattery.cs</DependentUpon>
+    <Compile Include="Migrations\201705242046276_RenamedDateTimeInFailurePronedDevice.cs" />
+    <Compile Include="Migrations\201705242046276_RenamedDateTimeInFailurePronedDevice.Designer.cs">
+      <DependentUpon>201705242046276_RenamedDateTimeInFailurePronedDevice.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
     <Compile Include="Models\CustomEvent.cs" />
@@ -801,8 +801,8 @@
     <EmbeddedResource Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.resx">
       <DependentUpon>201705242040368_RenamedDateTimeInSensorMeasurement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705290826148_addedAverageBattery.resx">
-      <DependentUpon>201705290826148_addedAverageBattery.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705242046276_RenamedDateTimeInFailurePronedDevice.resx">
+      <DependentUpon>201705242046276_RenamedDateTimeInFailurePronedDevice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

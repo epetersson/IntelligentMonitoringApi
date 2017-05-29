@@ -16,8 +16,6 @@ namespace IntelligentMonitoringAPI.Models
 
         public string DeviceName { get; set; }
 
-        public decimal AverageBatteryLevel { get; set; }
-
         public int ContactLostCount { get; set; }
 
         public long ContactLostTotalTime { get; set; }
@@ -34,6 +32,8 @@ namespace IntelligentMonitoringAPI.Models
         public string MostCommonEventName { get; set; }
 
         public bool PublicBoolHandled { get; set; }
+
+        public DateTime? CreatedTimeStamp { get; set; }
 
         public DateTime? UpdatedTimeStamp { get; set; }
 
