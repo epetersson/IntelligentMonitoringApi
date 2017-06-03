@@ -35,7 +35,7 @@ namespace IntelligentMonitoringAPI.Controllers
 
             var response = new AuthorizationTokensWrapper {AuthorizationToken = authorizationTokens};
 
-            return Ok(response);
+            return Ok("Not available right now! Only authorized users!");
         }
 
         /// <summary>
