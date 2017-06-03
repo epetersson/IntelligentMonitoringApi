@@ -32,9 +32,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Endpoint returns all Devices
+        /// Get all Devices
         /// </summary>
-        /// <returns>Array of DeviceDtos wrapped in JSON-Object</returns>
+        /// <returns>JSON-wrapped array of Devices</returns>
         [HttpGet]
         public IHttpActionResult GetDevices()
         {
@@ -47,10 +47,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting a deviced by id.
+        /// Get a device by its id.
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>DeviceDto</returns>
+        /// <returns>Device</returns>
         [HttpGet]
         public IHttpActionResult GetDevice(string id)
         {
@@ -64,10 +64,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting a device by name
+        /// Get a device by name.
         /// </summary>
         /// <param name="deviceName">string</param>
-        /// <returns>DeviceDto</returns>
+        /// <returns>Device</returns>
         [HttpGet]
         public IHttpActionResult GetDeviceByName(string deviceName)
         {
@@ -81,10 +81,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all sensors within a device by the devices' id.
+        /// Get all sensors within a device by the devices' id.
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>Array of SensorDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of Sensors</returns>
         [HttpGet]
         [Route("api/Devices/{id}/sensors")]
         public IHttpActionResult GetDeviceSensors(string id)
@@ -103,10 +103,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting a devices' position by id.
+        /// Get a devices' position by Id.
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>PositionDto</returns>
+        /// <returns>Position</returns>
         [HttpGet]
         [Route("api/Devices/{id}/position")]
         public IHttpActionResult GetDevicePosition(string id)
@@ -124,10 +124,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting events of a device by id.
+        /// Get events for a device by its id.
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>Array of EventDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of Events</returns>
         [HttpGet]
         [Route("api/Devices/{id}/events")]
         public IHttpActionResult GetEventsForDevice(string id)
@@ -146,54 +146,21 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
-        public IHttpActionResult CreateDevice(DeviceDto deviceDto)
+        /// <summary>
+        /// Get all Failure Proned Devices
+        /// </summary>
+        /// <returns>JSON-wrapped array of FailurePronedDevices</returns>
+        [HttpGet]
+        [Route("api/Devices/FailureProned")]
+        public IHttpActionResult GetFailurePronedDevices()
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-            
-            var device = Mapper.Map<DeviceDto, Device>(deviceDto);
+            var failurePronedDeviceDtos = _context.FailurePronedDevices
+                .ToList()
+                .Select(Mapper.Map<FailurePronedDevice,FailurePronedDeviceDto>);
 
-            _context.Devices.Add(device);
-            _context.SaveChanges();
+            var response = new FailurePronedDevicesWrapper {FailurePronedDevices = failurePronedDeviceDtos};
 
-            deviceDto.Id = device.Id;
-
-            return Created(new Uri(Request.RequestUri + "/" + device.Id), deviceDto);
-        }
-        
-        
-        [HttpPut]
-        public IHttpActionResult UpdateDevice(string id, DeviceDto deviceDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var deviceInDb = _context.Devices.SingleOrDefault(c => c.Id == id);
-
-            if (deviceInDb == null)
-                return NotFound();
-
-            Mapper.Map(deviceDto, deviceInDb);
-
-            _context.SaveChanges();
-
-            return Ok();
-
-        }
-
-        [HttpDelete]
-        public IHttpActionResult DeleteDevice(string id)
-        {
-            var device = _context.Devices.SingleOrDefault(c => c.Id == id);
-
-            if (device == null)
-                return NotFound();
-
-            _context.Devices.Remove(device);
-            _context.SaveChanges();
-
-            return Ok();
+            return Ok(response);
         }
     }
 }

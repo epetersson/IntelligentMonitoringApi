@@ -1,17 +1,15 @@
-namespace IntelligentMonitoringAPI.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
-    public class FailurePronedDevice
+namespace IntelligentMonitoringAPI.Models.DTOs
+{
+    public class FailurePronedDeviceDto
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string DeviceId { get; set; }
 
         public string DeviceName { get; set; }
@@ -37,10 +35,8 @@ namespace IntelligentMonitoringAPI.Models
 
         public DateTime? UpdatedTimeStamp { get; set; }
 
-        [StringLength(50)]
         public string PositionId { get; set; }
 
-        [StringLength(50)]
         public string LocationId { get; set; }
 
         public string LocationName { get; set; }

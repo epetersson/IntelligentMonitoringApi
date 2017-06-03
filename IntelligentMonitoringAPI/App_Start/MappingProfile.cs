@@ -48,6 +48,9 @@ namespace IntelligentMonitoringAPI.App_Start
 
             Mapper.CreateMap<Position, PositionDto>();
             Mapper.CreateMap<PositionDto, Position>();
+
+            Mapper.CreateMap<FailurePronedDevice, FailurePronedDeviceDto>();
+            Mapper.CreateMap<FailurePronedDeviceDto, FailurePronedDevice>();
         }
     }
 }
