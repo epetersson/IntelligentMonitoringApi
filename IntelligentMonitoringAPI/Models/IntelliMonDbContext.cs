@@ -7,14 +7,13 @@ namespace IntelligentMonitoringAPI.Models
 {
     public class IntelliMonDbContext : DbContext
     {
-        public IntelliMonDbContext()
-            : base("name=IntelliMonDbContext")
-        {
-        }
+        public IntelliMonDbContext() : base("name=IntelliMonDbContext"){ }
         
         public DbSet<Device> Devices { get; set; }
 
         public DbSet<Event> Events { get; set; }
+
+        public DbSet<AuthorizationToken> AuthorizationTokens { get; set; }
 
         public DbSet<Location> Locations { get; set; }
 
@@ -46,6 +45,7 @@ namespace IntelligentMonitoringAPI.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
         }
 
         public static IntelliMonDbContext Create()

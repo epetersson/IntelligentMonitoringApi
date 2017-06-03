@@ -18,6 +18,7 @@ namespace IntelligentMonitoringAPI.Controllers
     public class EventsController : ApiController
     {
         private IntelliMonDbContext _context;
+        private DeviceNetwork deviceNetwork;
 
         /// <summary>
         /// Constructor initiates the database context.
@@ -25,6 +26,29 @@ namespace IntelligentMonitoringAPI.Controllers
         public EventsController()
         {
             _context = new IntelliMonDbContext();
+
+            GetDeviceNetwork();
+        }
+
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }
+                else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }
+            else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
         }
 
         /// <summary>
@@ -35,11 +59,13 @@ namespace IntelligentMonitoringAPI.Controllers
         public IHttpActionResult GetEvents()
         {
             var eventDtos = _context.Events
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
                 .ToList()
                 .Select(Mapper.Map<Event, EventDto>);
             
             
             var customEventsDtos = _context.CustomEvents
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
                 .ToList()
                 .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 

@@ -10,6 +10,9 @@ namespace IntelligentMonitoringAPI.Models
     {
         public int Id { get; set; }
 
+        [StringLength(50)]
+        public string DeviceNetworkId { get; set; }
+
         public DateTime? CreatedTimeStamp { get; set; }
 
         public bool Active { get; set; }

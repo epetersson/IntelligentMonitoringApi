@@ -11,6 +11,9 @@ namespace IntelligentMonitoringAPI.Models
         public int Id { get; set; }
 
         [StringLength(50)]
+        public string DeviceNetworkId { get; set; }
+
+        [StringLength(50)]
         public string SensorId { get; set; }
 
         public DateTime? CreatedTimeStamp { get; set; }

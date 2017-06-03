@@ -15,16 +15,40 @@ namespace IntelligentMonitoringAPI.Controllers
     public class PositionsController : ApiController
     {
         private IntelliMonDbContext _context;
+        private DeviceNetwork deviceNetwork;
 
         public PositionsController()
         {
             _context = new IntelliMonDbContext();
+            GetDeviceNetwork();
+        }
+
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }
+                else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }
+            else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
         }
 
         [HttpGet]
         public IHttpActionResult GetPositions()
         {
             var positionDtos = _context.Positions
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
                 .ToList()
                 .Select(Mapper.Map<Position, PositionDto>);
 

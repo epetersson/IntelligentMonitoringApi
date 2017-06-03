@@ -7,8 +7,8 @@ namespace IntelligentMonitoringAPI.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.FailurePronedDevices", "CreatedTimeStamp", c => c.DateTime());
-            DropColumn("dbo.FailurePronedDevices", "CreatedDateTime");
+           // AddColumn("dbo.FailurePronedDevices", "CreatedTimeStamp", c => c.DateTime());
+            //DropColumn("dbo.FailurePronedDevices", "CreatedDateTime");
         }
         
         public override void Down()

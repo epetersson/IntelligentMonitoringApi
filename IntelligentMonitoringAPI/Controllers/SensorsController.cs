@@ -15,16 +15,41 @@ namespace IntelligentMonitoringAPI.Controllers
     {
         
         private IntelliMonDbContext _context;
+        private DeviceNetwork deviceNetwork;
 
         public SensorsController()
         {
             _context = new IntelliMonDbContext();
+            GetDeviceNetwork();
+        }
+
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }
+                else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }
+            else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
         }
 
         [HttpGet]
         public IHttpActionResult GetSensors()
         {
-            var sensorDtos = _context.Sensors.ToList()
+            var sensorDtos = _context.Sensors
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
+                .ToList()
                 .Select(Mapper.Map<Sensor, SensorDto>);
 
             var response = new SensorsWrapper { Sensors = sensorDtos };

@@ -87,8 +87,6 @@ namespace IntelligentMonitoringAPI.Controllers
             jsonObject1.conversations = JToken.FromObject(conversations);
             jsonObject1.events = JToken.FromObject(dbEvent);
 
-            
-
             RestClient client = new RestClient("http://intelligentmonitoringbotservice.azurewebsites.net/api/1/");
             var request = new RestRequest($"notify/conversationsEvents", Method.POST);
 

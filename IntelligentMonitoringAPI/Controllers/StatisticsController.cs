@@ -17,10 +17,33 @@ namespace IntelligentMonitoringAPI.Controllers
     public class StatisticsController : ApiController
     {
         private IntelliMonDbContext _context;
+        private DeviceNetwork deviceNetwork;
 
         public StatisticsController()
         {
             _context = new IntelliMonDbContext();
+            GetDeviceNetwork();
+        }
+
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }
+                else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }
+            else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
         }
 
         /// <summary>
@@ -30,7 +53,9 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDailyStatistics()
         {
-            var dailyStatisticDtos = _context.DailyStatistics.ToList()
+            var dailyStatisticDtos = _context.DailyStatistics
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
+                .ToList()
                 .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
 
             var response = new DailyStatisticsWrapper() { DailyStatistics = dailyStatisticDtos };
@@ -89,7 +114,7 @@ namespace IntelligentMonitoringAPI.Controllers
             var endingDate = endDate.AddDays(1);
 
             var dailyStatisticDtos = _context.DailyStatistics.ToList()
-                .Where(c => c.DeviceId == deviceId)
+                .Where(c => c.DeviceId == deviceId).ToList()
                 .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
                 .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
 
