@@ -21,6 +21,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public decimal MinSignalStrength { get; set; }
 
+        public decimal AverageBatteryLevel { get; set; }
+
         public string SignalMeasurementUnit { get; set; }
 
         public long CollectiveContactLostTime { get; set; }

@@ -11,6 +11,9 @@ using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
+    /// <summary>
+    /// Class defines endpoints related to Location
+    /// </summary>
     public class LocationsController : ApiController
     {
         private IntelliMonDbContext _context;
@@ -26,7 +29,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// <summary>
         /// Get all Locations
         /// </summary>
-        /// <returns>JSON-Wrapped array of LocationDtos</returns>
+        /// <returns>JSON-Wrapped array of Location</returns>
         [HttpGet]
         public IHttpActionResult GetLocations()
         {
@@ -42,7 +45,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// Get a Location by its Id
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>LocationDto</returns>
+        /// <returns>Location</returns>
         [HttpGet]
         public IHttpActionResult GetLocation(string id)
         {
@@ -55,10 +58,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Get all Devices with in a Location by its Id
+        /// Get all Devices within a Location by its Id
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>JSON-wrapped array with DeviceDtos</returns>
+        /// <returns>JSON-wrapped array with Devices</returns>
         [HttpGet]
         [Route("api/Locations/{id}/devices")]
         public IHttpActionResult GetDevicesInLocation(string id)
@@ -74,52 +77,6 @@ namespace IntelligentMonitoringAPI.Controllers
             var response = new DevicesWrapper { Devices = locationDeviceDtos };
 
             return Ok(response);
-        }
-
-        [HttpPost]
-        public IHttpActionResult CreateLocation(LocationDto locationDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var location = Mapper.Map<LocationDto, Location>(locationDto);
-
-            _context.Locations.Add(location);
-            _context.SaveChanges();
-
-            locationDto.Id = location.Id;
-
-            var response = new LocationWrapper { Location = locationDto };
-
-            return Created(new Uri(Request.RequestUri + "/" + location.Id), response);
-        }
-
-        [HttpPut]
-        public IHttpActionResult UpdateLocation(string id, LocationDto locationDto)
-        {
-            var locationInDb = _context.Locations.SingleOrDefault(c => c.Id == id);
-
-            if (locationInDb == null)
-                return NotFound();
-
-            Mapper.Map(locationDto, locationInDb);
-            _context.SaveChanges();
-
-            return Ok();
-        }
-
-        [HttpDelete]
-        public IHttpActionResult DeleteLocation(string id)
-        {
-            var location = _context.Locations.SingleOrDefault(c => c.Id == id);
-
-            if (location == null)
-                return NotFound();
-
-            _context.Locations.Remove(location);
-            _context.SaveChanges();
-
-            return Ok();
         }
     }
 }

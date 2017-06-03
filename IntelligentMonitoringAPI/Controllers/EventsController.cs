@@ -9,6 +9,7 @@ using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
 using IntelligentMonitoringAPI.Models.Wrappers;
 using IntelligentMonitoringBackend.ModelsDTO;
+using WebGrease.Css.Ast.Selectors;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
@@ -28,9 +29,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all events.
+        /// Get all events.
         /// </summary>
-        /// <returns>One array of eventDtos and one with customEventDtos wrapped in two JSON-objects</returns>
+        /// <returns>Two JSON-wrapped arrays of Events and CustomEvents</returns>
         [HttpGet]
         public IHttpActionResult GetEvents()
         {
@@ -49,52 +50,90 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all events for a device by deviceId.
+        /// Get events for a device by Id or Start Date, End Date or within a timespan.
         /// </summary>
         /// <param name="deviceId">string</param>
-        /// <returns>One array of eventDtos and one with customEventDtos wrapped in two JSON-objects</returns>
+        /// <param name="startDate">DateTime</param>
+        /// <param name="endDate">DateTime</param>
+        /// <returns>Two JSON-wrapped arrays of Events and CustomEvents</returns>
         [HttpGet]
-        public IHttpActionResult GetEventsForDevice(string deviceId)
+        public IHttpActionResult GetEventsForDeviceFromDateToDate(string deviceId, DateTime? startDate = null, DateTime? endDate = null)
         {
-            var deviceEventDtos =
+            var eventDtos =
                 _context.Events.ToList()
-                .Where(c => c.DeviceId == deviceId)
-                .Select(Mapper.Map<Event, EventDto>);
+                    .Where(c => c.DeviceId == deviceId)
+                    .Select(Mapper.Map<Event, EventDto>);
 
             var customEventsDtos = _context.CustomEvents
                 .ToList().Where(c => c.DeviceId == deviceId)
                 .Select(Mapper.Map<CustomEvent, CustomEventDto>);
 
-            var response = new EventsWrapper {Events = deviceEventDtos, CustomEvents = customEventsDtos};
 
-            return Ok(response);
-        }
 
-        /// <summary>
-        /// Method defines endpoint for getting events for a device within a timespan by deviceId and timespan.
-        /// </summary>
-        /// <param name="deviceId">string</param>
-        /// <param name="startDate">DateTime</param>
-        /// <param name="endDate">DateTime</param>
-        /// <returns>One array of eventDtos and one with customEventDtos wrapped in two JSON-objects</returns>
-        [HttpGet]
-        public IHttpActionResult GetEventsForDeviceFromDateToDate(string deviceId, DateTime startDate, DateTime endDate)
-        {
-            var endingDate = endDate.AddDays(1);
+            if (startDate != null && endDate == null)
+            {
+                eventDtos = _context.Events.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => c.CreatedTimeStamp.Value.Date >= startDate || c.CreatedTimeStamp >= startDate)
+                    .Select(Mapper.Map<Event, EventDto>);
 
-            var eventDtos = _context.Events.ToList()
-                .Where(c => c.DeviceId == deviceId)
-                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
-                .Select(Mapper.Map<Event, EventDto>);
+                customEventsDtos = _context.CustomEvents.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => c.CreatedTimeStamp.Value.Date >= startDate || c.CreatedTimeStamp >= startDate)
+                    .Select(Mapper.Map<CustomEvent, CustomEventDto>);
+            }
+            else if (startDate == null && endDate != null)
+            {
+                eventDtos = _context.Events.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => c.CreatedTimeStamp.Value.Date <= endDate || c.CreatedTimeStamp <= endDate)
+                    .Select(Mapper.Map<Event, EventDto>);
 
-            var customEventsDtos = _context.CustomEvents.ToList()
-                .Where(c => c.DeviceId == deviceId)
-                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
-                .Select(Mapper.Map<CustomEvent, CustomEventDto>);
+                customEventsDtos = _context.CustomEvents.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => c.CreatedTimeStamp.Value.Date <= endDate || c.CreatedTimeStamp <= endDate)
+                    .Select(Mapper.Map<CustomEvent, CustomEventDto>);
+            }
+            else if (startDate != null && endDate != null)
+            {
+                eventDtos = _context.Events.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => (c.CreatedTimeStamp.Value.Date >= startDate || c.CreatedTimeStamp >= startDate)
+                                && (c.CreatedTimeStamp.Value.Date <= endDate || c.CreatedTimeStamp <= endDate))
+                    .Select(Mapper.Map<Event, EventDto>);
+
+                customEventsDtos = _context.CustomEvents.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => (c.CreatedTimeStamp.Value.Date >= startDate || c.CreatedTimeStamp >= startDate)
+                                && (c.CreatedTimeStamp.Value.Date <= endDate || c.CreatedTimeStamp <= endDate))
+                    .Select(Mapper.Map<CustomEvent, CustomEventDto>);
+            }
 
             var response = new EventsWrapper {Events = eventDtos, CustomEvents = customEventsDtos};
 
             return Ok(response);
+        }
+
+
+        /// <summary>
+        /// Update an Event.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="eventDto"></param>
+        /// <returns>Ok</returns>
+        [HttpPut]
+        public IHttpActionResult UpdateEvent(string id, EventDto eventDto)
+        {
+            var eventInDb = _context.Events
+                .SingleOrDefault(c => c.Id == id);
+
+            if (eventInDb == null)
+                return NotFound();
+
+            Mapper.Map(eventDto, eventInDb);
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }

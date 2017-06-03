@@ -6,12 +6,16 @@ namespace IntelligentMonitoringAPI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class DailyStatistic
+    public partial class DailyStatistics
     {
         public int Id { get; set; }
 
         [StringLength(50)]
         public string DeviceId { get; set; }
+
+        public long CollectiveContactLostTime { get; set; }
+
+        public int CollectiveContactLostCount { get; set; }
 
         public DateTime? CreatedTimeStamp { get; set; }
 
@@ -24,9 +28,5 @@ namespace IntelligentMonitoringAPI.Models
         public decimal AverageBatteryLevel { get; set; }
 
         public string SignalMeasurementUnit { get; set; }
-
-        public long CollectiveContactLostTime { get; set; }
-
-        public int CollectiveContactLostCount { get; set; }
     }
 }

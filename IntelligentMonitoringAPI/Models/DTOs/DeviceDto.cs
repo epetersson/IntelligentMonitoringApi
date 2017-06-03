@@ -32,6 +32,8 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public decimal ContactLostThreshold { get; set; }
 
+        public int ContactLostCount { get; set; }
+
         public decimal SignalStrength { get; set; }
 
         public string SignalMeasurementUnit { get; set; }
@@ -39,6 +41,10 @@ namespace IntelligentMonitoringAPI.Models.DTOs
         public decimal BatteryLevel { get; set; }
 
         public bool LastDeviceState { get; set; }
+
+        public int EventCount { get; set; }
+
+        public int SensorCount { get; set; }
 
         public string DataCollectorId { get; set; }
 

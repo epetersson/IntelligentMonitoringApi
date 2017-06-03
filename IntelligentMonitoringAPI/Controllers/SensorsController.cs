@@ -11,16 +11,26 @@ using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
+    /// <summary>
+    /// Class defines endpoints related to Sensors
+    /// </summary>
     public class SensorsController : ApiController
     {
         
         private IntelliMonDbContext _context;
 
+        /// <summary>
+        /// Constructor initates db context
+        /// </summary>
         public SensorsController()
         {
             _context = new IntelliMonDbContext();
         }
 
+        /// <summary>
+        /// Get all Sensors
+        /// </summary>
+        /// <returns>JSON-wrapped array of Sensor</returns>
         [HttpGet]
         public IHttpActionResult GetSensors()
         {
@@ -32,6 +42,11 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(response);
         }
         
+        /// <summary>
+        /// Get a Sensor by its Id
+        /// </summary>
+        /// <param name="id">string</param>
+        /// <returns>Sensor</returns>
         [HttpGet]
         public IHttpActionResult GetSensor(string id)
         {
@@ -43,6 +58,11 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(Mapper.Map<Sensor, SensorDto>(sensor));
         }
 
+        /// <summary>
+        /// Get all SensorMeasurements by a Sensors' Id
+        /// </summary>
+        /// <param name="id">string</param>
+        /// <returns>JSON-wrapped array of SensorMeasurements</returns>
         [HttpGet]
         [Route("api/Sensors/{id}/measurements")]
         public IHttpActionResult GetSensorMeasurements(string id)
@@ -59,71 +79,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok(response);
         }
-
-        [HttpPost]
-        public IHttpActionResult CreateSensor(SensorDto sensorDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var sensor = Mapper.Map<SensorDto, Sensor>(sensorDto);
-
-            _context.Sensors.Add(sensor);
-            _context.SaveChanges();
-
-            sensorDto.Id = sensor.Id;
-
-            return Created(new Uri(Request.RequestUri + "/" + sensor.Id), sensorDto);
-        }
-
-        
-        [HttpPut]
-        public IHttpActionResult UpdateSensor(string id, SensorDto sensorDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var sensorInDb = _context.Sensors.SingleOrDefault(c => c.Id == id);
-
-            if (sensorInDb == null)
-                return NotFound();
-
-            Mapper.Map(sensorDto, sensorInDb);
-
-            _context.SaveChanges();
-
-            return Ok();
-        }
-        
-        [HttpDelete]
-        public IHttpActionResult DeleteSensor(string id)
-        {
-            var device = _context.Sensors.SingleOrDefault(c => c.Id == id);
-            if (device == null)
-                return NotFound();
-
-            _context.Sensors.Remove(device);
-            _context.SaveChanges();
-
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("api/Sensors/{id}/measurements/")]
-        public IHttpActionResult CreateSensorMeasurement(string id, SensorMeasurementDto sensorMeasurementDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var sensorMeasurement = Mapper.Map<SensorMeasurementDto, SensorMeasurement>(sensorMeasurementDto);
-
-            _context.SensorMeasurements.Add(sensorMeasurement);
-            _context.SaveChanges();
-
-            sensorMeasurementDto.Id = sensorMeasurement.Id;
-
-            return Created(new Uri(Request.RequestUri + "/" + sensorMeasurement.Id), sensorMeasurementDto);
-        }
-
     }
 }

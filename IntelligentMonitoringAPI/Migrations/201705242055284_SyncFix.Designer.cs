@@ -7,13 +7,13 @@ namespace IntelligentMonitoringAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class RenamedDateTimeInFailurePronedDevice : IMigrationMetadata
+    public sealed partial class SyncFix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RenamedDateTimeInFailurePronedDevice));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SyncFix));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705242046276_RenamedDateTimeInFailurePronedDevice"; }
+            get { return "201705242055284_SyncFix"; }
         }
         
         string IMigrationMetadata.Source

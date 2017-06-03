@@ -18,15 +18,18 @@ namespace IntelligentMonitoringAPI.Controllers
     {
         private IntelliMonDbContext _context;
 
+        /// <summary>
+        /// Constructor initiates the db context
+        /// </summary>
         public StatisticsController()
         {
             _context = new IntelliMonDbContext();
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all DailyStatistics.
+        /// Get all DailyStatistics.
         /// </summary>
-        /// <returns>Array of DailyStatisticsDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of DailyStatistics</returns>
         [HttpGet]
         public IHttpActionResult GetDailyStatistics()
         {
@@ -39,10 +42,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all HourlyStatistics for specified device.
+        /// Get all HourlyStatistics for a Device by its Id.
         /// </summary>
         /// <param name="deviceId">string</param>
-        /// <returns>Array of DeviceHistoryDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of HourlyStatistics</returns>
         [HttpGet]
         [Route("api/Statistics/{deviceId}/hourly")]
         public IHttpActionResult GetDeviceHistoryByDeviceId(string deviceId)
@@ -58,10 +61,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all DailyStatistics for defined Device.
+        /// Get all DailyStatistics for a Device by its Id.
         /// </summary>
         /// <param name="deviceId">string</param>
-        /// <returns>Array of DailyStatisticDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of DailyStatistics</returns>
         [HttpGet]
         [Route("api/Statistics/{deviceId}/daily")]
         public IHttpActionResult GetDailyStatistics(string deviceId)
@@ -77,21 +80,42 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting all DailyStatistics within a timespan for a device. 
+        /// Get all DailyStatistics within a timespan for a device. 
         /// </summary>
         /// <param name="deviceId">string</param>
         /// <param name="startDate">DateTime</param>
         /// <param name="endDate">DateTime</param>
-        /// <returns>Array of DailyStatisticDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of DailyStatistics</returns>
         [HttpGet]
-        public IHttpActionResult GetDailyStatisticForDeviceByDateToDate(string deviceId, DateTime startDate, DateTime endDate)
+        public IHttpActionResult GetDailyStatisticForDeviceByDateToDate(string deviceId, DateTime? startDate = null, DateTime? endDate = null)
         {
-            var endingDate = endDate.AddDays(1);
+            var dailyStatisticDtos = _context.DailyStatistics
+                    .ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
 
-            var dailyStatisticDtos = _context.DailyStatistics.ToList()
+            if (startDate != null && endDate == null)
+            {
+                dailyStatisticDtos = _context.DailyStatistics.ToList()
                 .Where(c => c.DeviceId == deviceId)
-                .Where(c => c.CreatedTimeStamp >= startDate && c.CreatedTimeStamp <= endingDate)
+                .Where(c => c.CreatedTimeStamp.Value.Date >= startDate || c.CreatedTimeStamp >= startDate)
                 .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
+            }
+            else if (startDate == null && endDate != null)
+            {
+                dailyStatisticDtos = _context.DailyStatistics.ToList()
+                    .Where(c => c.DeviceId == deviceId)
+                    .Where(c => c.CreatedTimeStamp.Value.Date <= endDate || c.CreatedTimeStamp <= endDate)
+                    .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
+            }
+            else if (startDate != null && endDate != null)
+            {
+                dailyStatisticDtos = _context.DailyStatistics.ToList()
+               .Where(c => c.DeviceId == deviceId)
+               .Where(c => (c.CreatedTimeStamp.Value.Date >= startDate || c.CreatedTimeStamp >= startDate) 
+               && (c.CreatedTimeStamp.Value.Date <= endDate || c.CreatedTimeStamp <= endDate))
+               .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
+            }        
 
             var response = new DailyStatisticsWrapper { DailyStatistics = dailyStatisticDtos };
 

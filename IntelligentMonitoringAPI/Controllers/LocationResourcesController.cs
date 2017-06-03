@@ -11,6 +11,9 @@ using IntelligentMonitoringAPI.Models.Wrappers;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
+    /// <summary>
+    /// Class defines endpoints related to LocationResource
+    /// </summary>
     public class LocationResourcesController : ApiController
     {
         private IntelliMonDbContext _context;
@@ -26,7 +29,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// <summary>
         /// Get all LocationResources
         /// </summary>
-        /// <returns>JSON-wrapped array of LocationDtos</returns>
+        /// <returns>JSON-wrapped array of LocationResources</returns>
         [HttpGet]
         public IHttpActionResult GetLocationResources()
         {
@@ -43,7 +46,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// Get a LocationResource by its Id.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>LocationResource</returns>
         [HttpGet]
         public IHttpActionResult GetLocationResource(string id)
         {
@@ -55,7 +58,5 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok(Mapper.Map<LocationResource, LocationResourceDto>(locationResource));
         }
-
-
     }
 }

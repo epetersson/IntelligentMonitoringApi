@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
-
 namespace IntelligentMonitoringAPI.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
     public class Event
     {
         [StringLength(50)]
@@ -15,7 +15,7 @@ namespace IntelligentMonitoringAPI.Models
 
         public bool IsDeviceDeleted { get; set; }
 
-        public DateTime? CreatedTimeStamp{ get; set; }
+        public DateTime? CreatedTimeStamp { get; set; }
 
         public DateTime? ResetTimeStamp { get; set; }
 

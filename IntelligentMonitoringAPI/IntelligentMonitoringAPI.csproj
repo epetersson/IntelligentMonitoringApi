@@ -36,7 +36,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>App_Data/XmlDocument.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -323,15 +324,39 @@
     <Compile Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.Designer.cs">
       <DependentUpon>201705242040368_RenamedDateTimeInSensorMeasurement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705242046276_RenamedDateTimeInFailurePronedDevice.cs" />
-    <Compile Include="Migrations\201705242046276_RenamedDateTimeInFailurePronedDevice.Designer.cs">
-      <DependentUpon>201705242046276_RenamedDateTimeInFailurePronedDevice.cs</DependentUpon>
+    <Compile Include="Migrations\201705242055284_SyncFix.cs" />
+    <Compile Include="Migrations\201705242055284_SyncFix.Designer.cs">
+      <DependentUpon>201705242055284_SyncFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705300907343_AvgBatGeneratedForDailyStat.cs" />
+    <Compile Include="Migrations\201705300907343_AvgBatGeneratedForDailyStat.Designer.cs">
+      <DependentUpon>201705300907343_AvgBatGeneratedForDailyStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301229143_AddPublicBoolHandledToFailurePronedDevice.cs" />
+    <Compile Include="Migrations\201705301229143_AddPublicBoolHandledToFailurePronedDevice.Designer.cs">
+      <DependentUpon>201705301229143_AddPublicBoolHandledToFailurePronedDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301234474_RemovePublicBoolHandeled.cs" />
+    <Compile Include="Migrations\201705301234474_RemovePublicBoolHandeled.Designer.cs">
+      <DependentUpon>201705301234474_RemovePublicBoolHandeled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301241116_Synching.cs" />
+    <Compile Include="Migrations\201705301241116_Synching.Designer.cs">
+      <DependentUpon>201705301241116_Synching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705301242198_Synching1.cs" />
+    <Compile Include="Migrations\201705301242198_Synching1.Designer.cs">
+      <DependentUpon>201705301242198_Synching1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
     <Compile Include="Models\CustomEvent.cs" />
+    <Compile Include="Models\DailyStatistics.cs" />
     <Compile Include="Models\DTOs\CustomEventDto.cs" />
+    <Compile Include="Models\DTOs\FailurePronedDeviceDto.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FailurePronedDevice.cs" />
     <Compile Include="Models\RealTimeToken.cs" />
+    <Compile Include="Models\Wrappers\FailurePronedDevicesWrapper.cs" />
     <Compile Include="Models\Wrappers\UserConversationWrapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -522,7 +547,6 @@
     <Compile Include="Models\DTOs\PositionDto.cs" />
     <Compile Include="Models\DTOs\SensorDto.cs" />
     <Compile Include="Models\DTOs\SensorMeasurementDto.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IntelliMonDbContext.cs" />
     <Compile Include="Models\Location.cs" />
@@ -553,6 +577,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\XmlDocument.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-journal.css" />
     <Content Include="Content\bootstrap.css" />
@@ -601,7 +626,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -618,9 +645,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -801,9 +826,27 @@
     <EmbeddedResource Include="Migrations\201705242040368_RenamedDateTimeInSensorMeasurement.resx">
       <DependentUpon>201705242040368_RenamedDateTimeInSensorMeasurement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705242046276_RenamedDateTimeInFailurePronedDevice.resx">
-      <DependentUpon>201705242046276_RenamedDateTimeInFailurePronedDevice.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705242055284_SyncFix.resx">
+      <DependentUpon>201705242055284_SyncFix.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705300907343_AvgBatGeneratedForDailyStat.resx">
+      <DependentUpon>201705300907343_AvgBatGeneratedForDailyStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301229143_AddPublicBoolHandledToFailurePronedDevice.resx">
+      <DependentUpon>201705301229143_AddPublicBoolHandledToFailurePronedDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301234474_RemovePublicBoolHandeled.resx">
+      <DependentUpon>201705301234474_RemovePublicBoolHandeled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301241116_Synching.resx">
+      <DependentUpon>201705301241116_Synching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301242198_Synching1.resx">
+      <DependentUpon>201705301242198_Synching1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
