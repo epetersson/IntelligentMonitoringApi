@@ -27,9 +27,9 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines the endpoint for getting all DeviceNetworks.
+        /// Get all DeviceNetworks.
         /// </summary>
-        /// <returns>Array of DeviceNetworkDtos wrapped in JSON-object</returns>
+        /// <returns>JSON-wrapped array of DeviceNetworks</returns>
         [HttpGet]
         public IHttpActionResult GetDeviceNetworks()
         {
@@ -43,10 +43,10 @@ namespace IntelligentMonitoringAPI.Controllers
         }
 
         /// <summary>
-        /// Method defines endpoint for getting a DeviceNetwork by defined id.
+        /// Get DeviceNetwork by its id.
         /// </summary>
         /// <param name="id">string</param>
-        /// <returns>DeviceNetworkDto</returns>
+        /// <returns>DeviceNetwork</returns>
         [HttpGet]
         public IHttpActionResult GetDeviceNetwork(string id)
         {
@@ -59,6 +59,11 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(Mapper.Map<DeviceNetwork, DeviceNetworkDto>(deviceNetwork));
         }
 
+        /// <summary>
+        /// Create a DeviceNetwork.
+        /// </summary>
+        /// <param name="deviceNetworkDto">DeviceNetworkDto</param>
+        /// <returns>Created</returns>
         [HttpPost]
         public IHttpActionResult CreateDeviceNetwork(DeviceNetworkDto deviceNetworkDto)
         {
@@ -75,6 +80,12 @@ namespace IntelligentMonitoringAPI.Controllers
             return Created(new Uri(Request.RequestUri + "/" + deviceNetwork.Id), deviceNetworkDto);
         }
 
+        /// <summary>
+        /// Update a DeviceNetwork.
+        /// </summary>
+        /// <param name="id">string</param>
+        /// <param name="deviceNetworkDto">DeviceNetworkDto</param>
+        /// <returns>Ok</returns>
         [HttpPut]
         public IHttpActionResult UpdateDeviceNetwork(string id, DeviceNetworkDto deviceNetworkDto)
         {
@@ -85,21 +96,6 @@ namespace IntelligentMonitoringAPI.Controllers
                 return NotFound();
 
             Mapper.Map(deviceNetworkDto, deviceNetworkInDb);
-            _context.SaveChanges();
-
-            return Ok();
-        }
-
-        [HttpDelete]
-        public IHttpActionResult DeleteDeviceNetwork(string id)
-        {
-            var deviceNetwork = _context.DeviceNetworks
-                .SingleOrDefault(c => c.Id == id);
-
-            if (deviceNetwork == null)
-                return NotFound();
-
-            _context.DeviceNetworks.Remove(deviceNetwork);
             _context.SaveChanges();
 
             return Ok();
