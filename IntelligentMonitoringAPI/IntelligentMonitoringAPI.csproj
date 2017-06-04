@@ -359,6 +359,10 @@
     <Compile Include="Migrations\201706031118024_changedHandleFlag.Designer.cs">
       <DependentUpon>201706031118024_changedHandleFlag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706042018175_AddingAVGBAtteryLevel.cs" />
+    <Compile Include="Migrations\201706042018175_AddingAVGBAtteryLevel.Designer.cs">
+      <DependentUpon>201706042018175_AddingAVGBAtteryLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
     <Compile Include="Models\AuthorizationToken.cs" />
     <Compile Include="Models\CustomEvent.cs" />
@@ -856,6 +860,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705301242198_Synching1.resx">
       <DependentUpon>201705301242198_Synching1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042018175_AddingAVGBAtteryLevel.resx">
+      <DependentUpon>201706042018175_AddingAVGBAtteryLevel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

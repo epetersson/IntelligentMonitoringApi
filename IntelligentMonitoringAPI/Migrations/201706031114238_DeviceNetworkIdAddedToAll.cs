@@ -31,14 +31,14 @@ namespace IntelligentMonitoringAPI.Migrations
             AddColumn("dbo.Positions", "DeviceNetworkId", c => c.String(maxLength: 50));
             AddColumn("dbo.SensorMeasurements", "DeviceNetworkId", c => c.String(maxLength: 50));
             AddColumn("dbo.Sensors", "DeviceNetworkId", c => c.String(maxLength: 50));
-            DropColumn("dbo.DailyStatistics", "AverageBatteryLevel");
-            DropColumn("dbo.FailurePronedDevices", "Handled");
+
+
+
         }
         
         public override void Down()
         {
-            AddColumn("dbo.FailurePronedDevices", "Handled", c => c.Boolean(nullable: false));
-            AddColumn("dbo.DailyStatistics", "AverageBatteryLevel", c => c.Decimal(nullable: false, precision: 18, scale: 2));
+
             DropColumn("dbo.Sensors", "DeviceNetworkId");
             DropColumn("dbo.SensorMeasurements", "DeviceNetworkId");
             DropColumn("dbo.Positions", "DeviceNetworkId");
