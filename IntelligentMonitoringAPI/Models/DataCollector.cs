@@ -11,6 +11,9 @@ namespace IntelligentMonitoringAPI.Models
         [StringLength(50)]
         public string Id { get; set; }
 
+        [StringLength(50)]
+        public string DeviceNetworkId { get; set; }
+
         public string Name { get; set; }
 
         public string DataCollectorTypeName { get; set; }

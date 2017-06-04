@@ -14,6 +14,9 @@ namespace IntelligentMonitoringAPI.Models
         [StringLength(50)]
         public string DeviceId { get; set; }
 
+        [StringLength(50)]
+        public string DeviceNetworkId { get; set; }
+
         public string DeviceName { get; set; }
 
         public int ContactLostCount { get; set; }
@@ -25,6 +28,7 @@ namespace IntelligentMonitoringAPI.Models
         public decimal MaxSignalStrength { get; set; }
 
         public decimal MinSignalStrength { get; set; }
+
         public string SignalMeasurementUnit { get; set; }
 
         public int EventCount { get; set; }

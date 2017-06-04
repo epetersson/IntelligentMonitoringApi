@@ -17,15 +17,37 @@ namespace IntelligentMonitoringAPI.Controllers
     public class LocationsController : ApiController
     {
         private IntelliMonDbContext _context;
-        
+        private DeviceNetwork deviceNetwork;
+
         /// <summary>
         /// Constructor initiates the database context.
         /// </summary>
         public LocationsController()
         {
             _context = new IntelliMonDbContext();
+            GetDeviceNetwork();
         }
 
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }
+                else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }
+            else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
+        }
         /// <summary>
         /// Get all Locations
         /// </summary>
@@ -33,7 +55,8 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetLocations()
         {
-            var locationDtos = _context.Locations.ToList()
+            var locationDtos = _context.Locations
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0).ToList()
                 .Select(Mapper.Map<Location, LocationDto>);
 
             var response = new LocationsWrapper {Locations = locationDtos};

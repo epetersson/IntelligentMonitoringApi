@@ -14,6 +14,9 @@ namespace IntelligentMonitoringAPI.Models
         [StringLength(50)]
         public string DeviceId { get; set; }
 
+        [StringLength(50)]
+        public string DeviceNetworkId { get; set; }
+
         public bool ContactLost { get; set; }
 
         public long ContactLostTotalTime { get; set; }

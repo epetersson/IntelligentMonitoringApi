@@ -22,6 +22,7 @@ namespace IntelligentMonitoringAPI.Controllers
     {
         
         private IntelliMonDbContext _context;
+        private DeviceNetwork deviceNetwork;
 
         /// <summary>
         /// Constructor initiates the database context.
@@ -29,8 +30,28 @@ namespace IntelligentMonitoringAPI.Controllers
         public DevicesController()
         {
             _context = new IntelliMonDbContext();
+
+            GetDeviceNetwork();
         }
 
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
+        }
         /// <summary>
         /// Get all Devices
         /// </summary>
@@ -38,7 +59,9 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDevices()
         {
-            var deviceDtos = _context.Devices.ToList()
+            var deviceDtos = _context.Devices
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
+                .ToList()
                 .Select(Mapper.Map<Device, DeviceDto>);          
 
             var response = new DevicesWrapper {Devices = deviceDtos};

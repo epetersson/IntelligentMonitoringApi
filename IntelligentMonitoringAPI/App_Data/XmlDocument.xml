@@ -486,6 +486,39 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.AuthorizationTokensController.#ctor">
+            <summary>
+            Constructor initiates the database context.
+            </summary>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.AuthorizationTokensController.GetAuthorizationToken">
+            <summary>
+            Get the current authorization token.
+            </summary>
+            <returns>JSON-wrapped array of LocationDtos</returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.AuthorizationTokensController.CreateAuthorizationToken(System.String)">
+            <summary>
+            Creates an authorization token.
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.AuthorizationTokensController.UpdateAuthorizationToken(System.String)">
+            <summary>
+            Updates the current authorization token.
+            </summary>
+            <param name="id"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntelligentMonitoringAPI.Controllers.AuthorizationTokensController.DeleteAuthorizationToken">
+            <summary>
+            Deletes the current token
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:IntelligentMonitoringAPI.Controllers.StatisticsController">
             <summary>
             Class defines the endpoints related to DailyStatistics and HourlyStatistics.

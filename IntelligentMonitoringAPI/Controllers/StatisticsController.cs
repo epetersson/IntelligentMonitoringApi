@@ -17,6 +17,7 @@ namespace IntelligentMonitoringAPI.Controllers
     public class StatisticsController : ApiController
     {
         private IntelliMonDbContext _context;
+        private DeviceNetwork deviceNetwork;
 
         /// <summary>
         /// Constructor initiates the db context
@@ -24,6 +25,28 @@ namespace IntelligentMonitoringAPI.Controllers
         public StatisticsController()
         {
             _context = new IntelliMonDbContext();
+            GetDeviceNetwork();
+        }
+
+        public void GetDeviceNetwork()
+        {
+            var authorization = _context.AuthorizationTokens.FirstOrDefault();
+
+            if (authorization != null)
+            {
+                if (!String.IsNullOrEmpty(authorization.Token))
+                {
+                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
+                }
+                else
+                {
+                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+                }
+            }
+            else
+            {
+                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
+            }
         }
 
         /// <summary>
@@ -33,7 +56,9 @@ namespace IntelligentMonitoringAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetDailyStatistics()
         {
-            var dailyStatisticDtos = _context.DailyStatistics.ToList()
+            var dailyStatisticDtos = _context.DailyStatistics
+                .Where(obj => String.Compare(obj.DeviceNetworkId, deviceNetwork.Id) == 0)
+                .ToList()
                 .Select(Mapper.Map<DailyStatistic, DailyStatisticDto>);
 
             var response = new DailyStatisticsWrapper() { DailyStatistics = dailyStatisticDtos };

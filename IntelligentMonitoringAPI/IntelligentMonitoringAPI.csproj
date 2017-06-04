@@ -52,6 +52,14 @@
       <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -172,12 +180,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -258,6 +260,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorizationTokensController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\DeviceNetworksController.cs" />
     <Compile Include="Controllers\DevicesController.cs" />
@@ -348,7 +351,16 @@
     <Compile Include="Migrations\201705301242198_Synching1.Designer.cs">
       <DependentUpon>201705301242198_Synching1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706031114238_DeviceNetworkIdAddedToAll.cs" />
+    <Compile Include="Migrations\201706031114238_DeviceNetworkIdAddedToAll.Designer.cs">
+      <DependentUpon>201706031114238_DeviceNetworkIdAddedToAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706031118024_changedHandleFlag.cs" />
+    <Compile Include="Migrations\201706031118024_changedHandleFlag.Designer.cs">
+      <DependentUpon>201706031118024_changedHandleFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccumulatedStatistic.cs" />
+    <Compile Include="Models\AuthorizationToken.cs" />
     <Compile Include="Models\CustomEvent.cs" />
     <Compile Include="Models\DailyStatistics.cs" />
     <Compile Include="Models\DTOs\CustomEventDto.cs" />
@@ -357,6 +369,7 @@
     <Compile Include="Models\FailurePronedDevice.cs" />
     <Compile Include="Models\RealTimeToken.cs" />
     <Compile Include="Models\Wrappers\FailurePronedDevicesWrapper.cs" />
+    <Compile Include="Models\Wrappers\AuthorizationTokensWrapper.cs" />
     <Compile Include="Models\Wrappers\UserConversationWrapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -847,6 +860,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\201706031114238_DeviceNetworkIdAddedToAll.resx">
+      <DependentUpon>201706031114238_DeviceNetworkIdAddedToAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706031118024_changedHandleFlag.resx">
+      <DependentUpon>201706031118024_changedHandleFlag.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
