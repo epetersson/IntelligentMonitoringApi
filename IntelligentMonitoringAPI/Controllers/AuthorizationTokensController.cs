@@ -27,7 +27,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// Get the current authorization token.
         /// </summary>
         /// <returns></returns>
-        [HttpGet Route("api/GetAuthorizationToken")]
+        [HttpGet]
         public IHttpActionResult GetAuthorizationToken()
         {
             var authorizationTokens = _context.AuthorizationTokens.FirstOrDefault();
@@ -42,7 +42,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        [HttpPost Route("api/CreateAuthorizationToken/{token}")]
+        [HttpPost]
         public IHttpActionResult CreateAuthorizationToken(string token)
         {
             if (!ModelState.IsValid)
@@ -68,7 +68,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        [HttpPut Route("api/UpdateAuthorizationToken/{token}")]
+        [HttpPut]
         public IHttpActionResult UpdateAuthorizationToken(string token)
         {
             if (!ModelState.IsValid)
@@ -93,7 +93,7 @@ namespace IntelligentMonitoringAPI.Controllers
         /// Deletes the current token
         /// </summary>
         /// <returns></returns>
-        [HttpDelete Route("api/DeleteAuthorizationToken")]
+        [HttpDelete]
         public IHttpActionResult DeleteAuthorizationToken()
         {
             var authorizationToken = _context.AuthorizationTokens.SingleOrDefault();
