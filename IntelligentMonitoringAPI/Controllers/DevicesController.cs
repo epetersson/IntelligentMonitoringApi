@@ -31,11 +31,6 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             _context = new IntelliMonDbContext();
 
-            GetDeviceNetwork();
-        }
-
-        public void GetDeviceNetwork()
-        {
             var authorization = _context.AuthorizationTokens.FirstOrDefault();
 
             if (authorization != null)
@@ -43,15 +38,18 @@ namespace IntelligentMonitoringAPI.Controllers
                 if (!String.IsNullOrEmpty(authorization.Token))
                 {
                     deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
-                }else
+                }
+                else
                 {
                     deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
                 }
-            }else
+            }
+            else
             {
                 deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
             }
         }
+
         /// <summary>
         /// Get all Devices
         /// </summary>

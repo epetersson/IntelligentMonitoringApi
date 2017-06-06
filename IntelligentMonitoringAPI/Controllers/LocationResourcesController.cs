@@ -25,11 +25,6 @@ namespace IntelligentMonitoringAPI.Controllers
         public LocationResourcesController()
         {
             _context = new IntelliMonDbContext();
-            GetDeviceNetwork();
-        }
-
-        public void GetDeviceNetwork()
-        {
             var authorization = _context.AuthorizationTokens.FirstOrDefault();
 
             if (authorization != null)
@@ -48,6 +43,7 @@ namespace IntelligentMonitoringAPI.Controllers
                 deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
             }
         }
+
         /// <summary>
         /// Get all LocationResources
         /// </summary>

@@ -26,11 +26,6 @@ namespace IntelligentMonitoringAPI.Controllers
         public PositionsController()
         {
             _context = new IntelliMonDbContext();
-            GetDeviceNetwork();
-        }
-
-        public void GetDeviceNetwork()
-        {
             var authorization = _context.AuthorizationTokens.FirstOrDefault();
 
             if (authorization != null)

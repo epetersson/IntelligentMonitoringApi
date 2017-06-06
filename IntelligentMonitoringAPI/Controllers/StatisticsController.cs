@@ -25,11 +25,6 @@ namespace IntelligentMonitoringAPI.Controllers
         public StatisticsController()
         {
             _context = new IntelliMonDbContext();
-            GetDeviceNetwork();
-        }
-
-        public void GetDeviceNetwork()
-        {
             var authorization = _context.AuthorizationTokens.FirstOrDefault();
 
             if (authorization != null)

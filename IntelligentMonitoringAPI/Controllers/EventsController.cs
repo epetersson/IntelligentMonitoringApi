@@ -28,11 +28,6 @@ namespace IntelligentMonitoringAPI.Controllers
         {
             _context = new IntelliMonDbContext();
 
-            GetDeviceNetwork();
-        }
-
-        public void GetDeviceNetwork()
-        {
             var authorization = _context.AuthorizationTokens.FirstOrDefault();
 
             if (authorization != null)
