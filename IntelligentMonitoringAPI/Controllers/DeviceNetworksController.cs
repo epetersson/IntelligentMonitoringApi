@@ -59,6 +59,8 @@ namespace IntelligentMonitoringAPI.Controllers
             return Ok(Mapper.Map<DeviceNetwork, DeviceNetworkDto>(deviceNetwork));
         }
 
+        //NO CRUD operations for Device Networks
+        /*
         /// <summary>
         /// Create a DeviceNetwork.
         /// </summary>
@@ -100,5 +102,6 @@ namespace IntelligentMonitoringAPI.Controllers
 
             return Ok();
         }
+        */
     }
 }

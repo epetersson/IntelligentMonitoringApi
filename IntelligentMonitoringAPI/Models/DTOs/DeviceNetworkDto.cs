@@ -15,8 +15,6 @@ namespace IntelligentMonitoringAPI.Models.DTOs
 
         public string TenantName { get; set; }
 
-        public string AuthToken { get; set; }
-
         public DateTime? UpdatedTimeStamp { get; set; }
     }
 }

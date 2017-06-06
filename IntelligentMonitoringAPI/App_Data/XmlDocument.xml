@@ -579,21 +579,6 @@
             <param name="id">string</param>
             <returns>DeviceNetwork</returns>
         </member>
-        <member name="M:IntelligentMonitoringAPI.Controllers.DeviceNetworksController.CreateDeviceNetwork(IntelligentMonitoringAPI.Models.DTOs.DeviceNetworkDto)">
-            <summary>
-            Create a DeviceNetwork.
-            </summary>
-            <param name="deviceNetworkDto">DeviceNetworkDto</param>
-            <returns>Created</returns>
-        </member>
-        <member name="M:IntelligentMonitoringAPI.Controllers.DeviceNetworksController.UpdateDeviceNetwork(System.String,IntelligentMonitoringAPI.Models.DTOs.DeviceNetworkDto)">
-            <summary>
-            Update a DeviceNetwork.
-            </summary>
-            <param name="id">string</param>
-            <param name="deviceNetworkDto">DeviceNetworkDto</param>
-            <returns>Ok</returns>
-        </member>
         <member name="T:IntelligentMonitoringAPI.Controllers.DevicesController">
             <summary>
             Class defines endpoints related to Device.
