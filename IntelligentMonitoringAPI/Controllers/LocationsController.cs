@@ -8,6 +8,7 @@ using AutoMapper;
 using IntelligentMonitoringAPI.Models;
 using IntelligentMonitoringAPI.Models.DTOs;
 using IntelligentMonitoringAPI.Models.Wrappers;
+using IntelligentMonitoringAPI.Tools;
 
 namespace IntelligentMonitoringAPI.Controllers
 {
@@ -27,21 +28,7 @@ namespace IntelligentMonitoringAPI.Controllers
             _context = new IntelliMonDbContext();
             var authorization = _context.AuthorizationTokens.FirstOrDefault();
 
-            if (authorization != null)
-            {
-                if (!String.IsNullOrEmpty(authorization.Token))
-                {
-                    deviceNetwork = _context.DeviceNetworks.Where(obj => String.Compare(obj.AuthToken, authorization.Token) == 0).FirstOrDefault();
-                }
-                else
-                {
-                    deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
-                }
-            }
-            else
-            {
-                deviceNetwork = _context.DeviceNetworks.OrderByDescending(d => d.UpdatedTimeStamp).FirstOrDefault();
-            }
+            deviceNetwork = DeviceNetworkFetcher.FetchNetwork(_context, authorization);
         }
 
         /// <summary>
